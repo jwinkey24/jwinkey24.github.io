@@ -25,14 +25,14 @@ print("You got", num_garlicknots, "garlic knots")
 print("-" * 20)
 
 numslice_total = num_slicepizza * slicepizza_cost
-print("The cost for slices for pizza are $", numslice_total)
+print(num_slicepizza, "🍕 Pizza $", format(numslice_total, ".2f"))
 
 garlicknot_total = garlicknot_cost * num_garlicknots
-print("The cost for garlic knots are $", garlicknot_total)
+print(num_garlicknots, "🥐 Garlic Knots $", format(garlicknot_total, ".2f"))
 
 completetotal = garlicknot_total + numslice_total
 print("-" * 20)
 
-print("The total price of the meal is:$", completetotal)
+print("Total\t\t:$",completetotal)
                        
                        
