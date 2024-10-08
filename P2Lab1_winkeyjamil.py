@@ -19,7 +19,7 @@ circumference = ((2)*(math.pi)*(radius))
 area = ((math.pi)*(math.pow(radius, 2)))
 print("-"*10, "Calculations", "-"*10)
 
-
+#Display Calculations
 print("The Diameter of the circle is: ", area)
 print("The Circumference of the circle is: ", circumference)
 print("The Area of the circle is:", area )
