@@ -24,10 +24,10 @@ eatery = float(input("How much money do you think you will spend on food?:$"))
 
 print("-"*10, "Travel Expense Total", "-"*10)
 
-print("Location:$",format(traveling, ".2f"))
+print("Location:$", traveling)
 print("Initial Budget:$",format(budget,".2f"))
 print("Food:$",format(eatery, ".2f"))
-print("Gas/Fuel:$",format(gas_money, ".2f")
+print("Gas/Fuel:$",format(gas_money, ".2f"))
 print("Lodging/Accomadations:$", format(hotel_price, ".2f"))
 
 print("-"*20)
