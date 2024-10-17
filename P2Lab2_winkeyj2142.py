@@ -24,6 +24,5 @@ print("Largest: ", max(swag_numbers))
 print("The total is: ", sum(swag_numbers))
 
 #To Find Average Add All Numbers And Divide By How Many Numbers Are The Sequence
-#LEN is The count of items
-average = sum(swag_numbers / len(swag_numbers)
+average = sum(swag_numbers) / len(swag_numbers)
 print("The Average of The Total is: ", average)
