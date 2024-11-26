@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Regular Show - The Totally Awesome Fan Site!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E0F8FF;
+            margin: 0;
+            padding: 0;
+            background-image: url("/api/placeholder/1600/900");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #container {
+            width: 980px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #header {
+            background-color: #3498DB;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        #navigation {
+            background-color: #2980B9;
+            padding: 10px;
+            text-align: center;
+        }
+        #navigation a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        #content {
+            padding: 20px;
+            background-color: white;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        #footer {
+            background-color: #34495E;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .gif-border {
+            border: 5px solid #2ECC71;
+        }
+        #rock-paper-scissors-game {
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .game-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .game-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #game-result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>🚀 Regular Show Fan Zone 🎮</h1>
+        </div>
+        
+        <div id="navigation">
+            <a href="#" onclick="showPage('description')">Show Description</a>
+            <a href="#" onclick="showPage('watch')">Where to Watch</a>
+            <a href="#" onclick="showPage('reviews')">Fan Reviews</a>
+            <a href="#" onclick="showPage('forum')">Community Forum</a>
+            <a href="#" onclick="showPage('game')">Mordecai's Rock-Paper-Scissors Challenge!</a>
+        </div>
+        
+        <div id="content">
+            <div id="description" class="page active">
+                <h2>About Regular Show</h2>
+                <img src="/api/placeholder/400/300" alt="Regular Show Characters" class="gif-border">
+                <p>Regular Show follows the hilarious adventures of Mordecai (a blue jay) and Rigby (a raccoon), two best friends working as groundskeepers at a local park. Their seemingly mundane job is constantly interrupted by wild, supernatural, and totally epic adventures!</p>
+                <p>Created by J.G. Quintel, this Cartoon Network show ran from 2010 to 2017 and became a cult classic for its quirky humor and relatable characters.</p>
+                <h3>Main Characters:</h3>
+                <ul>
+                    <li>Mordecai - The cool blue jay</li>
+                    <li>Rigby - The hyperactive raccoon</li>
+                    <li>Benson - The angry gumball machine manager</li>
+                    <li>Skips - The immortal yeti groundskeeper</li>
+                    <li>Pops - The lollipop-headed park owner</li>
+                </ul>
+            </div>
+            
+            <div id="watch" class="page">
+                <h2>Where to Watch Regular Show</h2>
+                <ul>
+                    <li>Cartoon Network (Check Local Listings)</li>
+                    <li>Hulu</li>
+                    <li>HBO Max</li>
+                    <li>Amazon Prime Video</li>
+                </ul>
+                <p>💡 Pro Tip: Check your local cable or streaming provider for the most up-to-date viewing options!</p>
+            </div>
+            
+            <div id="reviews" class="page">
+                <h2>Fan Reviews</h2>
+                <div class="review">
+                    <h3>MordecaiRules92</h3>
+                    <p>⭐⭐⭐⭐⭐ "Best show ever! So random and hilarious. Rigby and Mordecai are basically me and my best friend!"</p>
+                </div>
+                <div class="review">
+                    <h3>ParkWorker23</h3>
+                    <p>⭐⭐⭐⭐ "The humor is so unique. Each episode is like a crazy adventure!"</p>
+                </div>
+            </div>
+            
+            <div id="forum" class="page">
+                <h2>Community Forum</h2>
+                <p>🚧 UNDER CONSTRUCTION 🚧</p>
+                <p>Coming soon! Register to discuss your favorite episodes, characters, and crazy theories!</p>
+                <form>
+                    <input type="text" placeholder="Username">
+                    <input type="password" placeholder="Password">
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+
+            <div id="game" class="page">
+                <div id="rock-paper-scissors-game">
+                    <h2>Mordecai's Rock-Paper-Scissors Challenge!</h2>
+                    <p>Challenge Rigby in an epic Rock-Paper-Scissors showdown!</p>
+                    <div class="game-buttons">
+                        <button onclick="playGame('rock')">🪨 Rock</button>
+                        <button onclick="playGame('paper')">📄 Paper</button>
+                        <button onclick="playGame('scissors')">✂️ Scissors</button>
+                    </div>
+                    <div id="game-result"></div>
+                    <div id="score">
+                        <p>Player Wins: <span id="player-score">0</span></p>
+                        <p>Rigby Wins: <span id="rigby-score">0</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="footer">
+            <p>© 2010-2024 Regular Show Fan Zone | Not Officially Affiliated with Cartoon Network</p>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            var pages = document.getElementsByClassName('page');
+            for(var i = 0; i < pages.length; i++) {
+                pages[i].classList.remove('active');
+            }
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        let playerScore = 0;
+        let rigbyScore = 0;
+
+        function playGame(playerChoice) {
+            const choices = ['rock', 'paper', 'scissors'];
+            const rigbyChoice = choices[Math.floor(Math.random() * 3)];
+            const resultElement = document.getElementById('game-result');
+            
+            // Determine winner
+            if (playerChoice === rigbyChoice) {
+                resultElement.textContent = "It's a tie! Classic Rigby move!";
+            } else if (
+                (playerChoice === 'rock' && rigbyChoice === 'scissors') ||
+                (playerChoice === 'paper' && rigbyChoice === 'rock') ||
+                (playerChoice === 'scissors' && rigbyChoice === 'paper')
+            ) {
+                resultElement.textContent = `You win! Rigby chose ${rigbyChoice}. WOOOOOAH!`;
+                playerScore++;
+                document.getElementById('player-score').textContent = playerScore;
+            } else {
+                resultElement.textContent = `Rigby wins! He chose ${rigbyChoice}. BURRRRN!`;
+                rigbyScore++;
+                document.getElementById('rigby-score').textContent = rigbyScore;
+            }
+        }
+    </script>
+</body>
+</html>
