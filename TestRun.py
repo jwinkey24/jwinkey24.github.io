@@ -4,9 +4,13 @@ Spyder Editor
 
 This is a temporary script file.
 """
+num = int(input("Enter number of customers: "))
 
+for x in range(1, num+1):
 #ask for quanitiy
 quantity = float(input("Enter quatity: "))
+
+print("Enter info for customer #",x)
 
 #Evaluation
 '''
