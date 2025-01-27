@@ -1,13 +1,20 @@
 #Have user input their total item amount
 userItems = float(input("How many items do you have?: "))
+itemPrice = 0
+i = 1 
+while i < 100
 if userItems > 100:
     itemPrice = 4.00
-elif userItems < 99:
+    continue
+if userItems <= 99:
     itemPrice = 4.25
-elif itemPrice < 49:
+    continue
+if itemPrice <= 49:
     itemPrice = 4.50
-elif itemPrice < 19:
+    continue
+if itemPrice <= 19:
     itemPrice = 4.75
+    continue
 else:
     print("I'm sorry you entered the incorrect number of items.")
 
