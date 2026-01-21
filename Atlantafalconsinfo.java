@@ -4,16 +4,34 @@ public class Atlantafalconsinfo {
     public static void main(String[] args) {
         // Welcome message
         JOptionPane.showMessageDialog(null, 
-            "Welcome to the Atlanta Falcons Information Program!\n\n" +
-            "Learn about one of the NFL's most exciting teams!",
+            "<html><body style='width: 450px; background-color: #000000; color: #FFFFFF; text-align: center;'>" +
+            "<div style='background-color: #A71930; padding: 20px; margin-bottom: 15px;'>" +
+            "<h1 style='color: #FFFFFF; margin: 5px; font-size: 24px;'>🦅 ATLANTA FALCONS 🦅</h1>" +
+            "<h2 style='color: #FFFFFF; margin: 10px 0; font-size: 18px;'>Information Program</h2>" +
+            "</div>" +
+            "<p style='color: #FFFFFF; font-size: 16px; margin: 20px 0;'>" +
+            "Welcome to the ultimate source for<br>" +
+            "Atlanta Falcons history, stats, and information!</p>" +
+            "<div style='background-color: #1a1a1a; padding: 15px; margin: 15px 0; border: 2px solid #A71930;'>" +
+            "<p style='color: #A5ACAF; margin: 5px; font-size: 13px;'>" +
+            "✓ Team History & Achievements<br>" +
+            "✓ Player Profiles by Position<br>" +
+            "✓ Stadium & Branding Info<br>" +
+            "✓ Interactive 20-Question Quiz</p>" +
+            "</div>" +
+            "<div style='margin-top: 15px; padding: 12px; background-color: #A71930;'>" +
+            "<b style='color: #FFFFFF; font-size: 18px;'>RISE UP!</b>" +
+            "</div>" +
+            "</body></html>",
             "Atlanta Falcons Info",
             JOptionPane.INFORMATION_MESSAGE);
         
         boolean running = true;
         
         while (running) {
-            // Main menu
+            // Main menu using dropdown
             String[] options = {
+                "Select an option...",
                 "Team History",
                 "Ownership & Front Office",
                 "Business & Partnerships",
@@ -25,49 +43,79 @@ public class Atlantafalconsinfo {
                 "Exit"
             };
             
-            int choice = JOptionPane.showOptionDialog(null,
-                "What would you like to know about the Atlanta Falcons?",
+            String choice = (String) JOptionPane.showInputDialog(
+                null,
+                "<html><body style='width: 400px; background-color: #000000; color: #FFFFFF; text-align: center;'>" +
+                "<div style='background-color: #A71930; padding: 15px; margin-bottom: 15px;'>" +
+                "<h1 style='color: #FFFFFF; margin: 5px;'>🦅 ATLANTA FALCONS 🦅</h1>" +
+                "<h3 style='color: #FFFFFF; margin: 5px;'>Information Program</h3>" +
+                "</div>" +
+                "<p style='color: #FFFFFF; font-size: 14px; margin: 15px 0;'>" +
+                "Select a topic from the dropdown menu below:</p>" +
+                "<div style='margin-top: 15px; padding: 8px; background-color: #1a1a1a; border: 2px solid #A71930;'>" +
+                "<b style='color: #A71930;'>RISE UP!</b>" +
+                "</div>" +
+                "</body></html>",
                 "Atlanta Falcons Menu",
-                JOptionPane.DEFAULT_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 options,
                 options[0]);
             
-            switch (choice) {
-                case 0: // Team History
-                    showTeamHistory();
-                    break;
-                case 1: // Ownership & Front Office
-                    showOwnershipAndFrontOffice();
-                    break;
-                case 2: // Business & Partnerships
-                    showBusinessInfo();
-                    break;
-                case 3: // Stadium & Branding
-                    showStadiumAndBranding();
-                    break;
-                case 4: // Championships
-                    showChampionships();
-                    break;
-                case 5: // Notable Players
-                    showNotablePlayers();
-                    break;
-                case 6: // Current Team Info
-                    showCurrentTeam();
-                    break;
-                case 7: // Quiz
-                    takeQuiz();
-                    break;
-                case 8: // Exit
-                case -1: // Window closed
-                    running = false;
-                    JOptionPane.showMessageDialog(null,
-                        "Thanks for learning about the Atlanta Falcons!\n" +
-                        "Rise Up! 🦅",
-                        "Goodbye",
-                        JOptionPane.INFORMATION_MESSAGE);
-                    break;
+            // If user closes dialog or cancels, exit
+            if (choice == null) {
+                running = false;
+                JOptionPane.showMessageDialog(null,
+                    "<html><body style='width: 350px; background-color: #000000; color: #FFFFFF; text-align: center;'>" +
+                    "<div style='background-color: #A71930; padding: 10px; margin-bottom: 10px;'>" +
+                    "<h3 style='color: #FFFFFF; margin: 5px;'>Thank You!</h3>" +
+                    "</div>" +
+                    "<p style='color: #FFFFFF;'>Thanks for learning about the<br>Atlanta Falcons!</p>" +
+                    "<div style='margin-top: 10px; padding: 8px; background-color: #A71930;'>" +
+                    "<b style='color: #FFFFFF;'>RISE UP! 🦅</b>" +
+                    "</div>" +
+                    "</body></html>",
+                    "Goodbye",
+                    JOptionPane.INFORMATION_MESSAGE);
+                break;
+            }
+            
+            // Skip if user didn't change selection
+            if (choice.equals("Select an option...")) {
+                continue;
+            }
+            
+            // Handle selection
+            if (choice.equals("Team History")) {
+                showTeamHistory();
+            } else if (choice.equals("Ownership & Front Office")) {
+                showOwnershipAndFrontOffice();
+            } else if (choice.equals("Business & Partnerships")) {
+                showBusinessInfo();
+            } else if (choice.equals("Stadium & Branding")) {
+                showStadiumAndBranding();
+            } else if (choice.equals("Championships & Achievements")) {
+                showChampionships();
+            } else if (choice.equals("Notable Players")) {
+                showNotablePlayers();
+            } else if (choice.equals("Current Team Info")) {
+                showCurrentTeam();
+            } else if (choice.equals("Take a Quiz! 🎯")) {
+                takeQuiz();
+            } else if (choice.equals("Exit")) {
+                running = false;
+                JOptionPane.showMessageDialog(null,
+                    "<html><body style='width: 350px; background-color: #000000; color: #FFFFFF; text-align: center;'>" +
+                    "<div style='background-color: #A71930; padding: 10px; margin-bottom: 10px;'>" +
+                    "<h3 style='color: #FFFFFF; margin: 5px;'>Thank You!</h3>" +
+                    "</div>" +
+                    "<p style='color: #FFFFFF;'>Thanks for learning about the<br>Atlanta Falcons!</p>" +
+                    "<div style='margin-top: 10px; padding: 8px; background-color: #A71930;'>" +
+                    "<b style='color: #FFFFFF;'>RISE UP! 🦅</b>" +
+                    "</div>" +
+                    "</body></html>",
+                    "Goodbye",
+                    JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
@@ -336,8 +384,9 @@ public class Atlantafalconsinfo {
     }
     
     private static void showNotablePlayers() {
-        // First show the main menu for player categories by position
+        // Player position menu using dropdown
         String[] playerOptions = {
+            "Select a position...",
             "Quarterbacks (QB)",
             "Running Backs (RB)",
             "Wide Receivers & Tight Ends",
@@ -348,40 +397,49 @@ public class Atlantafalconsinfo {
             "Back to Main Menu"
         };
         
-        int choice = JOptionPane.showOptionDialog(null,
-            "Select a position group to explore players:",
+        String choice = (String) JOptionPane.showInputDialog(
+            null,
+            "<html><body style='width: 450px; background-color: #000000; color: #FFFFFF; text-align: center;'>" +
+            "<div style='background-color: #A71930; padding: 12px; margin-bottom: 12px;'>" +
+            "<h2 style='color: #FFFFFF; margin: 5px;'>NOTABLE PLAYERS</h2>" +
+            "</div>" +
+            "<p style='color: #FFFFFF; font-size: 14px;'>" +
+            "Select a position group to explore Falcons legends:</p>" +
+            "<div style='margin-top: 12px; padding: 6px; background-color: #1a1a1a; border: 2px solid #A71930;'>" +
+            "<span style='color: #A5ACAF; font-size: 12px;'>Organized by football positions</span>" +
+            "</div>" +
+            "</body></html>",
             "Notable Falcons Players by Position",
-            JOptionPane.DEFAULT_OPTION,
             JOptionPane.QUESTION_MESSAGE,
             null,
             playerOptions,
             playerOptions[0]);
         
-        switch (choice) {
-            case 0: // Quarterbacks
-                showQuarterbacks();
-                break;
-            case 1: // Running Backs
-                showRunningBacks();
-                break;
-            case 2: // WR/TE
-                showReceiversAndTightEnds();
-                break;
-            case 3: // Offensive Line
-                showOffensiveLine();
-                break;
-            case 4: // Defensive Line & Linebackers
-                showDefensiveLineLB();
-                break;
-            case 5: // Defensive Backs
-                showDefensiveBacks();
-                break;
-            case 6: // Hall of Fame
-                showHallOfFamers();
-                break;
-            case 7: // Back
-            case -1:
-                break;
+        // If user closes dialog or selects back, return
+        if (choice == null || choice.equals("Back to Main Menu")) {
+            return;
+        }
+        
+        // Skip if user didn't change selection
+        if (choice.equals("Select a position...")) {
+            return;
+        }
+        
+        // Handle selection
+        if (choice.equals("Quarterbacks (QB)")) {
+            showQuarterbacks();
+        } else if (choice.equals("Running Backs (RB)")) {
+            showRunningBacks();
+        } else if (choice.equals("Wide Receivers & Tight Ends")) {
+            showReceiversAndTightEnds();
+        } else if (choice.equals("Offensive Line")) {
+            showOffensiveLine();
+        } else if (choice.equals("Defensive Line & Linebackers")) {
+            showDefensiveLineLB();
+        } else if (choice.equals("Defensive Backs (CB/S)")) {
+            showDefensiveBacks();
+        } else if (choice.equals("Hall of Fame Overview")) {
+            showHallOfFamers();
         }
     }
     
@@ -889,12 +947,28 @@ public class Atlantafalconsinfo {
     }
     
     private static void takeQuiz() {
-        JOptionPane.showMessageDialog(null,
-            "Welcome to the Atlanta Falcons Quiz!\n\n" +
-            "Test your knowledge with 20 questions.\n" +
-            "Good luck! 🦅",
+        // Show intro with option to cancel
+        int startQuiz = JOptionPane.showConfirmDialog(null,
+            "<html><body style='width: 400px; background-color: #000000; color: #FFFFFF; text-align: center;'>" +
+            "<div style='background-color: #A71930; padding: 10px; margin-bottom: 10px;'>" +
+            "<h2 style='color: #FFFFFF; margin: 5px;'>FALCONS QUIZ</h2>" +
+            "</div>" +
+            "<p style='color: #FFFFFF; font-size: 14px;'>" +
+            "Test your knowledge with 20 questions about<br>" +
+            "the Atlanta Falcons!</p>" +
+            "<p style='color: #A5ACAF; margin-top: 15px;'>Ready to begin?</p>" +
+            "<div style='margin-top: 10px; padding: 8px; background-color: #A71930;'>" +
+            "<b style='color: #FFFFFF;'>RISE UP! 🦅</b>" +
+            "</div>" +
+            "</body></html>",
             "Falcons Quiz",
-            JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE);
+        
+        // If user clicks No or closes dialog, return to main menu
+        if (startQuiz != JOptionPane.YES_OPTION) {
+            return;
+        }
         
         int score = 0;
         int totalQuestions = 20;
