@@ -1,4 +1,5 @@
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class Atlantafalconsinfo {
     public static void main(String[] args) {
@@ -39,6 +40,7 @@ public class Atlantafalconsinfo {
                 "Championships & Achievements",
                 "Notable Players",
                 "Current Team Info",
+                "2026 Active Roster 🦅",
                 "Take a Quiz! 🎯",
                 "Exit"
             };
@@ -100,6 +102,8 @@ public class Atlantafalconsinfo {
                 showNotablePlayers();
             } else if (choice.equals("Current Team Info")) {
                 showCurrentTeam();
+            } else if (choice.equals("2026 Active Roster 🦅")) {
+                show2026Roster();
             } else if (choice.equals("Take a Quiz! 🎯")) {
                 takeQuiz();
             } else if (choice.equals("Exit")) {
@@ -1335,6 +1339,7 @@ public class Atlantafalconsinfo {
         
         // Display final score
         double percentage = (score * 100.0) / totalQuestions;
+
         String grade;
         String message;
         
@@ -1366,5 +1371,254 @@ public class Atlantafalconsinfo {
             "Rise Up! 🦅",
             "Quiz Results",
             JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    // ─────────────────────────────────────────────
+    //  2026 ACTIVE ROSTER DATA
+    // ─────────────────────────────────────────────
+    private static final String[][] ROSTER = {
+        {"Dee Alford",        "#20", "CB",  "5'11\"", "180 lbs", "4 yrs",  "28", "N/A",                            "N/A"},
+        {"Tyler Allgeier",    "#25", "RB",  "5'11\"", "225 lbs", "4 yrs",  "25", "Kaiser",                         "0.7397"},
+        {"Jessie Bates III",  "#3",  "FS",  "6'1\"",  "210 lbs", "8 yrs",  "28", "Snider",                         "0.8153"},
+        {"Matthew Bergeron",  "#65", "OG",  "6'5\"",  "315 lbs", "3 yrs",  "25", "Cegep Garneau",                  "0.8607"},
+        {"JD Bertrand",       "#40", "LB",  "6'1\"",  "230 lbs", "2 yrs",  "25", "Blessed Trinity Catholic",       "0.8959"},
+        {"Natrone Brooks",    "#35", "CB",  "5'11\"", "176 lbs", "2 yrs",  "26", "Starkville",                     "0.8056"},
+        {"Cobee Bryant",      "#37", "CB",  "6'1\"",  "180 lbs", "0 yrs",  "24", "Hillcrest",                      "0.8781"},
+        {"Nate Carter",       "#38", "RB",  "5'10\"", "202 lbs", "0 yrs",  "23", "Bishop Kearney",                 "0.7930"},
+        {"Kirk Cousins",      "#18", "QB",  "6'3\"",  "205 lbs", "14 yrs", "37", "Holland Christian",              "0.8111"},
+        {"Divine Deablo",     "#0",  "LB",  "6'3\"",  "223 lbs", "5 yrs",  "27", "Mount Tabor",                    "0.8786"},
+        {"Brandon Dorlus",    "#54", "DE",  "6'3\"",  "295 lbs", "2 yrs",  "24", "Deerfield Beach",                "0.8656"},
+        {"Dylan Drummond",    "#81", "WR",  "6'1\"",  "190 lbs", "1 yrs",  "26", "Cuyahoga Heights",               "0.7998"},
+        {"Arnold Ebiketie",   "#17", "LB",  "6'2\"",  "250 lbs", "4 yrs",  "27", "Albert Einstein",                "0.8026"},
+        {"Kaden Elliss",      "#55", "LB",  "6'2\"",  "240 lbs", "7 yrs",  "30", "N/A",                            "N/A"},
+        {"Leonard Floyd",     "#56", "DE",  "6'3\"",  "240 lbs", "10 yrs", "33", "Dodge County",                   "0.9167"},
+        {"Mike Ford",         "#28", "CB",  "6'1\"",  "199 lbs", "8 yrs",  "30", "N/A",                            "N/A"},
+        {"Feleipe Franks",    "#84", "TE",  "6'6\"",  "241 lbs", "3 yrs",  "28", "Wakulla",                        "0.9732"},
+        {"Elijah Garcia",     "#90", "DE",  "6'5\"",  "302 lbs", "2 yrs",  "27", "Stevens",                        "0.7893"},
+        {"Zane Gonzalez",     "#45", "K",   "6'1\"",  "200 lbs", "8 yrs",  "30", "Deer Park",                      "N/A"},
+        {"Jovaughn Gwyn",     "#52", "OG",  "6'2\"",  "310 lbs", "3 yrs",  "26", "Harding University High",        "0.8937"},
+        {"Ronnie Harrison",   "#36", "LB",  "6'3\"",  "207 lbs", "8 yrs",  "28", "Florida State University School","0.9206"},
+        {"Malik Heath",       "#18", "WR",  "6'2\"",  "213 lbs", "3 yrs",  "25", "Callaway",                       "0.8956"},
+        {"C.J. Henderson",    "#39", "CB",  "6'1\"",  "204 lbs", "6 yrs",  "27", "Columbus",                       "0.9378"},
+        {"Kyle Hinton",       "#68", "OG",  "6'2\"",  "315 lbs", "3 yrs",  "27", "N/A",                            "N/A"},
+        {"Michael Jerrell",   "#72", "OT",  "6'5\"",  "309 lbs", "2 yrs",  "26", "Pike",                           "N/A"},
+        {"Khalid Kareem",     "#92", "DE",  "6'4\"",  "255 lbs", "4 yrs",  "27", "Harrison",                       "0.9227"},
+        {"Chris Lindstrom",   "#63", "OG",  "6'4\"",  "310 lbs", "7 yrs",  "28", "Shepherd Hill",                  "0.8467"},
+        {"Drake London",      "#5",  "WR",  "6'4\"",  "215 lbs", "4 yrs",  "24", "Moorpark",                       "0.9087"},
+        {"LaCale London",     "#94", "DT",  "6'3\"",  "297 lbs", "2 yrs",  "28", "N/A",                            "N/A"},
+        {"Jake Matthews",     "#70", "OT",  "6'5\"",  "309 lbs", "12 yrs", "34", "Fort Bend Elkins",               "0.9810"},
+        {"Liam McCullough",   "#49", "LS",  "6'2\"",  "245 lbs", "4 yrs",  "28", "N/A",                            "N/A"},
+        {"Darnell Mooney",    "#1",  "WR",  "5'11\"", "180 lbs", "6 yrs",  "28", "Gaston Sch",                     "0.7883"},
+        {"Jack Nelson",       "#69", "OT",  "6'7\"",  "314 lbs", "0 yrs",  "24", "Stoughton",                      "0.9539"},
+        {"Ryan Neuzil",       "#64", "C",   "6'3\"",  "305 lbs", "4 yrs",  "28", "Braden River",                   "0.7583"},
+        {"David Onyemata",    "#90", "DT",  "6'4\"",  "310 lbs", "10 yrs", "33", "N/A",                            "N/A"},
+        {"Ruke Orhorhoro",    "#98", "DT",  "6'4\"",  "294 lbs", "2 yrs",  "24", "River Rouge",                    "0.8707"},
+        {"James Pearce Jr.",  "#27", "DE",  "6'5\"",  "242 lbs", "0 yrs",  "22", "Chambers",                       "0.9205"},
+        {"Bradley Pinion",    "#13", "P",   "6'5\"",  "265 lbs", "11 yrs", "31", "Northwest Cabarrus",             "0.8540"},
+        {"Kyle Pitts",        "#8",  "TE",  "6'6\"",  "250 lbs", "5 yrs",  "25", "Archbishop Wood",                "0.9334"},
+        {"Teagan Quitoriano", "#85", "TE",  "6'6\"",  "259 lbs", "4 yrs",  "25", "Sprague",                        "0.8546"},
+        {"Bijan Robinson",    "#7",  "RB",  "5'11\"", "215 lbs", "3 yrs",  "24", "Salpointe Catholic",             "0.9928"},
+        {"Jammie Robinson",   "#35", "SAF", "5'11\"", "195 lbs", "3 yrs",  "25", "Lee County",                     "0.8933"},
+        {"David Sills",       "#87", "WR",  "6'3\"",  "211 lbs", "3 yrs",  "30", "Eastern Christian",              "0.8528"},
+        {"Easton Stick",      "#12", "QB",  "6'1\"",  "224 lbs", "6 yrs",  "30", "Creighton Prep",                 "0.7778"},
+        {"Kentavius Street",  "#93", "DE",  "6'2\"",  "315 lbs", "7 yrs",  "29", "J.H. Rose",                      "0.9517"},
+        {"A.J. Terrell",      "#24", "CB",  "6'1\"",  "200 lbs", "6 yrs",  "27", "Westlake",                       "0.9745"},
+        {"Deven Thompkins",   "#13", "WR",  "5'8\"",  "155 lbs", "4 yrs",  "26", "Dunbar",                         "0.7497"},
+        {"Jalon Walker",      "#11", "DE",  "6'2\"",  "245 lbs", "0 yrs",  "21", "Salisbury",                      "0.9803"},
+        {"Casey Washington",  "#82", "WR",  "6'1\"",  "205 lbs", "2 yrs",  "24", "Pflugerville",                   "0.8359"},
+        {"Xavier Watts",      "#31", "SAF", "6'1\"",  "203 lbs", "0 yrs",  "24", "Burke",                          "0.8926"},
+        {"Elijah Wilkinson",  "#71", "OT",  "6'6\"",  "310 lbs", "9 yrs",  "31", "Downingtown West",               "0.7783"},
+        {"Charlie Woerner",   "#89", "TE",  "6'5\"",  "250 lbs", "6 yrs",  "28", "Rabun County",                   "0.9386"},
+        {"Josh Woods",        "#42", "LB",  "6'1\"",  "235 lbs", "6 yrs",  "29", "McDonogh School",                "0.8525"}
+    };
+
+    private static void show2026Roster() {
+        // Build a proper JFrame window with a scrollable table + live search bar
+        javax.swing.JFrame frame = new javax.swing.JFrame("🦅 2026 Atlanta Falcons Active Roster");
+        frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(860, 600);
+        frame.setResizable(true);
+        frame.setLocationRelativeTo(null); // center on screen
+
+        java.awt.Color red       = new java.awt.Color(0xA7, 0x19, 0x30);
+        java.awt.Color black     = new java.awt.Color(0x0D, 0x0D, 0x0D);
+        java.awt.Color darkGray  = new java.awt.Color(0x1A, 0x1A, 0x1A);
+        java.awt.Color altGray   = new java.awt.Color(0x25, 0x25, 0x25);
+        java.awt.Color silver    = new java.awt.Color(0xA5, 0xAC, 0xAF);
+        java.awt.Color white     = java.awt.Color.WHITE;
+
+        // ── Header panel ──────────────────────────────────────────────────────
+        javax.swing.JPanel header = new javax.swing.JPanel(new java.awt.BorderLayout());
+        header.setBackground(red);
+        header.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 15, 10, 15));
+
+        javax.swing.JLabel title = new javax.swing.JLabel("🦅  2026 ATLANTA FALCONS  —  ACTIVE ROSTER  (" + ROSTER.length + " Players)", javax.swing.SwingConstants.CENTER);
+        title.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 17));
+        title.setForeground(white);
+        header.add(title, java.awt.BorderLayout.CENTER);
+
+        // ── Search bar panel ──────────────────────────────────────────────────
+        javax.swing.JPanel searchPanel = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 12, 8));
+        searchPanel.setBackground(darkGray);
+        searchPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, red));
+
+        javax.swing.JLabel searchIcon = new javax.swing.JLabel("🔍  Search:");
+        searchIcon.setForeground(silver);
+        searchIcon.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 13));
+
+        javax.swing.JTextField searchField = new javax.swing.JTextField(22);
+        searchField.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 13));
+        searchField.setBackground(new java.awt.Color(0x33, 0x33, 0x33));
+        searchField.setForeground(white);
+        searchField.setCaretColor(white);
+        searchField.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createLineBorder(red, 1),
+            javax.swing.BorderFactory.createEmptyBorder(4, 6, 4, 6)));
+
+        javax.swing.JLabel posLabel = new javax.swing.JLabel("  Position:");
+        posLabel.setForeground(silver);
+        posLabel.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 13));
+
+        java.util.LinkedHashSet<String> posSet = new java.util.LinkedHashSet<>();
+        posSet.add("ALL");
+        for (String[] p : ROSTER) posSet.add(p[2]);
+        javax.swing.JComboBox<String> posFilter = new javax.swing.JComboBox<>(posSet.toArray(new String[0]));
+        posFilter.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 12));
+        posFilter.setBackground(new java.awt.Color(0x33, 0x33, 0x33));
+        posFilter.setForeground(white);
+
+        javax.swing.JLabel countLabel = new javax.swing.JLabel("  Showing: " + ROSTER.length + " players");
+        countLabel.setForeground(silver);
+        countLabel.setFont(new java.awt.Font("Arial", java.awt.Font.ITALIC, 12));
+
+        searchPanel.add(searchIcon);
+        searchPanel.add(searchField);
+        searchPanel.add(posLabel);
+        searchPanel.add(posFilter);
+        searchPanel.add(countLabel);
+
+        // ── Table ─────────────────────────────────────────────────────────────
+        String[] columns = {"Player", "#", "Pos", "Height", "Weight", "Exp", "Age", "H.S.", "Rating"};
+        javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(columns, 0) {
+            public boolean isCellEditable(int r, int c) { return false; }
+        };
+        for (String[] p : ROSTER) {
+            model.addRow(new Object[]{p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8]});
+        }
+
+        javax.swing.JTable table = new javax.swing.JTable(model);
+        table.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 13));
+        table.setBackground(darkGray);
+        table.setForeground(white);
+        table.setSelectionBackground(red);
+        table.setSelectionForeground(white);
+        table.setGridColor(new java.awt.Color(0x3A, 0x3A, 0x3A));
+        table.setRowHeight(24);
+        table.setShowVerticalLines(true);
+        table.setAutoCreateRowSorter(true);
+        table.setFillsViewportHeight(true);
+
+        // Column header styling
+        javax.swing.table.JTableHeader tableHeader = table.getTableHeader();
+        tableHeader.setBackground(red);
+        tableHeader.setForeground(white);
+        tableHeader.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 13));
+        tableHeader.setReorderingAllowed(false);
+
+        // Column widths
+        int[] widths = {160, 40, 45, 55, 65, 45, 40, 140, 65};
+        for (int i = 0; i < widths.length; i++) {
+            table.getColumnModel().getColumn(i).setPreferredWidth(widths[i]);
+        }
+
+        // Alternating row colors via custom renderer
+        javax.swing.table.DefaultTableCellRenderer cellRenderer = new javax.swing.table.DefaultTableCellRenderer() {
+            public java.awt.Component getTableCellRendererComponent(
+                    javax.swing.JTable t, Object val, boolean sel, boolean focus, int row, int col) {
+                super.getTableCellRendererComponent(t, val, sel, focus, row, col);
+                if (sel) {
+                    setBackground(red);
+                    setForeground(white);
+                } else {
+                    setBackground(row % 2 == 0 ? darkGray : altGray);
+                    // Highlight position column in red
+                    setForeground(col == 2 ? red : white);
+                    if (col == 2) setFont(getFont().deriveFont(java.awt.Font.BOLD));
+                    else setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 13));
+                }
+                setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 5));
+                return this;
+            }
+        };
+        for (int i = 0; i < columns.length; i++) {
+            table.getColumnModel().getColumn(i).setCellRenderer(cellRenderer);
+        }
+
+        javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane(table);
+        scrollPane.getViewport().setBackground(darkGray);
+        scrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+
+        // ── Footer ────────────────────────────────────────────────────────────
+        javax.swing.JPanel footer = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER));
+        footer.setBackground(red);
+        javax.swing.JLabel footerLabel = new javax.swing.JLabel("RISE UP! 🦅  |  Click any column header to sort");
+        footerLabel.setForeground(white);
+        footerLabel.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
+        footer.add(footerLabel);
+
+        // ── Live search & filter logic ────────────────────────────────────────
+        javax.swing.event.DocumentListener searchListener = new javax.swing.event.DocumentListener() {
+            private void filter() {
+                String text  = searchField.getText().trim().toLowerCase();
+                String pos   = (String) posFilter.getSelectedItem();
+                model.setRowCount(0);
+                int shown = 0;
+                for (String[] p : ROSTER) {
+                    boolean nameMatch = text.isEmpty() || p[0].toLowerCase().contains(text) || p[1].toLowerCase().contains(text);
+                    boolean posMatch  = "ALL".equals(pos) || p[2].equals(pos);
+                    if (nameMatch && posMatch) {
+                        model.addRow(new Object[]{p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8]});
+                        shown++;
+                    }
+                }
+                countLabel.setText("  Showing: " + shown + " player" + (shown == 1 ? "" : "s"));
+            }
+            public void insertUpdate(javax.swing.event.DocumentEvent e)  { filter(); }
+            public void removeUpdate(javax.swing.event.DocumentEvent e)  { filter(); }
+            public void changedUpdate(javax.swing.event.DocumentEvent e) { filter(); }
+        };
+        searchField.getDocument().addDocumentListener(searchListener);
+        posFilter.addActionListener(e -> {
+            String text = searchField.getText().trim().toLowerCase();
+            String pos  = (String) posFilter.getSelectedItem();
+            model.setRowCount(0);
+            int shown = 0;
+            for (String[] p : ROSTER) {
+                boolean nameMatch = text.isEmpty() || p[0].toLowerCase().contains(text) || p[1].toLowerCase().contains(text);
+                boolean posMatch  = "ALL".equals(pos) || p[2].equals(pos);
+                if (nameMatch && posMatch) {
+                    model.addRow(new Object[]{p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8]});
+                    shown++;
+                }
+            }
+            countLabel.setText("  Showing: " + shown + " player" + (shown == 1 ? "" : "s"));
+        });
+
+        // ── Assemble ──────────────────────────────────────────────────────────
+        javax.swing.JPanel topPanel = new javax.swing.JPanel(new java.awt.BorderLayout());
+        topPanel.add(header, java.awt.BorderLayout.NORTH);
+        topPanel.add(searchPanel, java.awt.BorderLayout.SOUTH);
+
+        frame.getContentPane().setBackground(black);
+        frame.getContentPane().add(topPanel, java.awt.BorderLayout.NORTH);
+        frame.getContentPane().add(scrollPane, java.awt.BorderLayout.CENTER);
+        frame.getContentPane().add(footer, java.awt.BorderLayout.SOUTH);
+
+        frame.setVisible(true);
+
+        // Block until window is closed so the main menu waits
+        try {
+            while (frame.isVisible()) { Thread.sleep(200); }
+        } catch (InterruptedException ignored) {}
     }
 }
