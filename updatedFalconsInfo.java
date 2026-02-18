@@ -18,7 +18,7 @@ public class Atlantafalconsinfo {
             "✓ Team History & Achievements<br>" +
             "✓ Player Profiles by Position<br>" +
             "✓ Stadium & Branding Info<br>" +
-            "✓ Interactive 20-Question Quiz</p>" +
+            "✓ Interactive 10-Question Quiz</p>" +
             "</div>" +
             "<div style='margin-top: 15px; padding: 12px; background-color: #A71930;'>" +
             "<b style='color: #FFFFFF; font-size: 18px;'>RISE UP!</b>" +
@@ -983,427 +983,126 @@ public class Atlantafalconsinfo {
 
     
     private static void takeQuiz() {
-        // Show intro with option to cancel
         int startQuiz = JOptionPane.showConfirmDialog(null,
             "<html><body style='width: 400px; background-color: #000000; color: #FFFFFF; text-align: center;'>" +
             "<div style='background-color: #A71930; padding: 10px; margin-bottom: 10px;'>" +
             "<h2 style='color: #FFFFFF; margin: 5px;'>FALCONS QUIZ</h2>" +
             "</div>" +
-            "<p style='color: #FFFFFF; font-size: 14px;'>" +
-            "Test your knowledge with 20 questions about<br>" +
-            "the Atlanta Falcons!</p>" +
+            "<p style='color: #FFFFFF; font-size: 14px;'>Test your knowledge with 10 questions about<br>the Atlanta Falcons!</p>" +
             "<p style='color: #A5ACAF; margin-top: 15px;'>Ready to begin?</p>" +
             "<div style='margin-top: 10px; padding: 8px; background-color: #A71930;'>" +
             "<b style='color: #FFFFFF;'>RISE UP! 🦅</b>" +
             "</div>" +
             "</body></html>",
-            "Falcons Quiz",
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE);
-        
-        // If user clicks No or closes dialog, return to main menu
-        if (startQuiz != JOptionPane.YES_OPTION) {
-            return;
-        }
-        
-        int score = 0;
-        int totalQuestions = 20;
-        
-        // Question 1: Team History
-        String[] q1Options = {"1965", "1966", "1967", "1970"};
-        int q1Answer = JOptionPane.showOptionDialog(null,
-            "Question 1: What year was the Atlanta Falcons franchise founded?",
-            "Quiz Question 1/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q1Options,
-            q1Options[0]);
-        if (q1Answer == 1) { // 1966 is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 1966.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 2: Owner
-        String[] q2Options = {"Jerry Jones", "Arthur Blank", "Robert Kraft", "Stan Kroenke"};
-        int q2Answer = JOptionPane.showOptionDialog(null,
-            "Question 2: Who is the current owner of the Atlanta Falcons?",
-            "Quiz Question 2/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q2Options,
-            q2Options[0]);
-        if (q2Answer == 1) { // Arthur Blank is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is Arthur Blank.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 3: Stadium
-        String[] q3Options = {"Georgia Dome", "Mercedes-Benz Stadium", "Atlanta Stadium", "Turner Field"};
-        int q3Answer = JOptionPane.showOptionDialog(null,
-            "Question 3: What is the name of the Falcons' current home stadium?",
-            "Quiz Question 3/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q3Options,
-            q3Options[0]);
-        if (q3Answer == 1) { // Mercedes-Benz Stadium is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is Mercedes-Benz Stadium.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 4: Super Bowl
-        String[] q4Options = {"0", "1", "2", "3"};
-        int q4Answer = JOptionPane.showOptionDialog(null,
-            "Question 4: How many Super Bowl appearances have the Falcons made?",
-            "Quiz Question 4/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q4Options,
-            q4Options[0]);
-        if (q4Answer == 2) { // 2 is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct! (1998 and 2016)", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 2 (1998 and 2016).", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 5: Team Motto
-        String[] q5Options = {"Fly High!", "Rise Up!", "Bird Gang!", "In Flight!"};
-        int q5Answer = JOptionPane.showOptionDialog(null,
-            "Question 5: What is the Atlanta Falcons' team motto?",
-            "Quiz Question 5/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q5Options,
-            q5Options[0]);
-        if (q5Answer == 1) { // Rise Up! is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 'Rise Up!'", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 6: Colors
-        String[] q6Options = {"Red and Blue", "Red and Black", "Black and Gold", "Red and White"};
-        int q6Answer = JOptionPane.showOptionDialog(null,
-            "Question 6: What are the primary team colors of the Falcons?",
-            "Quiz Question 6/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q6Options,
-            q6Options[0]);
-        if (q6Answer == 1) { // Red and Black is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is Red and Black.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 7: Home Depot Connection
-        String[] q7Options = {"The Home Depot", "Lowe's", "Walmart", "Target"};
-        int q7Answer = JOptionPane.showOptionDialog(null,
-            "Question 7: Arthur Blank was a co-founder of which major retail company?",
-            "Quiz Question 7/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q7Options,
-            q7Options[0]);
-        if (q7Answer == 0) { // The Home Depot is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is The Home Depot.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 8: Stadium Opening
-        String[] q8Options = {"2015", "2016", "2017", "2018"};
-        int q8Answer = JOptionPane.showOptionDialog(null,
-            "Question 8: What year did Mercedes-Benz Stadium open?",
-            "Quiz Question 8/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q8Options,
-            q8Options[0]);
-        if (q8Answer == 2) { // 2017 is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 2017.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 9: Division
-        String[] q9Options = {"NFC East", "NFC North", "NFC South", "NFC West"};
-        int q9Answer = JOptionPane.showOptionDialog(null,
-            "Question 9: Which division do the Falcons play in?",
-            "Quiz Question 9/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q9Options,
-            q9Options[0]);
-        if (q9Answer == 2) { // NFC South is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is NFC South.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 10: Mascot
-        String[] q10Options = {"Freddie Falcon", "Falco", "Talon", "Screech"};
-        int q10Answer = JOptionPane.showOptionDialog(null,
-            "Question 10: What is the name of the Falcons' mascot?",
-            "Quiz Question 10/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q10Options,
-            q10Options[0]);
-        if (q10Answer == 0) { // Freddie Falcon is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is Freddie Falcon.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 11: Matt Ryan MVP Year
-        String[] q11Options = {"2014", "2015", "2016", "2017"};
-        int q11Answer = JOptionPane.showOptionDialog(null,
-            "Question 11: In what year did Matt Ryan win NFL MVP?",
-            "Quiz Question 11/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q11Options,
-            q11Options[0]);
-        if (q11Answer == 2) { // 2016 is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 2016.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 12: Purchase Price
-        String[] q12Options = {"$445 million", "$545 million", "$645 million", "$745 million"};
-        int q12Answer = JOptionPane.showOptionDialog(null,
-            "Question 12: How much did Arthur Blank pay to purchase the Falcons in 2002?",
-            "Quiz Question 12/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q12Options,
-            q12Options[0]);
-        if (q12Answer == 1) { // $545 million is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is $545 million.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 13: Stadium Capacity
-        String[] q13Options = {"65,000", "71,000", "75,000", "80,000"};
-        int q13Answer = JOptionPane.showOptionDialog(null,
-            "Question 13: What is the seating capacity of Mercedes-Benz Stadium?",
-            "Quiz Question 13/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q13Options,
-            q13Options[0]);
-        if (q13Answer == 1) { // 71,000 is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 71,000.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 14: Logo Year
-        String[] q14Options = {"2000", "2003", "2006", "2010"};
-        int q14Answer = JOptionPane.showOptionDialog(null,
-            "Question 14: What year was the current Falcons logo introduced?",
-            "Quiz Question 14/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q14Options,
-            q14Options[0]);
-        if (q14Answer == 1) { // 2003 is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 2003.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 15: Deion Sanders Position
-        String[] q15Options = {"Quarterback", "Running Back", "Cornerback", "Wide Receiver"};
-        int q15Answer = JOptionPane.showOptionDialog(null,
-            "Question 15: What position did Hall of Famer Deion Sanders play?",
-            "Quiz Question 15/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q15Options,
-            q15Options[0]);
-        if (q15Answer == 2) { // Cornerback is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is Cornerback.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 16: NFC Championships
-        String[] q16Options = {"1", "2", "3", "4"};
-        int q16Answer = JOptionPane.showOptionDialog(null,
-            "Question 16: How many NFC Championships have the Falcons won?",
-            "Quiz Question 16/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q16Options,
-            q16Options[0]);
-        if (q16Answer == 1) { // 2 is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct! (1998 and 2016)", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 2 (1998 and 2016).", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 17: Hot Dog Price
-        String[] q17Options = {"$1", "$2", "$3", "$5"};
-        int q17Answer = JOptionPane.showOptionDialog(null,
-            "Question 17: What is the famous price for hot dogs at Mercedes-Benz Stadium?",
-            "Quiz Question 17/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q17Options,
-            q17Options[0]);
-        if (q17Answer == 1) { // $2 is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct! Fan-first pricing!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is $2 (fan-first pricing).", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 18: GM
-        String[] q18Options = {"Thomas Dimitroff", "Terry Fontenot", "Rich McKay", "Mike Smith"};
-        int q18Answer = JOptionPane.showOptionDialog(null,
-            "Question 18: Who is the current General Manager of the Falcons?",
-            "Quiz Question 18/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q18Options,
-            q18Options[0]);
-        if (q18Answer == 1) { // Terry Fontenot is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is Terry Fontenot.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 19: First Owner
-        String[] q19Options = {"Arthur Blank", "Rankin Smith Sr.", "Taylor Smith", "Robert Kraft"};
-        int q19Answer = JOptionPane.showOptionDialog(null,
-            "Question 19: Who was the Falcons' first owner when the team was founded?",
-            "Quiz Question 19/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q19Options,
-            q19Options[0]);
-        if (q19Answer == 1) { // Rankin Smith Sr. is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is Rankin Smith Sr.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Question 20: Super Bowl LI Lead
-        String[] q20Options = {"21-3", "24-3", "28-3", "31-3"};
-        int q20Answer = JOptionPane.showOptionDialog(null,
-            "Question 20: What was the Falcons' famous lead in Super Bowl LI before the comeback?",
-            "Quiz Question 20/20",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            q20Options,
-            q20Options[0]);
-        if (q20Answer == 2) { // 28-3 is correct
-            score++;
-            JOptionPane.showMessageDialog(null, "✓ Correct! The infamous 28-3 lead.", "Result", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 28-3.", 
-                "Result", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        // Display final score
-        double percentage = (score * 100.0) / totalQuestions;
+            "Falcons Quiz", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (startQuiz != JOptionPane.YES_OPTION) return;
 
-        String grade;
-        String message;
-        
-        if (percentage >= 90) {
-            grade = "A - Outstanding!";
-            message = "🏆 Excellent! You're a true Falcons expert!";
-        } else if (percentage >= 80) {
-            grade = "B - Great Job!";
-            message = "👏 Great work! You know your Falcons history!";
-        } else if (percentage >= 70) {
-            grade = "C - Good Effort!";
-            message = "👍 Good job! Keep learning about the Falcons!";
-        } else if (percentage >= 60) {
-            grade = "D - Keep Studying!";
-            message = "📚 Not bad! Review the information and try again!";
-        } else {
-            grade = "F - Need More Study";
-            message = "📖 Keep reading! Explore the other sections to learn more!";
-        }
-        
+        int score = 0;
+        int totalQuestions = 10;
+
+        // Q1
+        String[] q1Opts = {"1965", "1966", "1967", "1970"};
+        int q1 = JOptionPane.showOptionDialog(null, "Question 1/10: What year was the Atlanta Falcons franchise founded?",
+            "Quiz - Question 1/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q1Opts, q1Opts[0]);
+        if (q1 == -1) return;
+        if (q1 == 1) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
+        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: 1966.", "Result", JOptionPane.INFORMATION_MESSAGE);
+
+        // Q2
+        String[] q2Opts = {"Jerry Jones", "Arthur Blank", "Robert Kraft", "Stan Kroenke"};
+        int q2 = JOptionPane.showOptionDialog(null, "Question 2/10: Who is the current owner of the Atlanta Falcons?",
+            "Quiz - Question 2/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q2Opts, q2Opts[0]);
+        if (q2 == -1) return;
+        if (q2 == 1) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
+        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: Arthur Blank.", "Result", JOptionPane.INFORMATION_MESSAGE);
+
+        // Q3
+        String[] q3Opts = {"Georgia Dome", "Mercedes-Benz Stadium", "Atlanta Stadium", "Turner Field"};
+        int q3 = JOptionPane.showOptionDialog(null, "Question 3/10: What is the name of the Falcons' current home stadium?",
+            "Quiz - Question 3/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q3Opts, q3Opts[0]);
+        if (q3 == -1) return;
+        if (q3 == 1) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
+        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: Mercedes-Benz Stadium.", "Result", JOptionPane.INFORMATION_MESSAGE);
+
+        // Q4
+        String[] q4Opts = {"0", "1", "2", "3"};
+        int q4 = JOptionPane.showOptionDialog(null, "Question 4/10: How many Super Bowl appearances have the Falcons made?",
+            "Quiz - Question 4/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q4Opts, q4Opts[0]);
+        if (q4 == -1) return;
+        if (q4 == 2) { score++; JOptionPane.showMessageDialog(null, "✓ Correct! (1998 and 2016)", "Result", JOptionPane.INFORMATION_MESSAGE); }
+        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: 2 (1998 and 2016).", "Result", JOptionPane.INFORMATION_MESSAGE);
+
+        // Q5
+        String[] q5Opts = {"Fly High!", "Rise Up!", "Bird Gang!", "In Flight!"};
+        int q5 = JOptionPane.showOptionDialog(null, "Question 5/10: What is the Atlanta Falcons' team motto?",
+            "Quiz - Question 5/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q5Opts, q5Opts[0]);
+        if (q5 == -1) return;
+        if (q5 == 1) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
+        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: Rise Up!", "Result", JOptionPane.INFORMATION_MESSAGE);
+
+        // Q6
+        String[] q6Opts = {"Red and Blue", "Red and Black", "Black and Gold", "Red and White"};
+        int q6 = JOptionPane.showOptionDialog(null, "Question 6/10: What are the primary team colors of the Falcons?",
+            "Quiz - Question 6/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q6Opts, q6Opts[0]);
+        if (q6 == -1) return;
+        if (q6 == 1) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
+        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: Red and Black.", "Result", JOptionPane.INFORMATION_MESSAGE);
+
+        // Q7
+        String[] q7Opts = {"The Home Depot", "Lowe's", "Walmart", "Target"};
+        int q7 = JOptionPane.showOptionDialog(null, "Question 7/10: Arthur Blank was co-founder of which major retail company?",
+            "Quiz - Question 7/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q7Opts, q7Opts[0]);
+        if (q7 == -1) return;
+        if (q7 == 0) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
+        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: The Home Depot.", "Result", JOptionPane.INFORMATION_MESSAGE);
+
+        // Q8
+        String[] q8Opts = {"2015", "2016", "2017", "2018"};
+        int q8 = JOptionPane.showOptionDialog(null, "Question 8/10: What year did Mercedes-Benz Stadium open?",
+            "Quiz - Question 8/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q8Opts, q8Opts[0]);
+        if (q8 == -1) return;
+        if (q8 == 2) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
+        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: 2017.", "Result", JOptionPane.INFORMATION_MESSAGE);
+
+        // Q9
+        String[] q9Opts = {"NFC East", "NFC North", "NFC South", "NFC West"};
+        int q9 = JOptionPane.showOptionDialog(null, "Question 9/10: Which division do the Falcons play in?",
+            "Quiz - Question 9/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q9Opts, q9Opts[0]);
+        if (q9 == -1) return;
+        if (q9 == 2) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
+        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: NFC South.", "Result", JOptionPane.INFORMATION_MESSAGE);
+
+        // Q10
+        String[] q10Opts = {"21-3", "24-3", "28-3", "31-3"};
+        int q10 = JOptionPane.showOptionDialog(null, "Question 10/10: What was the Falcons' famous lead in Super Bowl LI before the comeback?",
+            "Quiz - Question 10/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q10Opts, q10Opts[0]);
+        if (q10 == -1) return;
+        if (q10 == 2) { score++; JOptionPane.showMessageDialog(null, "✓ Correct! The infamous 28-3 lead.", "Result", JOptionPane.INFORMATION_MESSAGE); }
+        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: 28-3.", "Result", JOptionPane.INFORMATION_MESSAGE);
+
+        // Final score
+        double percentage = (score * 100.0) / totalQuestions;
+        String grade, message;
+        if      (percentage >= 90) { grade = "A - Outstanding!";    message = "🏆 Excellent! You're a true Falcons expert!"; }
+        else if (percentage >= 80) { grade = "B - Great Job!";      message = "👏 Great work! You know your Falcons history!"; }
+        else if (percentage >= 70) { grade = "C - Good Effort!";    message = "👍 Good job! Keep learning about the Falcons!"; }
+        else if (percentage >= 60) { grade = "D - Keep Studying!";  message = "📚 Not bad! Review the info and try again!"; }
+        else                       { grade = "F - Need More Study"; message = "📖 Keep reading! Explore the other sections!"; }
+
         JOptionPane.showMessageDialog(null,
-            "════════════════════════════════\n" +
-            "QUIZ COMPLETE!\n" +
-            "════════════════════════════════\n\n" +
-            "Your Score: " + score + " / " + totalQuestions + "\n" +
-            "Percentage: " + String.format("%.1f", percentage) + "%\n" +
-            "Grade: " + grade + "\n\n" +
-            message + "\n\n" +
-            "Rise Up! 🦅",
-            "Quiz Results",
-            JOptionPane.INFORMATION_MESSAGE);
+            "<html><body style='width: 350px; background-color: #000000; color: #FFFFFF; text-align: center; font-family: Arial;'>" +
+            "<div style='background-color: #A71930; padding: 10px; margin-bottom: 12px;'>" +
+            "<h2 style='color: #FFFFFF; margin: 5px;'>QUIZ COMPLETE!</h2></div>" +
+            "<p style='font-size: 22px; color: #FFFFFF; margin: 8px 0;'>" + score + " / " + totalQuestions + "</p>" +
+            "<p style='font-size: 15px; color: #A5ACAF; margin: 4px 0;'>" + String.format("%.0f", percentage) + "%</p>" +
+            "<p style='font-size: 14px; color: #A71930; font-weight: bold; margin: 6px 0;'>" + grade + "</p>" +
+            "<p style='color: #FFFFFF; margin: 10px 0;'>" + message + "</p>" +
+            "<div style='background-color: #A71930; padding: 8px; margin-top: 10px;'>" +
+            "<b style='color: #FFFFFF;'>RISE UP! 🦅</b></div>" +
+            "</body></html>",
+            "Quiz Results", JOptionPane.INFORMATION_MESSAGE);
     }
+
 
     // ─────────────────────────────────────────────
     //  2026 ACTIVE ROSTER DATA
