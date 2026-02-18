@@ -41,6 +41,7 @@ public class Atlantafalconsinfo {
                 "Notable Players",
                 "Current Team Info",
                 "Play Football Game 🏈",
+                "Field Goal Game 🏆",
                 "Take a Quiz! 🎯",
                 "Exit"
             };
@@ -104,6 +105,8 @@ public class Atlantafalconsinfo {
                 showCurrentTeam();
             } else if (choice.equals("Play Football Game 🏈")) {
                 FalconsFootballGame.launch();
+            } else if (choice.equals("Field Goal Game 🏆")) {
+                FieldGoalGame.launch();
             } else if (choice.equals("Take a Quiz! 🎯")) {
                 takeQuiz();
             } else if (choice.equals("Exit")) {
@@ -1694,5 +1697,259 @@ class FalconsFootballGame {
                "<h2 style='color:#FFF;margin:4px;'>" + heading + "</h2></div>" +
                "<p style='color:#FFF;white-space:pre-line;font-size:13px;padding:8px;'>" + body + "</p>" +
                "</body></html>";
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+//  FIELD GOAL GAME
+// ══════════════════════════════════════════════════════════════════════════════
+class FieldGoalGame {
+
+    static java.util.Random RNG = new java.util.Random();
+
+    static void launch() {
+        // Intro
+        int start = javax.swing.JOptionPane.showConfirmDialog(null,
+            "<html><body style='width:380px;background:#0D0D0D;color:#FFF;font-family:Arial;text-align:center;'>" +
+            "<div style='background:#A71930;padding:14px;margin-bottom:12px;'>" +
+            "<h2 style='color:#FFF;margin:4px;'>\U0001f3c6 FIELD GOAL CHALLENGE</h2>" +
+            "<p style='color:#FFF;font-size:12px;margin:2px;'>Atlanta Falcons</p></div>" +
+            "<p style='color:#FFF;font-size:13px;'>Start at the <b>10 yard line</b> and kick your way to <b>80 yards</b>!</p>" +
+            "<div style='background:#1A1A1A;padding:10px;margin:10px 0;border:1px solid #A71930;font-size:12px;color:#A5ACAF;text-align:left;'>" +
+            "\u2022 Each successful kick moves you <b>+10 yards</b><br>" +
+            "\u2022 You get <b>3 tries</b> per distance<br>" +
+            "\u2022 Wind affects every kick<br>" +
+            "\u2022 Kick from 10 yd line all the way to 80 yds<br>" +
+            "\u2022 Miss all 3 tries \u2014 game over!</div>" +
+            "<div style='background:#A71930;padding:8px;'><b style='color:#FFF;'>RISE UP! \U0001f985</b></div>" +
+            "</body></html>",
+            "Field Goal Challenge", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE);
+        if (start != javax.swing.JOptionPane.YES_OPTION) return;
+
+        int yardLine   = 10;   // current kick distance
+        int maxYards   = 80;
+        int bestMade   = 0;
+
+        while (yardLine <= maxYards) {
+            int triesLeft = 3;
+            boolean madeIt = false;
+
+            while (triesLeft > 0 && !madeIt) {
+                // Generate wind: direction (Left/Right/None) and speed 0-20 mph
+                int windSpeed = RNG.nextInt(21);
+                String windDir;
+                int windEffect; // negative = pushes left, positive = pushes right
+                int dirRoll = RNG.nextInt(3);
+                if (dirRoll == 0 || windSpeed == 0) {
+                    windDir = "None"; windEffect = 0;
+                } else if (dirRoll == 1) {
+                    windDir = "Left \u2190"; windEffect = -windSpeed;
+                } else {
+                    windDir = "Right \u2192"; windEffect = windSpeed;
+                }
+
+                // Difficulty: harder at longer distances
+                // Base success % starts at 95% at 10 yds, drops ~1.2% per yard
+                double baseChance = 95.0 - (yardLine - 10) * 1.2;
+                // Wind penalty: each mph of wind reduces by 0.8%
+                double windPenalty = Math.abs(windEffect) * 0.8;
+                double successChance = Math.max(5.0, baseChance - windPenalty);
+
+                // Build aim display — a simple crosshair shifted by wind
+                String aimDisplay = buildAim(windEffect);
+
+                // Build uprights display
+                String uprightDisplay = buildUprights(yardLine);
+
+                // Show kick dialog
+                String[] kickOptions = {"KICK! \U0001f3c8"};
+                int kickChoice = javax.swing.JOptionPane.showOptionDialog(null,
+                    "<html><body style='width:440px;background:#0D0D0D;color:#FFF;font-family:Arial;'>" +
+                    "<div style='background:#A71930;padding:10px;text-align:center;margin-bottom:10px;'>" +
+                    "<b style='font-size:16px;color:#FFF;'>\U0001f3c6 FIELD GOAL CHALLENGE</b></div>" +
+
+                    // Uprights
+                    "<pre style='color:#FFD700;font-size:13px;font-family:monospace;background:#0a200a;padding:8px;border:2px solid #228B22;border-radius:4px;text-align:center;line-height:1.4;'>" + uprightDisplay + "</pre>" +
+
+                    // Stats row
+                    "<table style='width:100%;color:#FFF;font-size:13px;border-collapse:collapse;margin:6px 0;'>" +
+                    "<tr style='background:#1A1A1A;'>" +
+                    "<td style='padding:5px 8px;'><b style='color:#A71930;'>Distance:</b></td><td style='padding:5px;'><b>" + yardLine + " yards</b></td>" +
+                    "<td style='padding:5px 8px;'><b style='color:#A71930;'>Tries Left:</b></td>" +
+                    "<td style='padding:5px;'>" + triesHtml(triesLeft) + "</td>" +
+                    "</tr><tr>" +
+                    "<td style='padding:5px 8px;'><b style='color:#A71930;'>Wind:</b></td>" +
+                    "<td style='padding:5px;' colspan='3'>" + windDisplay(windDir, windSpeed) + "</td>" +
+                    "</tr><tr style='background:#1A1A1A;'>" +
+                    "<td style='padding:5px 8px;'><b style='color:#A71930;'>Aim:</b></td>" +
+                    "<td style='padding:5px;font-family:monospace;' colspan='3'>" + aimDisplay + "</td>" +
+                    "</tr></table>" +
+
+                    "<p style='color:#A5ACAF;font-size:11px;text-align:center;margin:4px;'>Tip: Watch the wind direction and aim indicator!</p>" +
+                    "</body></html>",
+                    yardLine + " Yard Field Goal — " + triesLeft + " tr" + (triesLeft == 1 ? "y" : "ies") + " left",
+                    javax.swing.JOptionPane.DEFAULT_OPTION,
+                    javax.swing.JOptionPane.QUESTION_MESSAGE,
+                    null, kickOptions, kickOptions[0]);
+
+                // X button = return to main menu
+                if (kickChoice == javax.swing.JOptionPane.CLOSED_OPTION) return;
+
+                // Simulate result
+                double roll = RNG.nextDouble() * 100.0;
+                boolean good = roll < successChance;
+                triesLeft--;
+
+                if (good) {
+                    madeIt = true;
+                    bestMade = yardLine;
+                    String resultMsg =
+                        "<html><body style='width:380px;background:#0D0D0D;color:#FFF;font-family:Arial;text-align:center;'>" +
+                        "<div style='background:#155A15;padding:14px;border:2px solid #5DBB63;border-radius:4px;margin-bottom:10px;'>" +
+                        "<h2 style='color:#FFF;margin:4px;'>\u2705 IT'S GOOD!</h2>" +
+                        "<p style='color:#5DBB63;font-size:14px;margin:4px;'>" + yardLine + "-yard field goal is GOOD!</p></div>" +
+                        (yardLine < maxYards
+                            ? "<p style='color:#FFF;'>Next up: <b>" + (yardLine + 10) + " yards</b></p>"
+                            : "<p style='color:#FFD700;font-size:15px;'><b>\U0001f3c6 YOU KICKED THE MAXIMUM 80 YARDS! \U0001f3c6</b></p>") +
+                        "<div style='background:#A71930;padding:8px;margin-top:10px;'><b style='color:#FFF;'>RISE UP! \U0001f985</b></div>" +
+                        "</body></html>";
+                    javax.swing.JOptionPane.showMessageDialog(null, resultMsg,
+                        "IT'S GOOD!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    // Missed
+                    String missReason = windEffect < -10 ? "Pushed left by strong wind!"
+                                      : windEffect >  10 ? "Pushed right by strong wind!"
+                                      : windEffect < 0   ? "Drifted slightly left."
+                                      : windEffect > 0   ? "Drifted slightly right."
+                                      : yardLine >= 60   ? "Just short — tough distance."
+                                      : "Shanked off the upright!";
+                    String missMsg =
+                        "<html><body style='width:380px;background:#0D0D0D;color:#FFF;font-family:Arial;text-align:center;'>" +
+                        "<div style='background:#5A1515;padding:12px;border:2px solid #FF6B6B;border-radius:4px;margin-bottom:10px;'>" +
+                        "<h2 style='color:#FFF;margin:4px;'>\u274c NO GOOD</h2>" +
+                        "<p style='color:#FF6B6B;font-size:13px;margin:4px;'>" + missReason + "</p></div>" +
+                        (triesLeft > 0
+                            ? "<p style='color:#FFF;'>" + triesLeft + " tr" + (triesLeft == 1 ? "y" : "ies") + " remaining at " + yardLine + " yards.</p>"
+                            : "<p style='color:#FF6B6B;'>No tries left!</p>") +
+                        "</body></html>";
+                    javax.swing.JOptionPane.showMessageDialog(null, missMsg,
+                        "No Good", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+
+            if (!madeIt) {
+                // Game over
+                showGameOver(bestMade, yardLine);
+                return;
+            }
+
+            if (yardLine >= maxYards) {
+                // Champion!
+                showChampion();
+                return;
+            }
+
+            yardLine += 10;
+        }
+    }
+
+    // ── Build the uprights ASCII art ──────────────────────────────────────────
+    static String buildUprights(int yards) {
+        // Uprights get visually narrower as yards increase
+        int width = Math.max(5, 20 - (yards - 10) / 5);
+        StringBuilder sb = new StringBuilder();
+        String post = "|";
+        String leftPad  = "  ";
+        String rightPad = "  ";
+
+        sb.append(leftPad).append(post).append(spaces(width)).append(post).append("\n");
+        sb.append(leftPad).append(post).append(spaces(width)).append(post).append("\n");
+        sb.append(leftPad).append(post).append(spaces(width)).append(post).append("\n");
+        // crossbar
+        sb.append(leftPad).append("+").append(dashes(width)).append("+").append("\n");
+        // pole
+        sb.append(leftPad).append(spaces(width / 2 + 1)).append("|").append("\n");
+        sb.append(leftPad).append(spaces(width / 2 + 1)).append("|").append("\n");
+        // ground
+        sb.append(leftPad).append("~").append(dashes(width)).append("~").append("\n");
+        sb.append("   ").append(yards).append(" YD LINE");
+        return sb.toString();
+    }
+
+    // ── Aim indicator shifted by wind ────────────────────────────────────────
+    static String buildAim(int windEffect) {
+        // 21 char wide bar, centre at position 10
+        int center = 10;
+        int shift  = windEffect / 4; // compress effect
+        int pos    = Math.max(0, Math.min(20, center + shift));
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < 21; i++) {
+            if (i == 10) sb.append("|");          // center mark
+            else if (i == pos && i != 10) sb.append("X"); // aim dot
+            else sb.append("-");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
+    // ── Wind display ─────────────────────────────────────────────────────────
+    static String windDisplay(String dir, int speed) {
+        if (speed == 0) return "<span style='color:#A5ACAF;'>Calm (0 mph)</span>";
+        String col = speed >= 15 ? "#FF6B6B" : speed >= 8 ? "#FFD700" : "#5DBB63";
+        return "<span style='color:" + col + ";'>" + dir + " — " + speed + " mph</span>";
+    }
+
+    // ── Tries remaining as coloured circles ──────────────────────────────────
+    static String triesHtml(int tries) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            if (i < tries)
+                sb.append("<span style='color:#5DBB63;font-size:16px;'>\u26bd</span> ");
+            else
+                sb.append("<span style='color:#3A3A3A;font-size:16px;'>\u26bd</span> ");
+        }
+        return sb.toString();
+    }
+
+    // ── Game over screen ─────────────────────────────────────────────────────
+    static void showGameOver(int best, int failed) {
+        javax.swing.JOptionPane.showMessageDialog(null,
+            "<html><body style='width:380px;background:#0D0D0D;color:#FFF;font-family:Arial;text-align:center;'>" +
+            "<div style='background:#5A1515;padding:14px;border:2px solid #FF6B6B;border-radius:4px;margin-bottom:12px;'>" +
+            "<h2 style='color:#FFF;margin:4px;'>\u274c GAME OVER</h2>" +
+            "<p style='color:#FF6B6B;margin:4px;'>Missed all 3 tries at " + failed + " yards.</p></div>" +
+            "<p style='color:#FFF;font-size:14px;'>Best kick: <b style='color:#FFD700;'>" +
+            (best == 0 ? "None" : best + " yards") + "</b></p>" +
+            "<p style='color:#A5ACAF;font-size:12px;margin-top:6px;'>Try again from the main menu!</p>" +
+            "<div style='background:#A71930;padding:8px;margin-top:10px;'><b style='color:#FFF;'>RISE UP! \U0001f985</b></div>" +
+            "</body></html>",
+            "Game Over", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    // ── Champion screen ───────────────────────────────────────────────────────
+    static void showChampion() {
+        javax.swing.JOptionPane.showMessageDialog(null,
+            "<html><body style='width:400px;background:#0D0D0D;color:#FFF;font-family:Arial;text-align:center;'>" +
+            "<div style='background:#155A15;padding:16px;border:2px solid #FFD700;border-radius:4px;margin-bottom:12px;'>" +
+            "<h1 style='color:#FFD700;margin:4px;'>\U0001f3c6 CHAMPION! \U0001f3c6</h1>" +
+            "<p style='color:#FFF;font-size:14px;margin:4px;'>You kicked a field goal from ALL distances!</p>" +
+            "<p style='color:#FFD700;font-size:13px;margin:4px;'>10 yards all the way to 80 yards!</p></div>" +
+            "<p style='color:#FFF;font-size:15px;'><b>Zane Gonzalez would be proud! \U0001f985</b></p>" +
+            "<div style='background:#A71930;padding:8px;margin-top:10px;'><b style='color:#FFF;'>RISE UP! \U0001f985</b></div>" +
+            "</body></html>",
+            "CHAMPION!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    // ── String helpers ────────────────────────────────────────────────────────
+    static String spaces(int n) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) sb.append(' ');
+        return sb.toString();
+    }
+    static String dashes(int n) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) sb.append('-');
+        return sb.toString();
     }
 }
