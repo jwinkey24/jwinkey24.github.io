@@ -18,7 +18,8 @@ public class Atlantafalconsinfo {
             "✓ Team History & Achievements<br>" +
             "✓ Player Profiles by Position<br>" +
             "✓ Stadium & Branding Info<br>" +
-            "✓ Interactive 10-Question Quiz</p>" +
+            "✓ Interactive 20-Question Quiz<br>" +
+            "✓ Field Goal Kick Game</p>" +
             "</div>" +
             "<div style='margin-top: 15px; padding: 12px; background-color: #A71930;'>" +
             "<b style='color: #FFFFFF; font-size: 18px;'>RISE UP!</b>" +
@@ -40,9 +41,11 @@ public class Atlantafalconsinfo {
                 "Championships & Achievements",
                 "Notable Players",
                 "Current Team Info",
-                "Play Football Game 🏈",
-                "Field Goal Game 🏆",
+                "2026 Active Roster 🦅",
                 "Take a Quiz! 🎯",
+                "Field Goal Game 🏈",
+                "RB Juke Run 🏃",
+                "Falcons Offense 🏟️",
                 "Exit"
             };
             
@@ -103,12 +106,16 @@ public class Atlantafalconsinfo {
                 showNotablePlayers();
             } else if (choice.equals("Current Team Info")) {
                 showCurrentTeam();
-            } else if (choice.equals("Play Football Game 🏈")) {
-                FalconsFootballGame.launch();
-            } else if (choice.equals("Field Goal Game 🏆")) {
-                FieldGoalGame.launch();
+            } else if (choice.equals("2026 Active Roster 🦅")) {
+                show2026Roster();
             } else if (choice.equals("Take a Quiz! 🎯")) {
                 takeQuiz();
+            } else if (choice.equals("Field Goal Game 🏈")) {
+                playFieldGoalGame();
+            } else if (choice.equals("RB Juke Run 🏃")) {
+                playRBJukeRun();
+            } else if (choice.equals("Falcons Offense 🏟️")) {
+                playFalconsOffense();
             } else if (choice.equals("Exit")) {
                 running = false;
                 JOptionPane.showMessageDialog(null,
@@ -884,228 +891,317 @@ public class Atlantafalconsinfo {
     
     
     private static void showCurrentTeam() {
-        boolean inMenu = true;
-        while (inMenu) {
-            String[] teamOptions = {
-                "Team Overview",
-                "2026 Active Roster 🦅",
-                "Back to Main Menu"
-            };
-            String teamChoice = (String) JOptionPane.showInputDialog(
-                null,
-                "<html><body style='width: 420px; background-color: #000000; color: #FFFFFF; font-family: Arial, sans-serif; text-align: center;'>"
-                + "<div style='background-color: #A71930; padding: 12px; margin-bottom: 14px;'>"
-                + "<h2 style='color: #FFFFFF; margin: 5px;'>🦅 CURRENT TEAM INFO</h2>"
-                + "<p style='color: #FFFFFF; margin: 3px; font-size: 12px;'>2025–2026 Season</p>"
-                + "</div>"
-                + "<p style='color: #FFFFFF; font-size: 14px;'>What would you like to view?</p>"
-                + "</body></html>",
-                "Current Team Info",
-                JOptionPane.QUESTION_MESSAGE,
-                null, teamOptions, teamOptions[0]);
-            if (teamChoice == null || teamChoice.equals("Back to Main Menu")) {
-                inMenu = false;
-            } else if (teamChoice.equals("Team Overview")) {
-                String current =
-                    "<html><body style='width: 550px; background-color: #000000; color: #FFFFFF; font-family: Arial, sans-serif;'>"
-                    + "<div style='text-align: center; background-color: #A71930; padding: 10px; margin-bottom: 15px;'>"
-                    + "<h2 style='color: #FFFFFF; margin: 5px;'>CURRENT TEAM (2025–2026)</h2>"
-                    + "</div>"
-                    + "<table style='width: 100%; color: #FFFFFF; margin-bottom: 15px;'>"
-                    + "<tr>"
-                    + "<td style='width: 50%; padding: 10px; background-color: #1a1a1a;'>"
-                    + "<b style='color: #A71930;'>HEAD COACH</b><br>"
-                    + "<span style='font-size: 16px;'>Raheem Morris</span>"
-                    + "</td>"
-                    + "<td style='width: 50%; padding: 10px; background-color: #1a1a1a;'>"
-                    + "<b style='color: #A71930;'>GENERAL MANAGER</b><br>"
-                    + "<span style='font-size: 16px;'>Terry Fontenot</span>"
-                    + "</td>"
-                    + "</tr>"
-                    + "<tr>"
-                    + "<td style='padding: 10px; background-color: #1a1a1a;'>"
-                    + "<b style='color: #A71930;'>OWNER</b><br>"
-                    + "<span style='font-size: 16px;'>Arthur Blank</span>"
-                    + "</td>"
-                    + "<td style='padding: 10px; background-color: #1a1a1a;'>"
-                    + "<b style='color: #A71930;'>MOTTO</b><br>"
-                    + "<span style='font-size: 16px;'>\"Rise Up!\"</span>"
-                    + "</td>"
-                    + "</tr>"
-                    + "</table>"
-                    + "<hr style='border: 1px solid #A71930;'>"
-                    + "<h3 style='color: #A71930; text-align: center; margin: 15px 0;'>KEY PLAYERS — 2026</h3>"
-                    + "<table style='width: 100%; color: #FFFFFF;'>"
-                    + "<tr>"
-                    + "<td style='width: 50%; padding: 10px; vertical-align: top; background-color: #1a1a1a;'>"
-                    + "<h4 style='color: #A71930; margin: 5px 0;'>OFFENSE</h4>"
-                    + "<ul style='margin: 8px 0; padding-left: 20px;'>"
-                    + "<li><b>QB:</b> Kirk Cousins #18</li>"
-                    + "<li><b>RB:</b> Bijan Robinson #7</li>"
-                    + "<li><b>WR:</b> Drake London #5</li>"
-                    + "<li><b>WR:</b> Darnell Mooney #1</li>"
-                    + "<li><b>TE:</b> Kyle Pitts #8</li>"
-                    + "<li><b>OT:</b> Jake Matthews #70</li>"
-                    + "<li><b>OG:</b> Chris Lindstrom #63</li>"
-                    + "</ul>"
-                    + "</td>"
-                    + "<td style='width: 50%; padding: 10px; vertical-align: top; background-color: #1a1a1a;'>"
-                    + "<h4 style='color: #A71930; margin: 5px 0;'>DEFENSE</h4>"
-                    + "<ul style='margin: 8px 0; padding-left: 20px;'>"
-                    + "<li><b>DE:</b> Leonard Floyd #56</li>"
-                    + "<li><b>DE:</b> Jalon Walker #11</li>"
-                    + "<li><b>DT:</b> David Onyemata #90</li>"
-                    + "<li><b>LB:</b> Kaden Elliss #55</li>"
-                    + "<li><b>CB:</b> A.J. Terrell #24</li>"
-                    + "<li><b>FS:</b> Jessie Bates III #3</li>"
-                    + "</ul>"
-                    + "</td>"
-                    + "</tr>"
-                    + "</table>"
-                    + "<hr style='border: 1px solid #A71930; margin: 15px 0;'>"
-                    + "<div style='background-color: #1a1a1a; padding: 12px;'>"
-                    + "<table style='width: 100%; color: #FFFFFF;'>"
-                    + "<tr>"
-                    + "<td style='width: 50%;'><b style='color: #A71930;'>Division:</b> NFC South</td>"
-                    + "<td style='width: 50%;'><b style='color: #A71930;'>Location:</b> Atlanta, GA</td>"
-                    + "</tr>"
-                    + "</table>"
-                    + "<p style='color: #A71930; font-weight: bold; margin: 10px 0 5px 0;'>Division Rivals:</p>"
-                    + "<p style='color: #FFFFFF; margin: 5px 0;'>• New Orleans Saints<br>• Tampa Bay Buccaneers<br>• Carolina Panthers</p>"
-                    + "</div>"
-                    + "<div style='text-align: center; margin-top: 15px; padding: 10px; background-color: #A71930;'>"
-                    + "<b style='color: #FFFFFF; font-size: 16px;'>RISE UP! 🦅</b>"
-                    + "</div>"
-                    + "</body></html>";
-                JOptionPane.showMessageDialog(null, current, "Team Overview", JOptionPane.INFORMATION_MESSAGE);
-            } else if (teamChoice.equals("2026 Active Roster 🦅")) {
-                show2026Roster();
-            }
-        }
+        String current = "<html><body style='width: 550px; background-color: #000000; color: #FFFFFF; font-family: Arial, sans-serif;'>" +
+            "<div style='text-align: center; background-color: #A71930; padding: 10px; margin-bottom: 15px;'>" +
+            "<h2 style='color: #FFFFFF; margin: 5px;'>CURRENT TEAM (2024-2025)</h2>" +
+            "</div>" +
+            "<table style='width: 100%; color: #FFFFFF; margin-bottom: 15px;'>" +
+            "<tr>" +
+            "<td style='width: 50%; padding: 10px; background-color: #1a1a1a;'>" +
+            "<b style='color: #A71930;'>HEAD COACH</b><br>" +
+            "<span style='font-size: 16px;'>Raheem Morris</span>" +
+            "</td>" +
+            "<td style='width: 50%; padding: 10px; background-color: #1a1a1a;'>" +
+            "<b style='color: #A71930;'>GENERAL MANAGER</b><br>" +
+            "<span style='font-size: 16px;'>Terry Fontenot</span>" +
+            "</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td style='padding: 10px; background-color: #1a1a1a;'>" +
+            "<b style='color: #A71930;'>OWNER</b><br>" +
+            "<span style='font-size: 16px;'>Arthur Blank</span>" +
+            "</td>" +
+            "<td style='padding: 10px; background-color: #1a1a1a;'>" +
+            "<b style='color: #A71930;'>MOTTO</b><br>" +
+            "<span style='font-size: 16px;'>\"Rise Up!\"</span>" +
+            "</td>" +
+            "</tr>" +
+            "</table>" +
+            "<hr style='border: 1px solid #A71930;'>" +
+            "<h3 style='color: #A71930; text-align: center; margin: 15px 0;'>KEY PLAYERS</h3>" +
+            "<table style='width: 100%; color: #FFFFFF;'>" +
+            "<tr>" +
+            "<td style='width: 50%; padding: 10px; vertical-align: top; background-color: #1a1a1a;'>" +
+            "<h4 style='color: #A71930; margin: 5px 0;'>OFFENSE</h4>" +
+            "<ul style='margin: 8px 0; padding-left: 20px;'>" +
+            "<li><b>QB:</b> Desmond Ridder/<br>Taylor Heinicke</li>" +
+            "<li><b>RB:</b> Bijan Robinson<br><span style='color: #A5ACAF; font-size: 11px;'>(2023 1st round)</span></li>" +
+            "<li><b>WR:</b> Drake London</li>" +
+            "<li><b>TE:</b> Kyle Pitts</li>" +
+            "</ul>" +
+            "</td>" +
+            "<td style='width: 50%; padding: 10px; vertical-align: top; background-color: #1a1a1a;'>" +
+            "<h4 style='color: #A71930; margin: 5px 0;'>DEFENSE</h4>" +
+            "<ul style='margin: 8px 0; padding-left: 20px;'>" +
+            "<li><b>DT:</b> Grady Jarrett</li>" +
+            "<li><b>S:</b> Jessie Bates III</li>" +
+            "<li>Multiple young stars</li>" +
+            "</ul>" +
+            "</td>" +
+            "</tr>" +
+            "</table>" +
+            "<hr style='border: 1px solid #A71930; margin: 15px 0;'>" +
+            "<div style='background-color: #1a1a1a; padding: 12px;'>" +
+            "<table style='width: 100%; color: #FFFFFF;'>" +
+            "<tr>" +
+            "<td style='width: 50%;'><b style='color: #A71930;'>Division:</b> NFC South</td>" +
+            "<td style='width: 50%;'><b style='color: #A71930;'>Location:</b> Atlanta, GA</td>" +
+            "</tr>" +
+            "</table>" +
+            "<p style='color: #A71930; font-weight: bold; margin: 10px 0 5px 0;'>Division Rivals:</p>" +
+            "<p style='color: #FFFFFF; margin: 5px 0;'>• New Orleans Saints<br>• Tampa Bay Buccaneers<br>• Carolina Panthers</p>" +
+            "</div>" +
+            "<div style='text-align: center; margin-top: 15px; padding: 10px; background-color: #A71930;'>" +
+            "<b style='color: #FFFFFF; font-size: 16px;'>RISE UP! 🦅</b>" +
+            "</div>" +
+            "</body></html>";
+        
+        JOptionPane.showMessageDialog(null, current,
+            "Current Team Info", JOptionPane.INFORMATION_MESSAGE);
     }
-
     
     private static void takeQuiz() {
+        // Show intro with option to cancel
         int startQuiz = JOptionPane.showConfirmDialog(null,
             "<html><body style='width: 400px; background-color: #000000; color: #FFFFFF; text-align: center;'>" +
             "<div style='background-color: #A71930; padding: 10px; margin-bottom: 10px;'>" +
             "<h2 style='color: #FFFFFF; margin: 5px;'>FALCONS QUIZ</h2>" +
             "</div>" +
-            "<p style='color: #FFFFFF; font-size: 14px;'>Test your knowledge with 10 questions about<br>the Atlanta Falcons!</p>" +
+            "<p style='color: #FFFFFF; font-size: 14px;'>" +
+            "Test your knowledge with 10 questions about<br>" +
+            "the Atlanta Falcons!</p>" +
             "<p style='color: #A5ACAF; margin-top: 15px;'>Ready to begin?</p>" +
             "<div style='margin-top: 10px; padding: 8px; background-color: #A71930;'>" +
             "<b style='color: #FFFFFF;'>RISE UP! 🦅</b>" +
             "</div>" +
             "</body></html>",
-            "Falcons Quiz", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (startQuiz != JOptionPane.YES_OPTION) return;
-
+            "Falcons Quiz",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE);
+        
+        // If user clicks No or closes dialog, return to main menu
+        if (startQuiz != JOptionPane.YES_OPTION) {
+            return;
+        }
+        
         int score = 0;
         int totalQuestions = 10;
-
-        // Q1
-        String[] q1Opts = {"1965", "1966", "1967", "1970"};
-        int q1 = JOptionPane.showOptionDialog(null, "Question 1/10: What year was the Atlanta Falcons franchise founded?",
-            "Quiz - Question 1/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q1Opts, q1Opts[0]);
-        if (q1 == -1) return;
-        if (q1 == 1) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
-        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: 1966.", "Result", JOptionPane.INFORMATION_MESSAGE);
-
-        // Q2
-        String[] q2Opts = {"Jerry Jones", "Arthur Blank", "Robert Kraft", "Stan Kroenke"};
-        int q2 = JOptionPane.showOptionDialog(null, "Question 2/10: Who is the current owner of the Atlanta Falcons?",
-            "Quiz - Question 2/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q2Opts, q2Opts[0]);
-        if (q2 == -1) return;
-        if (q2 == 1) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
-        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: Arthur Blank.", "Result", JOptionPane.INFORMATION_MESSAGE);
-
-        // Q3
-        String[] q3Opts = {"Georgia Dome", "Mercedes-Benz Stadium", "Atlanta Stadium", "Turner Field"};
-        int q3 = JOptionPane.showOptionDialog(null, "Question 3/10: What is the name of the Falcons' current home stadium?",
-            "Quiz - Question 3/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q3Opts, q3Opts[0]);
-        if (q3 == -1) return;
-        if (q3 == 1) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
-        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: Mercedes-Benz Stadium.", "Result", JOptionPane.INFORMATION_MESSAGE);
-
-        // Q4
-        String[] q4Opts = {"0", "1", "2", "3"};
-        int q4 = JOptionPane.showOptionDialog(null, "Question 4/10: How many Super Bowl appearances have the Falcons made?",
-            "Quiz - Question 4/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q4Opts, q4Opts[0]);
-        if (q4 == -1) return;
-        if (q4 == 2) { score++; JOptionPane.showMessageDialog(null, "✓ Correct! (1998 and 2016)", "Result", JOptionPane.INFORMATION_MESSAGE); }
-        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: 2 (1998 and 2016).", "Result", JOptionPane.INFORMATION_MESSAGE);
-
-        // Q5
-        String[] q5Opts = {"Fly High!", "Rise Up!", "Bird Gang!", "In Flight!"};
-        int q5 = JOptionPane.showOptionDialog(null, "Question 5/10: What is the Atlanta Falcons' team motto?",
-            "Quiz - Question 5/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q5Opts, q5Opts[0]);
-        if (q5 == -1) return;
-        if (q5 == 1) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
-        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: Rise Up!", "Result", JOptionPane.INFORMATION_MESSAGE);
-
-        // Q6
-        String[] q6Opts = {"Red and Blue", "Red and Black", "Black and Gold", "Red and White"};
-        int q6 = JOptionPane.showOptionDialog(null, "Question 6/10: What are the primary team colors of the Falcons?",
-            "Quiz - Question 6/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q6Opts, q6Opts[0]);
-        if (q6 == -1) return;
-        if (q6 == 1) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
-        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: Red and Black.", "Result", JOptionPane.INFORMATION_MESSAGE);
-
-        // Q7
-        String[] q7Opts = {"The Home Depot", "Lowe's", "Walmart", "Target"};
-        int q7 = JOptionPane.showOptionDialog(null, "Question 7/10: Arthur Blank was co-founder of which major retail company?",
-            "Quiz - Question 7/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q7Opts, q7Opts[0]);
-        if (q7 == -1) return;
-        if (q7 == 0) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
-        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: The Home Depot.", "Result", JOptionPane.INFORMATION_MESSAGE);
-
-        // Q8
-        String[] q8Opts = {"2015", "2016", "2017", "2018"};
-        int q8 = JOptionPane.showOptionDialog(null, "Question 8/10: What year did Mercedes-Benz Stadium open?",
-            "Quiz - Question 8/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q8Opts, q8Opts[0]);
-        if (q8 == -1) return;
-        if (q8 == 2) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
-        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: 2017.", "Result", JOptionPane.INFORMATION_MESSAGE);
-
-        // Q9
-        String[] q9Opts = {"NFC East", "NFC North", "NFC South", "NFC West"};
-        int q9 = JOptionPane.showOptionDialog(null, "Question 9/10: Which division do the Falcons play in?",
-            "Quiz - Question 9/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q9Opts, q9Opts[0]);
-        if (q9 == -1) return;
-        if (q9 == 2) { score++; JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE); }
-        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: NFC South.", "Result", JOptionPane.INFORMATION_MESSAGE);
-
-        // Q10
-        String[] q10Opts = {"21-3", "24-3", "28-3", "31-3"};
-        int q10 = JOptionPane.showOptionDialog(null, "Question 10/10: What was the Falcons' famous lead in Super Bowl LI before the comeback?",
-            "Quiz - Question 10/10", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q10Opts, q10Opts[0]);
-        if (q10 == -1) return;
-        if (q10 == 2) { score++; JOptionPane.showMessageDialog(null, "✓ Correct! The infamous 28-3 lead.", "Result", JOptionPane.INFORMATION_MESSAGE); }
-        else JOptionPane.showMessageDialog(null, "✗ Incorrect. Answer: 28-3.", "Result", JOptionPane.INFORMATION_MESSAGE);
-
-        // Final score
+        
+        // Question 1: Team History
+        String[] q1Options = {"1965", "1966", "1967", "1970"};
+        int q1Answer = JOptionPane.showOptionDialog(null,
+            "Question 1: What year was the Atlanta Falcons franchise founded?",
+            "Quiz Question 1/10",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            q1Options,
+            q1Options[0]);
+        if (q1Answer == 1) { // 1966 is correct
+            score++;
+            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 1966.", 
+                "Result", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        // Question 2: Owner
+        String[] q2Options = {"Jerry Jones", "Arthur Blank", "Robert Kraft", "Stan Kroenke"};
+        int q2Answer = JOptionPane.showOptionDialog(null,
+            "Question 2: Who is the current owner of the Atlanta Falcons?",
+            "Quiz Question 2/10",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            q2Options,
+            q2Options[0]);
+        if (q2Answer == 1) { // Arthur Blank is correct
+            score++;
+            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is Arthur Blank.", 
+                "Result", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        // Question 3: Stadium
+        String[] q3Options = {"Georgia Dome", "Mercedes-Benz Stadium", "Atlanta Stadium", "Turner Field"};
+        int q3Answer = JOptionPane.showOptionDialog(null,
+            "Question 3: What is the name of the Falcons' current home stadium?",
+            "Quiz Question 3/10",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            q3Options,
+            q3Options[0]);
+        if (q3Answer == 1) { // Mercedes-Benz Stadium is correct
+            score++;
+            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is Mercedes-Benz Stadium.", 
+                "Result", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        // Question 4: Super Bowl
+        String[] q4Options = {"0", "1", "2", "3"};
+        int q4Answer = JOptionPane.showOptionDialog(null,
+            "Question 4: How many Super Bowl appearances have the Falcons made?",
+            "Quiz Question 4/10",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            q4Options,
+            q4Options[0]);
+        if (q4Answer == 2) { // 2 is correct
+            score++;
+            JOptionPane.showMessageDialog(null, "✓ Correct! (1998 and 2016)", "Result", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 2 (1998 and 2016).", 
+                "Result", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        // Question 5: Team Motto
+        String[] q5Options = {"Fly High!", "Rise Up!", "Bird Gang!", "In Flight!"};
+        int q5Answer = JOptionPane.showOptionDialog(null,
+            "Question 5: What is the Atlanta Falcons' team motto?",
+            "Quiz Question 5/10",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            q5Options,
+            q5Options[0]);
+        if (q5Answer == 1) { // Rise Up! is correct
+            score++;
+            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 'Rise Up!'", 
+                "Result", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        // Question 6: Colors
+        String[] q6Options = {"Red and Blue", "Red and Black", "Black and Gold", "Red and White"};
+        int q6Answer = JOptionPane.showOptionDialog(null,
+            "Question 6: What are the primary team colors of the Falcons?",
+            "Quiz Question 6/10",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            q6Options,
+            q6Options[0]);
+        if (q6Answer == 1) { // Red and Black is correct
+            score++;
+            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is Red and Black.", 
+                "Result", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        // Question 7: Home Depot Connection
+        String[] q7Options = {"The Home Depot", "Lowe's", "Walmart", "Target"};
+        int q7Answer = JOptionPane.showOptionDialog(null,
+            "Question 7: Arthur Blank was a co-founder of which major retail company?",
+            "Quiz Question 7/10",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            q7Options,
+            q7Options[0]);
+        if (q7Answer == 0) { // The Home Depot is correct
+            score++;
+            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is The Home Depot.", 
+                "Result", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        // Question 8: Stadium Opening
+        String[] q8Options = {"2015", "2016", "2017", "2018"};
+        int q8Answer = JOptionPane.showOptionDialog(null,
+            "Question 8: What year did Mercedes-Benz Stadium open?",
+            "Quiz Question 8/10",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            q8Options,
+            q8Options[0]);
+        if (q8Answer == 2) { // 2017 is correct
+            score++;
+            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is 2017.", 
+                "Result", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        // Question 9: Division
+        String[] q9Options = {"NFC East", "NFC North", "NFC South", "NFC West"};
+        int q9Answer = JOptionPane.showOptionDialog(null,
+            "Question 9: Which division do the Falcons play in?",
+            "Quiz Question 9/10",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            q9Options,
+            q9Options[0]);
+        if (q9Answer == 2) { // NFC South is correct
+            score++;
+            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is NFC South.", 
+                "Result", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        // Question 10: Mascot
+        String[] q10Options = {"Freddie Falcon", "Falco", "Talon", "Screech"};
+        int q10Answer = JOptionPane.showOptionDialog(null,
+            "Question 10: What is the name of the Falcons' mascot?",
+            "Quiz Question 10/10",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            q10Options,
+            q10Options[0]);
+        if (q10Answer == 0) { // Freddie Falcon is correct
+            score++;
+            JOptionPane.showMessageDialog(null, "✓ Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "✗ Incorrect. The correct answer is Freddie Falcon.", 
+                "Result", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        // Display final score
         double percentage = (score * 100.0) / totalQuestions;
-        String grade, message;
-        if      (percentage >= 90) { grade = "A - Outstanding!";    message = "🏆 Excellent! You're a true Falcons expert!"; }
-        else if (percentage >= 80) { grade = "B - Great Job!";      message = "👏 Great work! You know your Falcons history!"; }
-        else if (percentage >= 70) { grade = "C - Good Effort!";    message = "👍 Good job! Keep learning about the Falcons!"; }
-        else if (percentage >= 60) { grade = "D - Keep Studying!";  message = "📚 Not bad! Review the info and try again!"; }
-        else                       { grade = "F - Need More Study"; message = "📖 Keep reading! Explore the other sections!"; }
 
+        String grade;
+        String message;
+        
+        if (percentage >= 90) {
+            grade = "A - Outstanding!";
+            message = "🏆 Excellent! You're a true Falcons expert!";
+        } else if (percentage >= 80) {
+            grade = "B - Great Job!";
+            message = "👏 Great work! You know your Falcons history!";
+        } else if (percentage >= 70) {
+            grade = "C - Good Effort!";
+            message = "👍 Good job! Keep learning about the Falcons!";
+        } else if (percentage >= 60) {
+            grade = "D - Keep Studying!";
+            message = "📚 Not bad! Review the information and try again!";
+        } else {
+            grade = "F - Need More Study";
+            message = "📖 Keep reading! Explore the other sections to learn more!";
+        }
+        
         JOptionPane.showMessageDialog(null,
-            "<html><body style='width: 350px; background-color: #000000; color: #FFFFFF; text-align: center; font-family: Arial;'>" +
-            "<div style='background-color: #A71930; padding: 10px; margin-bottom: 12px;'>" +
-            "<h2 style='color: #FFFFFF; margin: 5px;'>QUIZ COMPLETE!</h2></div>" +
-            "<p style='font-size: 22px; color: #FFFFFF; margin: 8px 0;'>" + score + " / " + totalQuestions + "</p>" +
-            "<p style='font-size: 15px; color: #A5ACAF; margin: 4px 0;'>" + String.format("%.0f", percentage) + "%</p>" +
-            "<p style='font-size: 14px; color: #A71930; font-weight: bold; margin: 6px 0;'>" + grade + "</p>" +
-            "<p style='color: #FFFFFF; margin: 10px 0;'>" + message + "</p>" +
-            "<div style='background-color: #A71930; padding: 8px; margin-top: 10px;'>" +
-            "<b style='color: #FFFFFF;'>RISE UP! 🦅</b></div>" +
-            "</body></html>",
-            "Quiz Results", JOptionPane.INFORMATION_MESSAGE);
+            "════════════════════════════════\n" +
+            "QUIZ COMPLETE!\n" +
+            "════════════════════════════════\n\n" +
+            "Your Score: " + score + " / " + totalQuestions + "\n" +
+            "Percentage: " + String.format("%.1f", percentage) + "%\n" +
+            "Grade: " + grade + "\n\n" +
+            message + "\n\n" +
+            "Rise Up! 🦅",
+            "Quiz Results",
+            JOptionPane.INFORMATION_MESSAGE);
     }
-
 
     // ─────────────────────────────────────────────
     //  2026 ACTIVE ROSTER DATA
@@ -1355,601 +1451,1779 @@ public class Atlantafalconsinfo {
             while (frame.isVisible()) { Thread.sleep(200); }
         } catch (InterruptedException ignored) {}
     }
-}
 
-// ══════════════════════════════════════════════════════════════════════════════
-//  FALCONS FOOTBALL GAME
-// ══════════════════════════════════════════════════════════════════════════════
-class FalconsFootballGame {
 
-    static final java.awt.Color RED     = new java.awt.Color(0xA7, 0x19, 0x30);
-    static final java.awt.Color BLACK   = new java.awt.Color(0x0D, 0x0D, 0x0D);
-    static final java.awt.Color DARK    = new java.awt.Color(0x1A, 0x1A, 0x1A);
-    static final java.awt.Color WHITE   = java.awt.Color.WHITE;
-    static final java.awt.Color SILVER  = new java.awt.Color(0xA5, 0xAC, 0xAF);
+    private static void playFieldGoalGame() {
+        // ── Distances and base power for each of 5 kicks ──────────────────────
+        final String[] DIST_LABELS = {"22-yd (XP)", "35-yd", "47-yd", "55-yd", "63-yd BOMB"};
+        final int[]    BASE_POWER  = {1, 2, 3, 4, 5}; // out of 10 — scaled internally
 
-    // Columns: name, number, position, speed, power, awareness, catching, coverage
-    static final String[][] PLAYERS = {
-        {"Kirk Cousins",      "18","QB", "55","60","88","0","0"},
-        {"Easton Stick",      "12","QB", "65","55","75","0","0"},
-        {"Bijan Robinson",    "7", "RB", "92","85","82","80","0"},
-        {"Tyler Allgeier",    "25","RB", "82","80","72","72","0"},
-        {"Nate Carter",       "38","RB", "88","72","65","68","0"},
-        {"Drake London",      "5", "WR", "84","80","85","91","0"},
-        {"Darnell Mooney",    "1", "WR", "91","65","80","87","0"},
-        {"Malik Heath",       "18","WR", "85","70","76","82","0"},
-        {"Deven Thompkins",   "13","WR", "95","55","72","85","0"},
-        {"Dylan Drummond",    "81","WR", "86","60","68","78","0"},
-        {"David Sills",       "87","WR", "80","68","74","82","0"},
-        {"Casey Washington",  "82","WR", "83","62","70","79","0"},
-        {"Kyle Pitts",        "8", "TE", "80","82","84","90","0"},
-        {"Feleipe Franks",    "84","TE", "72","85","75","84","0"},
-        {"Teagan Quitoriano", "85","TE", "70","83","72","80","0"},
-        {"Charlie Woerner",   "89","TE", "68","78","70","76","0"},
-        {"Jake Matthews",     "70","OT", "55","92","88","0","0"},
-        {"Chris Lindstrom",   "63","OG", "52","90","86","0","0"},
-        {"Matthew Bergeron",  "65","OG", "55","88","82","0","0"},
-        {"Ryan Neuzil",       "64","C",  "50","86","80","0","0"},
-        {"Jack Nelson",       "69","OT", "54","87","75","0","0"},
-        {"Leonard Floyd",     "56","DE", "80","85","84","0","82"},
-        {"Jalon Walker",      "11","DE", "88","82","78","0","80"},
-        {"Khalid Kareem",     "92","DE", "76","88","82","0","84"},
-        {"Kentavius Street",  "93","DE", "74","90","80","0","82"},
-        {"Brandon Dorlus",    "54","DE", "72","86","74","0","76"},
-        {"James Pearce Jr.",  "27","DE", "90","80","72","0","78"},
-        {"David Onyemata",    "90","DT", "60","92","82","0","80"},
-        {"Ruke Orhorhoro",    "98","DT", "62","90","80","0","79"},
-        {"LaCale London",     "94","DT", "58","88","76","0","76"},
-        {"JD Bertrand",       "40","LB", "78","82","80","0","82"},
-        {"Kaden Elliss",      "55","LB", "74","84","82","0","80"},
-        {"Arnold Ebiketie",   "17","LB", "80","80","78","0","82"},
-        {"Divine Deablo",     "0", "LB", "80","78","80","0","84"},
-        {"Josh Woods",        "42","LB", "76","80","78","0","80"},
-        {"Ronnie Harrison",   "36","LB", "78","78","82","0","84"},
-        {"A.J. Terrell",      "24","CB", "90","72","86","0","92"},
-        {"Dee Alford",        "20","CB", "86","68","80","0","84"},
-        {"Natrone Brooks",    "35","CB", "84","65","76","0","80"},
-        {"Cobee Bryant",      "37","CB", "88","65","74","0","82"},
-        {"C.J. Henderson",    "39","CB", "86","70","82","0","88"},
-        {"Mike Ford",         "28","CB", "84","68","78","0","80"},
-        {"Jessie Bates III",  "3", "FS", "84","74","90","0","90"},
-        {"Jammie Robinson",   "35","SAF","86","72","84","0","86"},
-        {"Xavier Watts",      "31","SAF","82","74","80","0","84"},
-        {"Zane Gonzalez",     "45","K",  "60","70","80","0","0"},
-        {"Bradley Pinion",    "13","P",  "58","65","75","0","0"},
-        {"Liam McCullough",   "49","LS", "55","70","72","0","0"},
-    };
+        // ── Show instructions dialog ───────────────────────────────────────────
+        javax.swing.JDialog instrDlg = new javax.swing.JDialog((java.awt.Frame) null, "Field Goal Game", true);
+        instrDlg.setUndecorated(false);
+        instrDlg.setResizable(false);
 
-    static final int SPD=3, PWR=4, AWR=5, CAT=6, COV=7;
-    static java.util.Random RNG = new java.util.Random();
+        javax.swing.JPanel instrPanel = new javax.swing.JPanel(new java.awt.BorderLayout(0, 0));
+        instrPanel.setBackground(java.awt.Color.BLACK);
 
-    static void launch() {
-        String[] modes = {"Offense — Drive for a Touchdown", "Defense — Stop the Offense"};
-        String mode = (String) javax.swing.JOptionPane.showInputDialog(
-            null,
-            "<html><body style='width:380px;background:#0D0D0D;color:#FFF;text-align:center;font-family:Arial;'>" +
-            "<div style='background:#A71930;padding:14px;margin-bottom:12px;'>" +
-            "<h2 style='color:#FFF;margin:4px;'>🏈 FALCONS FOOTBALL GAME</h2>" +
-            "<p style='color:#FFF;font-size:12px;margin:2px;'>100-Yard Drive Simulator</p></div>" +
-            "<p style='color:#FFF;font-size:14px;'>Choose your role:</p>" +
-            "</body></html>",
-            "Falcons Football Game",
-            javax.swing.JOptionPane.QUESTION_MESSAGE,
-            null, modes, modes[0]);
-        if (mode == null) return;
-        if (mode.startsWith("Offense")) playOffense();
-        else playDefense();
-    }
+        javax.swing.JLabel titleLbl = new javax.swing.JLabel(
+            "<html><div style='text-align:center;color:#FFFFFF;font-size:18px;font-weight:bold;'>🏈 FIELD GOAL GAME 🏈</div>" +
+            "<div style='text-align:center;color:#A5ACAF;font-size:12px;'>You are the Falcons kicker!</div></html>",
+            javax.swing.SwingConstants.CENTER);
+        titleLbl.setBackground(new java.awt.Color(0xA7, 0x19, 0x30));
+        titleLbl.setOpaque(true);
+        titleLbl.setBorder(javax.swing.BorderFactory.createEmptyBorder(14, 20, 14, 20));
 
-    static void playOffense() {
-        int yard = 0, down = 1, toGo = 10, plays = 0;
-        StringBuilder log = new StringBuilder();
+        javax.swing.JLabel instrLbl = new javax.swing.JLabel(
+            "<html><div style='width:380px;color:#FFFFFF;font-size:13px;line-height:1.7;padding:14px;'>" +
+            "<b style='color:#FFD700;'>CONTROLS:</b><br>" +
+            "&nbsp;&nbsp;🎯 <b>← → Arrow Keys</b> — Aim the kick left / right<br>" +
+            "&nbsp;&nbsp;💪 <b>↑ ↓ Arrow Keys</b> — Charge up power (hold ↑ to fill bar)<br>" +
+            "&nbsp;&nbsp;🦵 <b>SPACE</b> — KICK!<br><br>" +
+            "<b style='color:#FFD700;'>WIND:</b><br>" +
+            "&nbsp;&nbsp;Each kick has random wind. A crosswind pushes the ball sideways.<br>" +
+            "&nbsp;&nbsp;A headwind reduces distance; a tailwind boosts it.<br>" +
+            "&nbsp;&nbsp;Read the wind indicator and adjust your aim + power!<br><br>" +
+            "<b style='color:#A71930;'>Attempt 5 field goals to complete the game.</b>" +
+            "</div></html>",
+            javax.swing.SwingConstants.LEFT);
+        instrLbl.setBackground(java.awt.Color.BLACK);
+        instrLbl.setOpaque(true);
 
-        String[][] qbs = filterByPos("QB");
-        String[] qbNames = new String[qbs.length];
-        for (int i = 0; i < qbs.length; i++) qbNames[i] = qbs[i][0] + "  (#" + qbs[i][1] + ")  AWR:" + qbs[i][AWR];
-        String qbPick = (String) javax.swing.JOptionPane.showInputDialog(
-            null, hdr("Choose Your QB — Offense"),
-            "Select QB", javax.swing.JOptionPane.QUESTION_MESSAGE, null, qbNames, qbNames[0]);
-        if (qbPick == null) return;
-        String[] qb = qbs[indexOf(qbNames, qbPick)];
+        javax.swing.JButton startBtn = new javax.swing.JButton("▶  LET'S KICK!");
+        startBtn.setBackground(new java.awt.Color(0xA7, 0x19, 0x30));
+        startBtn.setForeground(java.awt.Color.WHITE);
+        startBtn.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 14));
+        startBtn.setFocusPainted(false);
+        startBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 30, 10, 30));
+        startBtn.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 
-        while (yard < 100) {
-            String[] playOptions = {
-                "Pass — Short (5-12 yds)",
-                "Pass — Deep (15-35 yds)",
-                "Run — Inside",
-                "Run — Outside (Sweep)"
-            };
-            String playPick = (String) javax.swing.JOptionPane.showInputDialog(null,
-                "<html><body style='width:440px;background:#0D0D0D;color:#FFF;font-family:Arial;'>" +
-                "<div style='background:#A71930;padding:10px;text-align:center;margin-bottom:8px;'>" +
-                "<b style='font-size:16px;color:#FFF;'>🏈 OFFENSE — DRIVE FOR TD</b></div>" +
-                "<pre style='color:#7EC87E;font-size:11px;font-family:monospace;background:#0a200a;padding:6px;border:1px solid #228B22;border-radius:4px;'>" + field(yard) + "</pre>" +
-                "<table style='width:100%;color:#FFF;font-size:13px;border-collapse:collapse;'>" +
-                "<tr style='background:#1A1A1A;'><td style='padding:4px 8px;'><b style='color:#A71930;'>Down &amp; Distance:</b></td><td style='padding:4px;'><b>" + ord(down) + " &amp; " + toGo + "</b></td></tr>" +
-                "<tr><td style='padding:4px 8px;'><b style='color:#A71930;'>Ball on:</b></td><td style='padding:4px;'>Own " + yard + " yard line</td></tr>" +
-                "<tr style='background:#1A1A1A;'><td style='padding:4px 8px;'><b style='color:#A71930;'>QB:</b></td><td style='padding:4px;'>" + qb[0] + " #" + qb[1] + " | AWR:" + qb[AWR] + " SPD:" + qb[SPD] + "</td></tr>" +
-                "</table>" +
-                "<div style='margin:8px 0;padding:6px;background:#111;border-left:3px solid #A71930;font-size:11px;color:#A5ACAF;'>" + lastLines(log.toString(),3) + "</div>" +
-                "<p style='color:#FFF;font-size:13px;'>📋 Call a play:</p>" +
+        javax.swing.JButton cancelBtn = new javax.swing.JButton("Cancel");
+        cancelBtn.setBackground(new java.awt.Color(0x33, 0x33, 0x33));
+        cancelBtn.setForeground(java.awt.Color.LIGHT_GRAY);
+        cancelBtn.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 12));
+        cancelBtn.setFocusPainted(false);
+        cancelBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 20, 8, 20));
+
+        boolean[] shouldPlay = {false};
+        startBtn.addActionListener(e -> { shouldPlay[0] = true; instrDlg.dispose(); });
+        cancelBtn.addActionListener(e -> instrDlg.dispose());
+
+        javax.swing.JPanel btnRow = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 12, 10));
+        btnRow.setBackground(java.awt.Color.BLACK);
+        btnRow.add(startBtn);
+        btnRow.add(cancelBtn);
+
+        instrPanel.add(titleLbl, java.awt.BorderLayout.NORTH);
+        instrPanel.add(instrLbl, java.awt.BorderLayout.CENTER);
+        instrPanel.add(btnRow,   java.awt.BorderLayout.SOUTH);
+
+        instrDlg.setContentPane(instrPanel);
+        instrDlg.pack();
+        instrDlg.setLocationRelativeTo(null);
+        instrDlg.setVisible(true);
+
+        if (!shouldPlay[0]) return;
+
+        // ── Main game frame ────────────────────────────────────────────────────
+        javax.swing.JFrame gf = new javax.swing.JFrame("🏈 Falcons Field Goal Game");
+        gf.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+        gf.setResizable(false);
+
+        final int W = 700, H = 520;
+
+        // ── Game state ─────────────────────────────────────────────────────────
+        final int   TOTAL_KICKS    = 5;
+        final int[] madeArr        = {0};
+        final int[] kickNum        = {0};     // 0-based current kick
+
+        // Ball physics state
+        final double[] ballX  = {W / 2.0};
+        final double[] ballY  = {H - 80.0};
+        final double[] velX   = {0};
+        final double[] velY   = {0};
+        final double[] ballZ  = {0};   // z = depth (0=ground, grows as ball goes up-range)
+        final double[] velZ   = {0};
+
+        // Aiming
+        final double[] aimAngle = {0.0};   // radians from center, left<0 right>0
+        final double[] power    = {0.0};   // 0.0 – 1.0
+
+        // Wind per kick (regenerated each kick)
+        final double[] windX = {0};  // crosswind m/s equivalent pixels/frame²
+        final double[] windZ = {0};  // headwind (negative) / tailwind (positive)
+
+        // State machine
+        // 0=aiming, 1=charging, 2=in_flight, 3=result_pause, 4=game_over
+        final int[] state = {0};
+        final boolean[] kicked = {false};
+        final String[] resultMsg   = {""};
+        final boolean[] resultGood = {false};
+        final int[] resultTimer    = {0};
+
+        // Keys held
+        final boolean[] leftHeld  = {false};
+        final boolean[] rightHeld = {false};
+        final boolean[] upHeld    = {false};
+        final boolean[] downHeld  = {false};
+
+        java.util.Random rng = new java.util.Random();
+
+        // Helper: init new kick
+        Runnable initKick = () -> {
+            ballX[0] = W / 2.0;
+            ballY[0] = H - 80.0;
+            velX[0]  = 0; velY[0] = 0;
+            ballZ[0] = 0; velZ[0] = 0;
+            aimAngle[0] = 0.0;
+            power[0]    = 0.0;
+            kicked[0]   = false;
+            state[0]    = 0;
+
+            // Random wind: crosswind -3..+3, headwind -2..+2
+            windX[0] = (rng.nextDouble() * 6.0 - 3.0);  // pixels drift per frame while in air
+            windZ[0] = (rng.nextDouble() * 4.0 - 2.0);  // power modifier
+        };
+        initKick.run();
+
+        // ── Canvas ─────────────────────────────────────────────────────────────
+        javax.swing.JPanel canvas = new javax.swing.JPanel() {
+            @Override
+            protected void paintComponent(java.awt.Graphics g0) {
+                super.paintComponent(g0);
+                java.awt.Graphics2D g = (java.awt.Graphics2D) g0;
+                g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,
+                                   java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+
+                // ── Background: sky gradient ───────────────────────────────────
+                java.awt.GradientPaint sky = new java.awt.GradientPaint(
+                    0, 0, new java.awt.Color(0x0A, 0x0A, 0x25),
+                    0, H - 120, new java.awt.Color(0x1A, 0x1A, 0x3A));
+                g.setPaint(sky);
+                g.fillRect(0, 0, W, H - 120);
+
+                // ── Field ──────────────────────────────────────────────────────
+                g.setColor(new java.awt.Color(0x22, 0x6B, 0x22));
+                g.fillRect(0, H - 120, W, 120);
+                // yard lines
+                g.setColor(new java.awt.Color(0xFF, 0xFF, 0xFF, 60));
+                for (int lx = 50; lx < W; lx += 80) {
+                    g.fillRect(lx, H - 120, 2, 120);
+                }
+                // enzone tint behind uprights
+                g.setColor(new java.awt.Color(0xA7, 0x19, 0x30, 40));
+                g.fillRect(W/2 - 80, H - 120, 160, 60);
+
+                // ── Uprights ───────────────────────────────────────────────────
+                int upW = 100, upH = 180;
+                int upX = W / 2 - upW / 2;
+                int upY = H - 120 - upH;
+                g.setColor(new java.awt.Color(0xFF, 0xD7, 0x00));
+                g.setStroke(new java.awt.BasicStroke(5, java.awt.BasicStroke.CAP_ROUND, java.awt.BasicStroke.JOIN_ROUND));
+                // post
+                g.drawLine(W / 2, H - 120, W / 2, upY + 60);
+                // crossbar
+                g.drawLine(upX, upY + 60, upX + upW, upY + 60);
+                // left upright
+                g.drawLine(upX, upY + 60, upX, upY);
+                // right upright
+                g.drawLine(upX + upW, upY + 60, upX + upW, upY);
+
+                // ── Wind indicator ─────────────────────────────────────────────
+                int windPanelX = 10, windPanelY = 10, windPanelW = 190, windPanelH = 64;
+                g.setColor(new java.awt.Color(0, 0, 0, 170));
+                g.fillRoundRect(windPanelX, windPanelY, windPanelW, windPanelH, 10, 10);
+                g.setColor(new java.awt.Color(0xA7, 0x19, 0x30));
+                g.setStroke(new java.awt.BasicStroke(1.5f));
+                g.drawRoundRect(windPanelX, windPanelY, windPanelW, windPanelH, 10, 10);
+
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 11));
+                g.setColor(new java.awt.Color(0xFF, 0xD7, 0x00));
+                g.drawString("💨 WIND", windPanelX + 8, windPanelY + 16);
+
+                // Crosswind bar
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 10));
+                g.setColor(java.awt.Color.WHITE);
+                g.drawString("Cross:", windPanelX + 8, windPanelY + 32);
+                int barW = 110, barH = 8;
+                int barX = windPanelX + 55, barY = windPanelY + 24;
+                g.setColor(new java.awt.Color(0x44, 0x44, 0x44));
+                g.fillRoundRect(barX, barY, barW, barH, 4, 4);
+                // wind fill: center=neutral, left=negative, right=positive
+                double cwNorm = (windX[0] + 3.0) / 6.0; // 0..1
+                int fillX   = (int)(barX + barW/2.0);
+                int fillW2  = (int)((cwNorm - 0.5) * barW);
+                java.awt.Color cwColor = Math.abs(windX[0]) < 0.5
+                    ? new java.awt.Color(0x66, 0xFF, 0x88)
+                    : new java.awt.Color(0xFF, 0x88, 0x22);
+                g.setColor(cwColor);
+                if (fillW2 >= 0)
+                    g.fillRoundRect(fillX, barY, fillW2, barH, 4, 4);
+                else
+                    g.fillRoundRect(fillX + fillW2, barY, -fillW2, barH, 4, 4);
+                // center tick
+                g.setColor(java.awt.Color.WHITE);
+                g.fillRect(barX + barW/2, barY - 1, 2, barH + 2);
+
+                String cwLabel = windX[0] > 0.5 ? "→ Right" : windX[0] < -0.5 ? "← Left" : "Calm";
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 9));
+                g.setColor(cwColor);
+                g.drawString(cwLabel, barX + barW + 4, barY + 8);
+
+                // Headwind/tailwind
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 10));
+                g.setColor(java.awt.Color.WHITE);
+                g.drawString("Depth:", windPanelX + 8, windPanelY + 52);
+                String hwLabel;
+                java.awt.Color hwColor;
+                if      (windZ[0] >  1.0) { hwLabel = "↑ Tailwind (strong)"; hwColor = new java.awt.Color(0x00, 0xCC, 0x44); }
+                else if (windZ[0] >  0.1) { hwLabel = "↑ Tailwind";          hwColor = new java.awt.Color(0x66, 0xFF, 0x88); }
+                else if (windZ[0] < -1.0) { hwLabel = "↓ Headwind (strong)"; hwColor = new java.awt.Color(0xFF, 0x44, 0x44); }
+                else if (windZ[0] < -0.1) { hwLabel = "↓ Headwind";          hwColor = new java.awt.Color(0xFF, 0xAA, 0x44); }
+                else                      { hwLabel = "Calm";                 hwColor = new java.awt.Color(0xA5, 0xAC, 0xAF); }
+                g.setColor(hwColor);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 10));
+                g.drawString(hwLabel, windPanelX + 55, windPanelY + 52);
+
+                // ── HUD top-right: kick counter ────────────────────────────────
+                g.setColor(new java.awt.Color(0, 0, 0, 170));
+                g.fillRoundRect(W - 160, 10, 150, 50, 10, 10);
+                g.setColor(new java.awt.Color(0xA7, 0x19, 0x30));
+                g.setStroke(new java.awt.BasicStroke(1.5f));
+                g.drawRoundRect(W - 160, 10, 150, 50, 10, 10);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
+                g.setColor(java.awt.Color.WHITE);
+                g.drawString("Kick " + (kickNum[0] + 1) + " of " + TOTAL_KICKS, W - 148, 32);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 11));
+                g.setColor(new java.awt.Color(0xFF, 0xD7, 0x00));
+                g.drawString("Made: " + madeArr[0] + "  |  " + DIST_LABELS[Math.min(kickNum[0], TOTAL_KICKS-1)], W - 148, 50);
+
+                // ── Aim arrow from ball ────────────────────────────────────────
+                if (state[0] == 0 || state[0] == 1) {
+                    double ax = ballX[0] + Math.sin(aimAngle[0]) * 55;
+                    double ay = ballY[0] - Math.cos(aimAngle[0]) * 55;
+                    g.setColor(new java.awt.Color(0xFF, 0xD7, 0x00, 200));
+                    g.setStroke(new java.awt.BasicStroke(2.5f, java.awt.BasicStroke.CAP_ROUND, java.awt.BasicStroke.JOIN_ROUND));
+                    g.drawLine((int)ballX[0], (int)ballY[0], (int)ax, (int)ay);
+                    // arrowhead
+                    double dx = ax - ballX[0], dy = ay - ballY[0];
+                    double len = Math.sqrt(dx*dx+dy*dy);
+                    dx/=len; dy/=len;
+                    int[] px = {(int)ax, (int)(ax - dx*10 + dy*5), (int)(ax - dx*10 - dy*5)};
+                    int[] py = {(int)ay, (int)(ay - dy*10 - dx*5), (int)(ay - dy*10 + dx*5)};
+                    g.fillPolygon(px, py, 3);
+                }
+
+                // ── Power bar ──────────────────────────────────────────────────
+                int pbX = W - 28, pbY = H - 300, pbW = 18, pbH = 200;
+                g.setColor(new java.awt.Color(0, 0, 0, 160));
+                g.fillRoundRect(pbX - 2, pbY - 2, pbW + 4, pbH + 4, 6, 6);
+                g.setColor(new java.awt.Color(0x33, 0x33, 0x33));
+                g.fillRoundRect(pbX, pbY, pbW, pbH, 4, 4);
+                int fillH = (int)(power[0] * pbH);
+                java.awt.Color barColor = power[0] < 0.5
+                    ? new java.awt.Color(0x22, 0xCC, 0x44)
+                    : power[0] < 0.85
+                        ? new java.awt.Color(0xFF, 0xCC, 0x00)
+                        : new java.awt.Color(0xFF, 0x33, 0x33);
+                g.setColor(barColor);
+                g.fillRoundRect(pbX, pbY + pbH - fillH, pbW, fillH, 4, 4);
+                // label
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 9));
+                g.setColor(java.awt.Color.WHITE);
+                g.drawString("PWR", pbX, pbY - 4);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 9));
+                g.drawString("↑↓", pbX + 2, pbY + pbH + 12);
+
+                // ── Ball ──────────────────────────────────────────────────────
+                // Scale: as ballZ grows (ball going upfield), draw ball higher and smaller
+                double perspective = Math.min(1.0, ballZ[0] / 400.0);
+                int ballRadius = Math.max(4, (int)(12 * (1.0 - perspective * 0.6)));
+                int drawBX = (int)ballX[0];
+                int drawBY = (int)(ballY[0] - ballZ[0] * 0.55); // perspective lift
+
+                // shadow on field
+                if (drawBY < H - 80) {
+                    g.setColor(new java.awt.Color(0, 0, 0, 80));
+                    g.fillOval(drawBX - ballRadius, H - 100, ballRadius * 2, 6);
+                }
+
+                g.setColor(new java.awt.Color(0xC4, 0x7C, 0x25));
+                g.fillOval(drawBX - ballRadius, drawBY - ballRadius, ballRadius * 2, ballRadius * 2);
+                g.setColor(new java.awt.Color(0xFF, 0xFF, 0xFF, 160));
+                g.setStroke(new java.awt.BasicStroke(1.0f));
+                g.drawOval(drawBX - ballRadius + 1, drawBY - ballRadius + 1, ballRadius * 2 - 2, ballRadius * 2 - 2);
+
+                // ── Controls hint at bottom ────────────────────────────────────
+                g.setColor(new java.awt.Color(0, 0, 0, 180));
+                g.fillRect(0, H - 28, W, 28);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 11));
+                g.setColor(new java.awt.Color(0xA5, 0xAC, 0xAF));
+                if (state[0] == 0)
+                    g.drawString("← → Aim   |   ↑ ↓ Charge Power   |   SPACE = Kick!", 20, H - 10);
+                else if (state[0] == 1)
+                    g.drawString("Hold ↑ to charge power, ↓ to reduce   |   SPACE = Kick!", 20, H - 10);
+                else if (state[0] == 2)
+                    g.drawString("Ball in flight... 🏈", 20, H - 10);
+                else if (state[0] == 3) {
+                    g.setColor(resultGood[0] ? new java.awt.Color(0x00, 0xCC, 0x44) : new java.awt.Color(0xFF, 0x44, 0x44));
+                    g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 13));
+                    g.drawString(resultMsg[0] + "   (SPACE to continue)", 20, H - 10);
+                }
+
+                // ── "Aiming" label under arrow ─────────────────────────────────
+                if (state[0] == 0) {
+                    g.setFont(new java.awt.Font("Arial", java.awt.Font.ITALIC, 11));
+                    g.setColor(new java.awt.Color(0xFF, 0xD7, 0x00, 180));
+                    g.drawString("AIMING", (int)ballX[0] - 22, (int)ballY[0] + 18);
+                } else if (state[0] == 1) {
+                    g.setFont(new java.awt.Font("Arial", java.awt.Font.ITALIC, 11));
+                    g.setColor(barColor);
+                    g.drawString("CHARGING", (int)ballX[0] - 28, (int)ballY[0] + 18);
+                }
+            }
+        };
+        canvas.setPreferredSize(new java.awt.Dimension(W, H));
+        canvas.setBackground(java.awt.Color.BLACK);
+        canvas.setFocusable(true);
+
+        // ── Key bindings ───────────────────────────────────────────────────────
+        canvas.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override public void keyPressed(java.awt.event.KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case java.awt.event.KeyEvent.VK_LEFT:  leftHeld[0]  = true; break;
+                    case java.awt.event.KeyEvent.VK_RIGHT: rightHeld[0] = true; break;
+                    case java.awt.event.KeyEvent.VK_UP:    upHeld[0]    = true; break;
+                    case java.awt.event.KeyEvent.VK_DOWN:  downHeld[0]  = true; break;
+                    case java.awt.event.KeyEvent.VK_SPACE:
+                        if (state[0] == 0 || state[0] == 1) {
+                            // KICK!
+                            if (!kicked[0] && power[0] > 0.02) {
+                                kicked[0] = true;
+                                state[0]  = 2;
+                                // Compute velocity from aim and power
+                                // base speed proportional to power; wind modifies Z
+                                double kickSpeed = 8.0 + power[0] * 14.0 + windZ[0] * 0.8;
+                                velX[0] = Math.sin(aimAngle[0]) * kickSpeed;
+                                velZ[0] = kickSpeed * 1.4; // forward velocity
+                                velY[0] = -(kickSpeed * 0.5); // upward
+                            }
+                        } else if (state[0] == 3) {
+                            // Advance to next kick or game over
+                            kickNum[0]++;
+                            if (kickNum[0] >= TOTAL_KICKS) {
+                                state[0] = 4;
+                            } else {
+                                initKick.run();
+                            }
+                        }
+                        break;
+                }
+            }
+            @Override public void keyReleased(java.awt.event.KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case java.awt.event.KeyEvent.VK_LEFT:  leftHeld[0]  = false; break;
+                    case java.awt.event.KeyEvent.VK_RIGHT: rightHeld[0] = false; break;
+                    case java.awt.event.KeyEvent.VK_UP:    upHeld[0]    = false; break;
+                    case java.awt.event.KeyEvent.VK_DOWN:  downHeld[0]  = false; break;
+                }
+            }
+        });
+
+        gf.setContentPane(canvas);
+        gf.pack();
+        gf.setLocationRelativeTo(null);
+        gf.setVisible(true);
+        canvas.requestFocusInWindow();
+
+        // ── Game loop ──────────────────────────────────────────────────────────
+        final int TARGET_FPS = 60;
+        final long FRAME_MS  = 1000 / TARGET_FPS;
+
+        // Uprights geometry (must match paint)
+        final int upW = 100, upH = 180;
+        final int upX = W / 2 - upW / 2;
+        final int crossbarY = (H - 120) - upH + 60; // screen Y of crossbar
+
+        while (gf.isVisible() && state[0] != 4) {
+            long t0 = System.currentTimeMillis();
+
+            if (state[0] == 0) {
+                // Aiming phase
+                if (leftHeld[0])  aimAngle[0] = Math.max(-0.45, aimAngle[0] - 0.025);
+                if (rightHeld[0]) aimAngle[0] = Math.min( 0.45, aimAngle[0] + 0.025);
+                if (upHeld[0] || downHeld[0]) state[0] = 1; // switch to charging
+            } else if (state[0] == 1) {
+                // Charging phase — can still aim
+                if (leftHeld[0])  aimAngle[0] = Math.max(-0.45, aimAngle[0] - 0.015);
+                if (rightHeld[0]) aimAngle[0] = Math.min( 0.45, aimAngle[0] + 0.015);
+                if (upHeld[0])   power[0] = Math.min(1.0, power[0] + 0.018);
+                if (downHeld[0]) power[0] = Math.max(0.0, power[0] - 0.018);
+            } else if (state[0] == 2) {
+                // Flight phase
+                // Apply crosswind drift
+                velX[0] += windX[0] * 0.012;
+                // Gravity on Y (visual up component)
+                velY[0] += 0.22;
+                // Update positions
+                ballX[0] += velX[0];
+                ballY[0] += velY[0];
+                ballZ[0] += velZ[0];
+                velZ[0]  *= 0.985; // air resistance
+
+                // Perspective screen Y: lift ball as Z increases
+                double drawBY = ballY[0] - ballZ[0] * 0.55;
+
+                // Check if ball has gone far enough (Z) to reach upright plane
+                // The uprights are drawn at H-120-upH in screen space ≈ Z ~350
+                boolean reachedUprights = ballZ[0] > 300;
+
+                // Also detect if ball hits ground visually
+                boolean hitGround = drawBY > H - 90 && ballZ[0] > 50;
+
+                if (reachedUprights) {
+                    // Did it pass between uprights and above crossbar?
+                    boolean withinX = ballX[0] > upX + 6 && ballX[0] < upX + upW - 6;
+                    double perspY   = ballY[0] - ballZ[0] * 0.55;
+                    boolean aboveCrossbar = perspY < crossbarY;
+
+                    if (withinX && aboveCrossbar) {
+                        resultMsg[0]  = "✅  IT'S GOOD!  RISE UP! 🦅";
+                        resultGood[0] = true;
+                        madeArr[0]++;
+                    } else if (!withinX) {
+                        double missDir = ballX[0] <= upX + 6 ? -1 : 1;
+                        resultMsg[0]  = missDir < 0 ? "❌  NO GOOD — Wide Left!" : "❌  NO GOOD — Wide Right!";
+                        resultGood[0] = false;
+                    } else {
+                        resultMsg[0]  = "❌  NO GOOD — Under the Bar!";
+                        resultGood[0] = false;
+                    }
+                    state[0] = 3;
+                    resultTimer[0] = 0;
+                } else if (hitGround) {
+                    resultMsg[0]  = "❌  NO GOOD — Ball Fell Short!";
+                    resultGood[0] = false;
+                    state[0] = 3;
+                    resultTimer[0] = 0;
+                }
+            } else if (state[0] == 3) {
+                resultTimer[0]++;
+            }
+
+            canvas.repaint();
+
+            long elapsed = System.currentTimeMillis() - t0;
+            long sleep   = FRAME_MS - elapsed;
+            if (sleep > 0) {
+                try { Thread.sleep(sleep); } catch (InterruptedException ignored) {}
+            }
+        }
+
+        gf.dispose();
+
+        // ── Final results dialog ───────────────────────────────────────────────
+        if (state[0] == 4 || !gf.isVisible()) {
+            int made = madeArr[0];
+            String rating, ratingColor;
+            if      (made == 5) { rating = "🏆 PERFECT! You're a Pro Bowler!";      ratingColor = "#FFD700"; }
+            else if (made >= 4) { rating = "⭐ Excellent! Starting caliber!";        ratingColor = "#A71930"; }
+            else if (made >= 3) { rating = "👍 Solid! You made the roster!";         ratingColor = "#A71930"; }
+            else if (made >= 2) { rating = "😬 Needs work — Practice squad for you!";ratingColor = "#A5ACAF"; }
+            else                { rating = "😅 You're cut! Back to tryouts!";         ratingColor = "#A5ACAF"; }
+
+            JOptionPane.showMessageDialog(null,
+                "<html><body style='width:340px;background-color:#000000;color:#FFFFFF;text-align:center;font-family:Arial,sans-serif;'>" +
+                "<div style='background-color:#A71930;padding:15px;margin-bottom:15px;'>" +
+                "<h2 style='color:#FFFFFF;margin:5px;'>🏈 FINAL RESULTS 🏈</h2>" +
+                "</div>" +
+                "<p style='font-size:32px;font-weight:bold;color:#FFFFFF;margin:15px;'>" + made + " / 5 Made</p>" +
+                "<p style='font-size:15px;color:" + ratingColor + ";font-weight:bold;margin:10px;'>" + rating + "</p>" +
+                "<div style='margin-top:15px;padding:10px;background-color:#A71930;'>" +
+                "<b style='color:#FFFFFF;'>RISE UP! 🦅</b>" +
+                "</div>" +
                 "</body></html>",
-                ord(down) + " & " + toGo, javax.swing.JOptionPane.QUESTION_MESSAGE,
-                null, playOptions, playOptions[0]);
-            if (playPick == null) return;
-
-            String[][] skillPool = playPick.startsWith("Pass") ? filterByPos("WR","TE") : filterByPos("RB");
-            String role = playPick.startsWith("Pass") ? "Target Receiver" : "Ball Carrier";
-            String[] skillNames = new String[skillPool.length];
-            for (int i = 0; i < skillPool.length; i++) {
-                String[] p = skillPool[i];
-                skillNames[i] = p[0] + " (" + p[2] + " #" + p[1] + ")  SPD:" + p[SPD] + " CAT:" + p[CAT];
-            }
-            String skillPick = (String) javax.swing.JOptionPane.showInputDialog(
-                null, hdr("Choose " + role),
-                role, javax.swing.JOptionPane.QUESTION_MESSAGE, null, skillNames, skillNames[0]);
-            if (skillPick == null) return;
-            String[] skill = skillPool[indexOf(skillNames, skillPick)];
-
-            int[] res = simOff(playPick, qb, skill);
-            int gain = res[0]; boolean to = res[1]==1, sack = res[2]==1;
-            plays++;
-
-            String desc;
-            if (to) {
-                desc = "TURNOVER! " + qb[0] + " — ball lost!";
-                log.append("\n").append(ord(down)).append("&").append(toGo).append(": ").append(desc);
-                javax.swing.JOptionPane.showMessageDialog(null, result("💔 TURNOVER!", desc + "\nThe defense takes the ball. Drive ended.", false), "Turnover!", javax.swing.JOptionPane.ERROR_MESSAGE);
-                return;
-            } else if (sack) {
-                gain = -(3 + RNG.nextInt(8));
-                desc = "SACK! " + qb[0] + " goes down for " + Math.abs(gain) + " yds.";
-            } else if (playPick.startsWith("Pass")) {
-                desc = qb[0] + " finds " + skill[0] + " for " + gain + " yards.";
-            } else {
-                desc = skill[0] + " rushes for " + gain + " yards.";
-            }
-            yard = Math.max(0, yard + gain);
-            toGo = Math.max(0, toGo - gain);
-            log.append("\n").append(ord(down)).append("&").append((toGo+gain)).append(": ").append(desc);
-
-            if (yard >= 100) {
-                javax.swing.JOptionPane.showMessageDialog(null,
-                    result("🎉 TOUCHDOWN! RISE UP! 🦅",
-                        skill[0] + " punches it in!\n\nQB: " + qb[0] + "\nPlays: " + plays + "\n\nRISE UP! 🦅", true),
-                    "TOUCHDOWN!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                return;
-            }
-            if (toGo <= 0) {
-                down = 1; toGo = Math.min(10, 100 - yard);
-                javax.swing.JOptionPane.showMessageDialog(null, result("✅ FIRST DOWN!", desc + "\n\nNew set of downs! Ball on own " + yard + " yd line.", true), "First Down!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                down++;
-                if (down > 4) {
-                    javax.swing.JOptionPane.showMessageDialog(null, result("😔 TURNOVER ON DOWNS", "Failed to convert on 4th down.\nDrive ended at own " + yard + " yd line.\nTotal plays: " + plays, false), "Downs", javax.swing.JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-            }
+                "Field Goal Game — Results", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
-    static void playDefense() {
-        int yard = 20, down = 1, toGo = 10, plays = 0;
-        StringBuilder log = new StringBuilder();
 
-        String[][] defs = filterByPos("CB","LB","DE","FS","SAF","DT");
-        String[] defNames = new String[defs.length];
-        for (int i = 0; i < defs.length; i++) {
-            String[] p = defs[i];
-            defNames[i] = p[0] + " (" + p[2] + " #" + p[1] + ")  COV:" + p[COV] + " SPD:" + p[SPD] + " PWR:" + p[PWR];
-        }
-        String defPick = (String) javax.swing.JOptionPane.showInputDialog(
-            null, hdr("Choose Your Defensive Player"),
-            "Select Defender", javax.swing.JOptionPane.QUESTION_MESSAGE, null, defNames, defNames[0]);
-        if (defPick == null) return;
-        String[] def = defs[indexOf(defNames, defPick)];
+    // ═══════════════════════════════════════════════════════════════════════════
+    //  RB JUKE RUN — Offense only, RBs only
+    // ═══════════════════════════════════════════════════════════════════════════
+    private static void playRBJukeRun() {
 
-        while (yard < 100) {
-            String[] defPlays = {
-                "Blitz — Rush the QB",
-                "Zone Cover — Drop into zone",
-                "Man Coverage — Shadow receiver",
-                "Spy — Watch for scramble"
-            };
-            String defCall = (String) javax.swing.JOptionPane.showInputDialog(null,
-                "<html><body style='width:440px;background:#0D0D0D;color:#FFF;font-family:Arial;'>" +
-                "<div style='background:#1A3A6A;padding:10px;text-align:center;margin-bottom:8px;'>" +
-                "<b style='font-size:16px;color:#FFF;'>🛡️ DEFENSE — STOP THE OFFENSE</b></div>" +
-                "<pre style='color:#7EC87E;font-size:11px;font-family:monospace;background:#0a200a;padding:6px;border:1px solid #228B22;border-radius:4px;'>" + field(yard) + "</pre>" +
-                "<table style='width:100%;color:#FFF;font-size:13px;border-collapse:collapse;'>" +
-                "<tr style='background:#1A1A1A;'><td style='padding:4px 8px;'><b style='color:#6AADFF;'>Down &amp; Distance:</b></td><td style='padding:4px;'><b>" + ord(down) + " &amp; " + toGo + "</b></td></tr>" +
-                "<tr><td style='padding:4px 8px;'><b style='color:#6AADFF;'>Ball on:</b></td><td style='padding:4px;'>Opp " + yard + " yard line</td></tr>" +
-                "<tr style='background:#1A1A1A;'><td style='padding:4px 8px;'><b style='color:#6AADFF;'>Your Player:</b></td><td style='padding:4px;'>" + def[0] + " #" + def[1] + " | COV:" + def[COV] + " SPD:" + def[SPD] + " PWR:" + def[PWR] + "</td></tr>" +
-                "</table>" +
-                "<div style='margin:8px 0;padding:6px;background:#111;border-left:3px solid #1A3A6A;font-size:11px;color:#A5ACAF;'>" + lastLines(log.toString(),3) + "</div>" +
-                "<p style='color:#FFF;font-size:13px;'>🛡️ Choose your defensive call:</p>" +
-                "</body></html>",
-                ord(down) + " & " + toGo, javax.swing.JOptionPane.QUESTION_MESSAGE,
-                null, defPlays, defPlays[0]);
-            if (defCall == null) return;
+        // ── RB roster ─────────────────────────────────────────────────────────
+        String[] rbNames   = {"Bijan Robinson #7", "Tyler Allgeier #25", "Nate Carter #38"};
+        String[] rbDescs   = {"Elite vision & burst — top-10 RB in NFL", "Powerful runner, north-south style", "Rookie speedster — raw but fast"};
+        double[] rbSpeeds  = {4.2, 3.9, 4.5};   // base move speed
+        double[] rbJukes   = {1.0, 0.7, 0.85};  // juke effectiveness multiplier
 
-            int[] res = simDef(defCall, def);
-            int gain = res[0]; boolean to = res[1]==1, sack = res[2]==1, inc = res[3]==1;
-            plays++;
-
-            String desc;
-            if (to) {
-                desc = "INTERCEPTION / FUMBLE by " + def[0] + "! Falcons ball!";
-                log.append("\n").append(ord(down)).append("&").append(toGo).append(": ").append(desc);
-                javax.swing.JOptionPane.showMessageDialog(null, result("🦅 TURNOVER! RISE UP!", desc + "\n\nYou forced a turnover — Falcons take over!", true), "Turnover!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                return;
-            } else if (sack) {
-                gain = -(3 + RNG.nextInt(8));
-                desc = "SACK by " + def[0] + "! Loss of " + Math.abs(gain) + " yards!";
-            } else if (inc) {
-                gain = 0; desc = "Incomplete pass! " + def[0] + " breaks it up!";
-            } else if (gain <= 2) {
-                desc = def[0] + " makes the stop! Gain of only " + gain + " yds.";
-            } else {
-                desc = "Offense gains " + gain + " yards.";
-            }
-            yard = Math.max(0, yard + gain);
-            toGo = Math.max(0, toGo - gain);
-            log.append("\n").append(ord(down)).append("&").append((toGo+gain)).append(": ").append(desc);
-
-            if (yard >= 100) {
-                javax.swing.JOptionPane.showMessageDialog(null, result("😔 TOUCHDOWN ALLOWED", "The offense scored.\nYour player: " + def[0] + "\nTotal plays: " + plays + "\n\nBetter luck next drive.", false), "TD Allowed", javax.swing.JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            if (toGo <= 0) {
-                down = 1; toGo = Math.min(10, 100 - yard);
-                javax.swing.JOptionPane.showMessageDialog(null, result("📣 Offense First Down", desc + "\n\nOffense moves to opp " + yard + " yd line.", false), "First Down", javax.swing.JOptionPane.WARNING_MESSAGE);
-            } else {
-                down++;
-                if (down > 4) {
-                    javax.swing.JOptionPane.showMessageDialog(null, result("🦅 STOP ON DOWNS! RISE UP!", "Offense failed to convert!\nYou held them at opp " + yard + " yd line!\nTotal plays: " + plays, true), "Defensive Stop!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                    return;
-                }
-            }
-        }
-    }
-
-    // returns [gain, turnover, sack]
-    static int[] simOff(String play, String[] qb, String[] skill) {
-        int qbAwr = Integer.parseInt(qb[AWR]), qbSpd = Integer.parseInt(qb[SPD]);
-        int sklSpd = Integer.parseInt(skill[SPD]), sklCat = Integer.parseInt(skill[CAT]), sklPwr = Integer.parseInt(skill[PWR]);
-        if (play.contains("Deep")  && RNG.nextInt(100) < 12) return new int[]{0,0,1};
-        if (play.contains("Short") && RNG.nextInt(100) < 6)  return new int[]{0,0,1};
-        int toChance = play.contains("Deep") ? 8 : play.contains("Short") ? 4 : 3;
-        if (RNG.nextInt(100) < toChance) return new int[]{0,1,0};
-        int gain;
-        if      (play.contains("Short"))  gain = 4  + RNG.nextInt(9)  + (qbAwr + sklCat) / 26;
-        else if (play.contains("Deep"))   gain = 10 + RNG.nextInt(26) + (sklSpd + sklCat) / 22;
-        else if (play.contains("Inside")) gain = RNG.nextInt(9) + (sklPwr + sklSpd) / 24;
-        else                              gain = RNG.nextInt(14) + (sklSpd * 2) / 24;
-        return new int[]{Math.max(-1, gain - 2), 0, 0};
-    }
-
-    // returns [gain, turnover, sack, incomplete]
-    static int[] simDef(String call, String[] def) {
-        int cov = Integer.parseInt(def[COV]), spd = Integer.parseInt(def[SPD]);
-        int pwr = Integer.parseInt(def[PWR]), awr = Integer.parseInt(def[AWR]);
-        if (RNG.nextInt(100) < (call.contains("Man") ? cov/15 : call.contains("Zone") ? cov/18 : 3)) return new int[]{0,1,0,0};
-        if (call.contains("Blitz") && RNG.nextInt(100) < 20 + (pwr+spd)/10) return new int[]{0,0,1,0};
-        int incThresh = call.contains("Man") ? 20+cov/10 : call.contains("Zone") ? 15+cov/12 : call.contains("Spy") ? 12+awr/14 : 8;
-        if (RNG.nextInt(100) < incThresh) return new int[]{0,0,0,1};
-        int base = call.contains("Blitz") ? 8+RNG.nextInt(14) : call.contains("Man") ? 3+RNG.nextInt(10) : call.contains("Zone") ? 4+RNG.nextInt(12) : 5+RNG.nextInt(10);
-        return new int[]{Math.max(0, base - (cov+spd)/25), 0, 0, 0};
-    }
-
-    static String field(int yard) {
-        // 51 chars = 0..100, each char = ~2 yards
-        StringBuilder sb = new StringBuilder();
-        sb.append("EZ|");
-        int ballPos = yard / 2;
-        for (int i = 0; i < 50; i++) {
-            if (i == ballPos)      sb.append("O");   // ball
-            else if (i % 10 == 0) sb.append("|");
-            else if (i % 5 == 0)  sb.append(":");
-            else                   sb.append(".");
-        }
-        sb.append("|EZ\n");
-        sb.append("0   10   20   30   40   50   60   70   80   90  100");
-        return sb.toString();
-    }
-
-    static String[][] filterByPos(String... positions) {
-        java.util.Set<String> set = new java.util.HashSet<>(java.util.Arrays.asList(positions));
-        java.util.List<String[]> out = new java.util.ArrayList<>();
-        for (String[] p : PLAYERS) if (set.contains(p[2])) out.add(p);
-        return out.toArray(new String[0][]);
-    }
-
-    static int indexOf(String[] arr, String val) {
-        for (int i = 0; i < arr.length; i++) if (arr[i].equals(val)) return i;
-        return 0;
-    }
-
-    static String ord(int n) {
-        return n==1?"1st":n==2?"2nd":n==3?"3rd":n+"th";
-    }
-
-    static String lastLines(String s, int n) {
-        if (s.isEmpty()) return "— No plays yet —";
-        String[] lines = s.split("\n");
-        StringBuilder sb = new StringBuilder();
-        for (int i = Math.max(0, lines.length-n); i < lines.length; i++)
-            if (!lines[i].isEmpty()) sb.append(lines[i]).append("<br>");
-        return sb.length()==0 ? "—" : sb.toString();
-    }
-
-    static String hdr(String t) {
-        return "<html><body style='width:380px;background:#0D0D0D;color:#FFF;text-align:center;font-family:Arial;'>" +
-               "<div style='background:#A71930;padding:12px;margin-bottom:10px;'>" +
-               "<h3 style='color:#FFF;margin:4px;'>🏈 " + t + "</h3></div></body></html>";
-    }
-
-    static String result(String heading, String body, boolean win) {
-        String bg = win ? "#0D3B0D" : "#3B0D0D";
-        String bd = win ? "#5DBB63" : "#FF6B6B";
-        return "<html><body style='width:400px;background:#0D0D0D;color:#FFF;font-family:Arial;text-align:center;'>" +
-               "<div style='background:" + bg + ";padding:14px;margin-bottom:10px;border:2px solid " + bd + ";border-radius:4px;'>" +
-               "<h2 style='color:#FFF;margin:4px;'>" + heading + "</h2></div>" +
-               "<p style='color:#FFF;white-space:pre-line;font-size:13px;padding:8px;'>" + body + "</p>" +
-               "</body></html>";
-    }
-}
-
-// ══════════════════════════════════════════════════════════════════════════════
-//  FIELD GOAL GAME
-// ══════════════════════════════════════════════════════════════════════════════
-class FieldGoalGame {
-
-    static java.util.Random RNG = new java.util.Random();
-
-    static void launch() {
-        // Intro
-        int start = javax.swing.JOptionPane.showConfirmDialog(null,
-            "<html><body style='width:380px;background:#0D0D0D;color:#FFF;font-family:Arial;text-align:center;'>" +
+        // ── Intro / player select ─────────────────────────────────────────────
+        int pick = JOptionPane.showOptionDialog(null,
+            "<html><body style='width:420px;background:#000;color:#fff;text-align:center;font-family:Arial,sans-serif;'>" +
             "<div style='background:#A71930;padding:14px;margin-bottom:12px;'>" +
-            "<h2 style='color:#FFF;margin:4px;'>\U0001f3c6 FIELD GOAL CHALLENGE</h2>" +
-            "<p style='color:#FFF;font-size:12px;margin:2px;'>Atlanta Falcons</p></div>" +
-            "<p style='color:#FFF;font-size:13px;'>Start at the <b>10 yard line</b> and kick your way to <b>80 yards</b>!</p>" +
-            "<div style='background:#1A1A1A;padding:10px;margin:10px 0;border:1px solid #A71930;font-size:12px;color:#A5ACAF;text-align:left;'>" +
-            "\u2022 Each successful kick moves you <b>+10 yards</b><br>" +
-            "\u2022 You get <b>3 tries</b> per distance<br>" +
-            "\u2022 Wind affects every kick<br>" +
-            "\u2022 Kick from 10 yd line all the way to 80 yds<br>" +
-            "\u2022 Miss all 3 tries \u2014 game over!</div>" +
-            "<div style='background:#A71930;padding:8px;'><b style='color:#FFF;'>RISE UP! \U0001f985</b></div>" +
+            "<h2 style='color:#fff;margin:4px;'>🏃 RB JUKE RUN 🏃</h2>" +
+            "<p style='color:#fff;margin:4px;font-size:12px;'>Falcons Running Back Challenge</p></div>" +
+            "<p style='color:#fff;font-size:13px;margin:10px;'>Break tackles, juke defenders, reach the end zone!<br>" +
+            "You have <b style='color:#FFD700;'>3 downs</b> — score as many TDs as you can!</p>" +
+            "<div style='background:#1a1a1a;padding:10px;border:2px solid #A71930;margin:8px 0;text-align:left;'>" +
+            "<p style='color:#FFD700;font-weight:bold;margin:4px;'>CONTROLS:</p>" +
+            "<p style='color:#A5ACAF;font-size:12px;margin:4px;'>" +
+            "⬆️⬇️⬅️➡️ <b>Arrow Keys</b> — Run<br>" +
+            "🕹️ <b>SPACE</b> — JUKE! (brief speed burst + direction shift)</p></div>" +
+            "<p style='color:#A5ACAF;font-size:12px;margin:8px;'>Choose your running back:</p>" +
             "</body></html>",
-            "Field Goal Challenge", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE);
-        if (start != javax.swing.JOptionPane.YES_OPTION) return;
+            "RB Juke Run — Pick Your RB",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+            null, rbNames, rbNames[0]);
 
-        int yardLine   = 10;   // current kick distance
-        int maxYards   = 80;
-        int bestMade   = 0;
+        if (pick < 0) return;
 
-        while (yardLine <= maxYards) {
-            int triesLeft = 3;
-            boolean madeIt = false;
+        String chosenName  = rbNames[pick];
+        double chosenSpeed = rbSpeeds[pick];
+        double chosenJuke  = rbJukes[pick];
 
-            while (triesLeft > 0 && !madeIt) {
-                // Generate wind: direction (Left/Right/None) and speed 0-20 mph
-                int windSpeed = RNG.nextInt(21);
-                String windDir;
-                int windEffect; // negative = pushes left, positive = pushes right
-                int dirRoll = RNG.nextInt(3);
-                if (dirRoll == 0 || windSpeed == 0) {
-                    windDir = "None"; windEffect = 0;
-                } else if (dirRoll == 1) {
-                    windDir = "Left \u2190"; windEffect = -windSpeed;
-                } else {
-                    windDir = "Right \u2192"; windEffect = windSpeed;
+        // ── Game frame ────────────────────────────────────────────────────────
+        final int W = 720, H = 560;
+        final int FIELD_TOP    = 65;
+        final int FIELD_BOTTOM = H - 45;
+        final int EZ_HEIGHT    = 65;
+
+        final java.awt.Color RED    = new java.awt.Color(0xA7, 0x19, 0x30);
+        final java.awt.Color GOLD   = new java.awt.Color(0xFF, 0xD7, 0x00);
+        final java.awt.Color GRASS1 = new java.awt.Color(0x2E, 0x7D, 0x32);
+        final java.awt.Color GRASS2 = new java.awt.Color(0x38, 0x8E, 0x3C);
+        final java.awt.Color BLACK  = new java.awt.Color(0x10, 0x10, 0x10);
+        final java.awt.Color SILVER = new java.awt.Color(0xA5, 0xAC, 0xAF);
+
+        // ── State ─────────────────────────────────────────────────────────────
+        final int   MAX_DOWNS   = 3;
+        final int   NUM_DEF     = 4;   // 4 defenders
+        final int[] downs       = {0};
+        final int[] touchdowns  = {0};
+        final int[] totalScore  = {0};
+
+        // Player
+        final double[] px = {W / 2.0};
+        final double[] py = {FIELD_BOTTOM - 35.0};
+        final double[] jukeVX = {0};   // juke horizontal boost
+        final double[] jukeVY = {0};   // juke vertical boost
+        final int[]    jukeTimer = {0};
+        final boolean[] juking   = {false};
+
+        // Defenders
+        final double[] dx2 = new double[NUM_DEF];
+        final double[] dy2 = new double[NUM_DEF];
+
+        java.util.Random rng = new java.util.Random();
+
+        Runnable resetDown = () -> {
+            px[0] = W / 2.0 + (rng.nextDouble() - 0.5) * 80;
+            py[0] = FIELD_BOTTOM - 35.0;
+            juking[0]    = false;
+            jukeTimer[0] = 0;
+            jukeVX[0]    = 0;
+            jukeVY[0]    = 0;
+
+            // Spread defenders across upper field, different rows
+            double diffMult = 1.0 + downs[0] * 0.2;
+            for (int i = 0; i < NUM_DEF; i++) {
+                dx2[i] = 80 + (i * ((W - 160.0) / (NUM_DEF - 1)));
+                dy2[i] = FIELD_TOP + EZ_HEIGHT + 40 + (i % 2) * 80 + rng.nextInt(50);
+            }
+        };
+        resetDown.run();
+
+        // Keys
+        final boolean[] kL = {false}, kR = {false}, kU = {false}, kD = {false}, kSp = {false};
+        final boolean[] spWas = {false};
+
+        // Game state: 0=running, 1=td_pause, 2=tackle_pause, 3=gameover
+        final int[]     gState     = {0};
+        final int[]     pauseTimer = {0};
+        final String[]  pauseMsg   = {""};
+        final boolean[] pauseGood  = {false};
+
+        javax.swing.JFrame gf = new javax.swing.JFrame("🏃 RB Juke Run — " + chosenName);
+        gf.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+        gf.setResizable(false);
+
+        // Yard markers (static, computed once)
+        final int[] yardY = new int[5];
+        for (int i = 0; i < 5; i++)
+            yardY[i] = FIELD_TOP + EZ_HEIGHT + (int)((i + 1) * (FIELD_BOTTOM - FIELD_TOP - EZ_HEIGHT) / 6.0);
+
+        javax.swing.JPanel canvas = new javax.swing.JPanel() {
+            @Override
+            protected void paintComponent(java.awt.Graphics g0) {
+                super.paintComponent(g0);
+                java.awt.Graphics2D g = (java.awt.Graphics2D) g0;
+                g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,
+                                   java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+
+                // ── Grass stripes ──────────────────────────────────────────
+                int stripeH = 55;
+                for (int sy = FIELD_TOP + EZ_HEIGHT; sy < FIELD_BOTTOM; sy += stripeH) {
+                    int row = (sy - FIELD_TOP - EZ_HEIGHT) / stripeH;
+                    g.setColor(row % 2 == 0 ? GRASS1 : GRASS2);
+                    g.fillRect(0, sy, W, Math.min(stripeH, FIELD_BOTTOM - sy));
                 }
 
-                // Difficulty: harder at longer distances
-                // Base success % starts at 95% at 10 yds, drops ~1.2% per yard
-                double baseChance = 95.0 - (yardLine - 10) * 1.2;
-                // Wind penalty: each mph of wind reduces by 0.8%
-                double windPenalty = Math.abs(windEffect) * 0.8;
-                double successChance = Math.max(5.0, baseChance - windPenalty);
+                // ── End zone ───────────────────────────────────────────────
+                g.setColor(RED);
+                g.fillRect(0, FIELD_TOP, W, EZ_HEIGHT);
+                g.setColor(java.awt.Color.WHITE);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 22));
+                java.awt.FontMetrics fm = g.getFontMetrics();
+                String ezTxt = "FALCONS END ZONE 🦅";
+                g.drawString(ezTxt, (W - fm.stringWidth(ezTxt)) / 2, FIELD_TOP + 40);
 
-                // Build aim display — a simple crosshair shifted by wind
-                String aimDisplay = buildAim(windEffect);
+                // ── Crowd / sky above ──────────────────────────────────────
+                g.setColor(new java.awt.Color(0x10, 0x10, 0x30));
+                g.fillRect(0, 0, W, FIELD_TOP);
+                java.util.Random dotRng = new java.util.Random(7);
+                for (int d = 0; d < 140; d++) {
+                    g.setColor(new java.awt.Color(
+                        140 + dotRng.nextInt(115), dotRng.nextInt(40), dotRng.nextInt(40), 180));
+                    g.fillOval(dotRng.nextInt(W), dotRng.nextInt(FIELD_TOP - 2) + 1, 5, 5);
+                }
 
-                // Build uprights display
-                String uprightDisplay = buildUprights(yardLine);
+                // ── Yard lines & hash marks ────────────────────────────────
+                g.setColor(new java.awt.Color(255, 255, 255, 90));
+                g.setStroke(new java.awt.BasicStroke(1.5f));
+                for (int yy : yardY) {
+                    g.drawLine(0, yy, W, yy);
+                }
+                g.setColor(new java.awt.Color(255, 255, 255, 60));
+                g.setStroke(new java.awt.BasicStroke(1f));
+                int hcx = W / 2;
+                for (int sy = FIELD_TOP + EZ_HEIGHT + 20; sy < FIELD_BOTTOM; sy += 28) {
+                    g.drawLine(hcx - 18, sy, hcx - 5, sy);
+                    g.drawLine(hcx + 5,  sy, hcx + 18, sy);
+                }
 
-                // Show kick dialog
-                String[] kickOptions = {"KICK! \U0001f3c8"};
-                int kickChoice = javax.swing.JOptionPane.showOptionDialog(null,
-                    "<html><body style='width:440px;background:#0D0D0D;color:#FFF;font-family:Arial;'>" +
-                    "<div style='background:#A71930;padding:10px;text-align:center;margin-bottom:10px;'>" +
-                    "<b style='font-size:16px;color:#FFF;'>\U0001f3c6 FIELD GOAL CHALLENGE</b></div>" +
+                // ── Bottom / sideline areas ────────────────────────────────
+                g.setColor(BLACK);
+                g.fillRect(0, FIELD_BOTTOM, W, H - FIELD_BOTTOM);
+                g.setColor(RED);
+                g.setStroke(new java.awt.BasicStroke(3f));
+                g.drawRect(1, FIELD_TOP + EZ_HEIGHT, W - 2, FIELD_BOTTOM - FIELD_TOP - EZ_HEIGHT - 1);
 
-                    // Uprights
-                    "<pre style='color:#FFD700;font-size:13px;font-family:monospace;background:#0a200a;padding:8px;border:2px solid #228B22;border-radius:4px;text-align:center;line-height:1.4;'>" + uprightDisplay + "</pre>" +
+                // ── HUD ────────────────────────────────────────────────────
+                g.setColor(BLACK);
+                g.fillRect(0, H - 45, W, 45);
+                g.setColor(RED);
+                g.fillRect(0, H - 45, W, 3);
 
-                    // Stats row
-                    "<table style='width:100%;color:#FFF;font-size:13px;border-collapse:collapse;margin:6px 0;'>" +
-                    "<tr style='background:#1A1A1A;'>" +
-                    "<td style='padding:5px 8px;'><b style='color:#A71930;'>Distance:</b></td><td style='padding:5px;'><b>" + yardLine + " yards</b></td>" +
-                    "<td style='padding:5px 8px;'><b style='color:#A71930;'>Tries Left:</b></td>" +
-                    "<td style='padding:5px;'>" + triesHtml(triesLeft) + "</td>" +
-                    "</tr><tr>" +
-                    "<td style='padding:5px 8px;'><b style='color:#A71930;'>Wind:</b></td>" +
-                    "<td style='padding:5px;' colspan='3'>" + windDisplay(windDir, windSpeed) + "</td>" +
-                    "</tr><tr style='background:#1A1A1A;'>" +
-                    "<td style='padding:5px 8px;'><b style='color:#A71930;'>Aim:</b></td>" +
-                    "<td style='padding:5px;font-family:monospace;' colspan='3'>" + aimDisplay + "</td>" +
-                    "</tr></table>" +
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 13));
+                g.setColor(java.awt.Color.WHITE);
+                g.drawString("Down: " + (downs[0] + 1) + " / " + MAX_DOWNS, 12, H - 25);
+                g.drawString("TDs: " + touchdowns[0] + "  |  Score: " + totalScore[0], 12, H - 8);
 
-                    "<p style='color:#A5ACAF;font-size:11px;text-align:center;margin:4px;'>Tip: Watch the wind direction and aim indicator!</p>" +
-                    "</body></html>",
-                    yardLine + " Yard Field Goal — " + triesLeft + " tr" + (triesLeft == 1 ? "y" : "ies") + " left",
-                    javax.swing.JOptionPane.DEFAULT_OPTION,
-                    javax.swing.JOptionPane.QUESTION_MESSAGE,
-                    null, kickOptions, kickOptions[0]);
+                g.setColor(SILVER);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 11));
+                String shortN = chosenName.contains("#") ? chosenName.substring(0, chosenName.indexOf("#")).trim() : chosenName;
+                g.drawString("🏃 " + shortN, 220, H - 18);
 
-                // X button = return to main menu
-                if (kickChoice == javax.swing.JOptionPane.CLOSED_OPTION) return;
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 10));
+                g.setColor(new java.awt.Color(0xA5, 0xAC, 0xAF));
+                g.drawString("Arrow Keys = Run   |   SPACE = JUKE!", 360, H - 8);
 
-                // Simulate result
-                double roll = RNG.nextDouble() * 100.0;
-                boolean good = roll < successChance;
-                triesLeft--;
+                // ── Juke meter ─────────────────────────────────────────────
+                // Show a small juke cooldown bar bottom-right
+                int jBarX = W - 110, jBarY = H - 38, jBarW = 100, jBarH = 10;
+                g.setColor(new java.awt.Color(0x33, 0x33, 0x33));
+                g.fillRoundRect(jBarX, jBarY, jBarW, jBarH, 4, 4);
+                double jukeCool = juking[0] ? 1.0 - (jukeTimer[0] / 30.0) : 1.0;
+                g.setColor(juking[0] ? GOLD : new java.awt.Color(0x00, 0xCC, 0x44));
+                g.fillRoundRect(jBarX, jBarY, (int)(jBarW * jukeCool), jBarH, 4, 4);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 9));
+                g.setColor(java.awt.Color.WHITE);
+                g.drawString(juking[0] ? "JUKING!" : "JUKE READY", jBarX, jBarY - 2);
 
-                if (good) {
-                    madeIt = true;
-                    bestMade = yardLine;
-                    String resultMsg =
-                        "<html><body style='width:380px;background:#0D0D0D;color:#FFF;font-family:Arial;text-align:center;'>" +
-                        "<div style='background:#155A15;padding:14px;border:2px solid #5DBB63;border-radius:4px;margin-bottom:10px;'>" +
-                        "<h2 style='color:#FFF;margin:4px;'>\u2705 IT'S GOOD!</h2>" +
-                        "<p style='color:#5DBB63;font-size:14px;margin:4px;'>" + yardLine + "-yard field goal is GOOD!</p></div>" +
-                        (yardLine < maxYards
-                            ? "<p style='color:#FFF;'>Next up: <b>" + (yardLine + 10) + " yards</b></p>"
-                            : "<p style='color:#FFD700;font-size:15px;'><b>\U0001f3c6 YOU KICKED THE MAXIMUM 80 YARDS! \U0001f3c6</b></p>") +
-                        "<div style='background:#A71930;padding:8px;margin-top:10px;'><b style='color:#FFF;'>RISE UP! \U0001f985</b></div>" +
-                        "</body></html>";
-                    javax.swing.JOptionPane.showMessageDialog(null, resultMsg,
-                        "IT'S GOOD!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    // Missed
-                    String missReason = windEffect < -10 ? "Pushed left by strong wind!"
-                                      : windEffect >  10 ? "Pushed right by strong wind!"
-                                      : windEffect < 0   ? "Drifted slightly left."
-                                      : windEffect > 0   ? "Drifted slightly right."
-                                      : yardLine >= 60   ? "Just short — tough distance."
-                                      : "Shanked off the upright!";
-                    String missMsg =
-                        "<html><body style='width:380px;background:#0D0D0D;color:#FFF;font-family:Arial;text-align:center;'>" +
-                        "<div style='background:#5A1515;padding:12px;border:2px solid #FF6B6B;border-radius:4px;margin-bottom:10px;'>" +
-                        "<h2 style='color:#FFF;margin:4px;'>\u274c NO GOOD</h2>" +
-                        "<p style='color:#FF6B6B;font-size:13px;margin:4px;'>" + missReason + "</p></div>" +
-                        (triesLeft > 0
-                            ? "<p style='color:#FFF;'>" + triesLeft + " tr" + (triesLeft == 1 ? "y" : "ies") + " remaining at " + yardLine + " yards.</p>"
-                            : "<p style='color:#FF6B6B;'>No tries left!</p>") +
-                        "</body></html>";
-                    javax.swing.JOptionPane.showMessageDialog(null, missMsg,
-                        "No Good", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                // ── Defenders ─────────────────────────────────────────────
+                for (int i = 0; i < NUM_DEF; i++) {
+                    drawRBPlayer(g, (int)dx2[i], (int)dy2[i],
+                        new java.awt.Color(0x1A, 0x37, 0x7C), java.awt.Color.WHITE,
+                        i == 0 ? "CB" : i == 1 ? "LB" : i == 2 ? "S" : "DE", false);
+                }
+
+                // ── Player (RB) ────────────────────────────────────────────
+                drawRBPlayer(g, (int)px[0], (int)py[0], RED, java.awt.Color.WHITE, "RB", true);
+
+                // Juke glow
+                if (juking[0]) {
+                    g.setColor(new java.awt.Color(0xFF, 0xD7, 0x00, 70));
+                    g.fillOval((int)px[0] - 24, (int)py[0] - 24, 48, 48);
+                    g.setColor(new java.awt.Color(0xFF, 0xFF, 0xFF, 40));
+                    g.fillOval((int)px[0] - 18, (int)py[0] - 18, 36, 36);
+                }
+
+                // ── Pause overlay ──────────────────────────────────────────
+                if (gState[0] >= 1) {
+                    g.setColor(new java.awt.Color(0, 0, 0, 175));
+                    g.fillRect(0, H/2 - 60, W, 120);
+                    g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 28));
+                    g.setColor(pauseGood[0] ? new java.awt.Color(0x00, 0xCC, 0x44) : new java.awt.Color(0xFF, 0x33, 0x33));
+                    fm = g.getFontMetrics();
+                    g.drawString(pauseMsg[0], (W - fm.stringWidth(pauseMsg[0])) / 2, H/2 - 12);
+                    g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 14));
+                    g.setColor(java.awt.Color.WHITE);
+                    String sub = gState[0] == 3 ? "SPACE to see results" : "SPACE to run next down...";
+                    fm = g.getFontMetrics();
+                    g.drawString(sub, (W - fm.stringWidth(sub)) / 2, H/2 + 22);
+                }
+            }
+        };
+        canvas.setPreferredSize(new java.awt.Dimension(W, H));
+        canvas.setBackground(GRASS1);
+        canvas.setFocusable(true);
+
+        canvas.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override public void keyPressed(java.awt.event.KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case java.awt.event.KeyEvent.VK_LEFT:  kL[0]  = true; break;
+                    case java.awt.event.KeyEvent.VK_RIGHT: kR[0]  = true; break;
+                    case java.awt.event.KeyEvent.VK_UP:    kU[0]  = true; break;
+                    case java.awt.event.KeyEvent.VK_DOWN:  kD[0]  = true; break;
+                    case java.awt.event.KeyEvent.VK_SPACE: kSp[0] = true; break;
+                }
+            }
+            @Override public void keyReleased(java.awt.event.KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case java.awt.event.KeyEvent.VK_LEFT:  kL[0]  = false; break;
+                    case java.awt.event.KeyEvent.VK_RIGHT: kR[0]  = false; break;
+                    case java.awt.event.KeyEvent.VK_UP:    kU[0]  = false; break;
+                    case java.awt.event.KeyEvent.VK_DOWN:  kD[0]  = false; break;
+                    case java.awt.event.KeyEvent.VK_SPACE: kSp[0] = false; break;
+                }
+            }
+        });
+
+        gf.setContentPane(canvas);
+        gf.pack();
+        gf.setLocationRelativeTo(null);
+        gf.setVisible(true);
+        canvas.requestFocusInWindow();
+
+        final int PLAYER_R = 14, DEF_R = 14;
+        final long FRAME_MS = 1000 / 60;
+        int frameCount = 0;
+
+        // ── Game loop ──────────────────────────────────────────────────────────
+        while (gf.isVisible()) {
+            long t0 = System.currentTimeMillis();
+            frameCount++;
+
+            boolean spEdge = kSp[0] && !spWas[0];
+            spWas[0] = kSp[0];
+
+            // ── Pause states ───────────────────────────────────────────────
+            if (gState[0] == 1 || gState[0] == 2) {
+                pauseTimer[0]++;
+                if (spEdge || pauseTimer[0] > 180) {
+                    downs[0]++;
+                    if (downs[0] >= MAX_DOWNS) {
+                        gState[0] = 3;
+                        pauseMsg[0]  = touchdowns[0] > 0
+                            ? "GAME OVER — " + touchdowns[0] + " TD" + (touchdowns[0] > 1 ? "s!" : "!") + " 🦅"
+                            : "GAME OVER — No TDs. Rise Up next time!";
+                        pauseGood[0] = touchdowns[0] > 0;
+                    } else {
+                        resetDown.run();
+                        gState[0] = 0;
+                    }
+                }
+                canvas.repaint();
+                long el = System.currentTimeMillis() - t0;
+                if (FRAME_MS - el > 0) try { Thread.sleep(FRAME_MS - el); } catch (InterruptedException ie) {}
+                continue;
+            }
+
+            if (gState[0] == 3) {
+                if (spEdge) break;
+                canvas.repaint();
+                long el = System.currentTimeMillis() - t0;
+                if (FRAME_MS - el > 0) try { Thread.sleep(FRAME_MS - el); } catch (InterruptedException ie) {}
+                continue;
+            }
+
+            // ── Juke logic ─────────────────────────────────────────────────
+            if (spEdge && !juking[0]) {
+                juking[0]    = true;
+                jukeTimer[0] = 0;
+                // Juke boost: perpendicular to current movement direction
+                double jmag = chosenJuke * 5.5;
+                jukeVX[0] = kL[0] ? -jmag : kR[0] ? jmag : (rng.nextDouble() > 0.5 ? jmag : -jmag);
+                jukeVY[0] = kU[0] ? -jmag * 0.5 : kD[0] ? jmag * 0.3 : -jmag * 0.4;
+            }
+            if (juking[0]) {
+                jukeTimer[0]++;
+                if (jukeTimer[0] > 30) {
+                    juking[0] = false;
+                    jukeVX[0] = 0;
+                    jukeVY[0] = 0;
                 }
             }
 
-            if (!madeIt) {
-                // Game over
-                showGameOver(bestMade, yardLine);
-                return;
+            // ── Player movement ────────────────────────────────────────────
+            double spd = chosenSpeed + (juking[0] ? chosenJuke * 1.8 : 0);
+            double mvX = 0, mvY = 0;
+            if (kL[0]) mvX -= spd;
+            if (kR[0]) mvX += spd;
+            if (kU[0]) mvY -= spd;
+            if (kD[0]) mvY += spd;
+
+            // Apply juke velocity (decays)
+            mvX += jukeVX[0] * (juking[0] ? 0.35 : 0);
+            mvY += jukeVY[0] * (juking[0] ? 0.35 : 0);
+
+            double npx = Math.max(PLAYER_R, Math.min(W - PLAYER_R, px[0] + mvX));
+            double npy = Math.max(FIELD_TOP + EZ_HEIGHT + PLAYER_R, Math.min(FIELD_BOTTOM - PLAYER_R, py[0] + mvY));
+
+            // ── Collision check ────────────────────────────────────────────
+            boolean tackled = false;
+            for (int i = 0; i < NUM_DEF; i++) {
+                double cdx = npx - dx2[i], cdy = npy - dy2[i];
+                if (Math.sqrt(cdx*cdx + cdy*cdy) < PLAYER_R + DEF_R - 3) {
+                    // Juke provides brief invincibility window
+                    if (!juking[0]) { tackled = true; break; }
+                }
             }
 
-            if (yardLine >= maxYards) {
-                // Champion!
-                showChampion();
-                return;
+            if (!tackled) { px[0] = npx; py[0] = npy; }
+
+            // ── Touchdown check ────────────────────────────────────────────
+            if (py[0] <= FIELD_TOP + EZ_HEIGHT + PLAYER_R) {
+                touchdowns[0]++;
+                totalScore[0] += 6;
+                gState[0]    = downs[0] + 1 >= MAX_DOWNS ? 3 : 1;
+                pauseMsg[0]  = "TOUCHDOWN! +6 🏈🎉";
+                pauseGood[0] = true;
+                pauseTimer[0] = 0;
+                if (gState[0] == 3) {
+                    pauseMsg[0] = "GAME OVER — " + touchdowns[0] + " TDs! " + totalScore[0] + " pts! RISE UP! 🦅";
+                    pauseGood[0] = true;
+                }
+                canvas.repaint();
+                long el = System.currentTimeMillis() - t0;
+                if (FRAME_MS - el > 0) try { Thread.sleep(FRAME_MS - el); } catch (InterruptedException ie) {}
+                continue;
             }
 
-            yardLine += 10;
+            // ── Tackle result ──────────────────────────────────────────────
+            if (tackled) {
+                gState[0]    = downs[0] + 1 >= MAX_DOWNS ? 3 : 2;
+                pauseMsg[0]  = "TACKLED! 💥 Down " + (downs[0] + 1) + " over";
+                pauseGood[0] = false;
+                pauseTimer[0] = 0;
+                if (gState[0] == 3) {
+                    pauseMsg[0]  = touchdowns[0] > 0
+                        ? "GAME OVER — " + touchdowns[0] + " TD" + (touchdowns[0] > 1 ? "s" : "") + "! " + totalScore[0] + " pts!"
+                        : "GAME OVER — No TDs. Work on those jukes! 😤";
+                    pauseGood[0] = touchdowns[0] > 0;
+                }
+                canvas.repaint();
+                long el = System.currentTimeMillis() - t0;
+                if (FRAME_MS - el > 0) try { Thread.sleep(FRAME_MS - el); } catch (InterruptedException ie) {}
+                continue;
+            }
+
+            // ── AI defender movement ───────────────────────────────────────
+            double diffMult = 1.0 + downs[0] * 0.22;
+            for (int i = 0; i < NUM_DEF; i++) {
+                double aiSpd = (2.0 + i * 0.3) * diffMult;
+                double tdx   = px[0] - dx2[i];
+                double tdy   = py[0] - dy2[i];
+                double dist  = Math.sqrt(tdx*tdx + tdy*tdy);
+                if (dist > 1) {
+                    // Lead the player slightly based on their velocity
+                    double leadX = tdx / dist + mvX * 0.12;
+                    double leadY = tdy / dist + mvY * 0.12;
+                    double lLen  = Math.sqrt(leadX*leadX + leadY*leadY);
+                    if (lLen > 0) { leadX /= lLen; leadY /= lLen; }
+                    // Add lateral variation per defender
+                    double wiggle = Math.sin(frameCount * 0.07 + i * 2.1) * 0.3;
+                    dx2[i] += (leadX + wiggle) * aiSpd;
+                    dy2[i] += leadY * aiSpd;
+                }
+                dx2[i] = Math.max(DEF_R, Math.min(W - DEF_R, dx2[i]));
+                dy2[i] = Math.max(FIELD_TOP + EZ_HEIGHT + DEF_R, Math.min(FIELD_BOTTOM - DEF_R, dy2[i]));
+            }
+
+            canvas.repaint();
+            long elapsed = System.currentTimeMillis() - t0;
+            if (FRAME_MS - elapsed > 0) try { Thread.sleep(FRAME_MS - elapsed); } catch (InterruptedException ie) {}
         }
-    }
 
-    // ── Build the uprights ASCII art ──────────────────────────────────────────
-    static String buildUprights(int yards) {
-        // Uprights get visually narrower as yards increase
-        int width = Math.max(5, 20 - (yards - 10) / 5);
-        StringBuilder sb = new StringBuilder();
-        String post = "|";
-        String leftPad  = "  ";
-        String rightPad = "  ";
+        gf.dispose();
 
-        sb.append(leftPad).append(post).append(spaces(width)).append(post).append("\n");
-        sb.append(leftPad).append(post).append(spaces(width)).append(post).append("\n");
-        sb.append(leftPad).append(post).append(spaces(width)).append(post).append("\n");
-        // crossbar
-        sb.append(leftPad).append("+").append(dashes(width)).append("+").append("\n");
-        // pole
-        sb.append(leftPad).append(spaces(width / 2 + 1)).append("|").append("\n");
-        sb.append(leftPad).append(spaces(width / 2 + 1)).append("|").append("\n");
-        // ground
-        sb.append(leftPad).append("~").append(dashes(width)).append("~").append("\n");
-        sb.append("   ").append(yards).append(" YD LINE");
-        return sb.toString();
-    }
+        // ── Final results ──────────────────────────────────────────────────────
+        int td = touchdowns[0];
+        String rating, rColor;
+        if      (td >= MAX_DOWNS) { rating = "🏆 PERFECT GAME! Every down a TD!"; rColor = "#FFD700"; }
+        else if (td == 2)         { rating = "⭐ Outstanding! 2 touchdowns!";      rColor = "#A71930"; }
+        else if (td == 1)         { rating = "👍 Nice run! 1 TD scored!";           rColor = "#A71930"; }
+        else                      { rating = "😤 No TDs — work on those jukes!";    rColor = "#A5ACAF"; }
 
-    // ── Aim indicator shifted by wind ────────────────────────────────────────
-    static String buildAim(int windEffect) {
-        // 21 char wide bar, centre at position 10
-        int center = 10;
-        int shift  = windEffect / 4; // compress effect
-        int pos    = Math.max(0, Math.min(20, center + shift));
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < 21; i++) {
-            if (i == 10) sb.append("|");          // center mark
-            else if (i == pos && i != 10) sb.append("X"); // aim dot
-            else sb.append("-");
-        }
-        sb.append("]");
-        return sb.toString();
-    }
-
-    // ── Wind display ─────────────────────────────────────────────────────────
-    static String windDisplay(String dir, int speed) {
-        if (speed == 0) return "<span style='color:#A5ACAF;'>Calm (0 mph)</span>";
-        String col = speed >= 15 ? "#FF6B6B" : speed >= 8 ? "#FFD700" : "#5DBB63";
-        return "<span style='color:" + col + ";'>" + dir + " — " + speed + " mph</span>";
-    }
-
-    // ── Tries remaining as coloured circles ──────────────────────────────────
-    static String triesHtml(int tries) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 3; i++) {
-            if (i < tries)
-                sb.append("<span style='color:#5DBB63;font-size:16px;'>\u26bd</span> ");
-            else
-                sb.append("<span style='color:#3A3A3A;font-size:16px;'>\u26bd</span> ");
-        }
-        return sb.toString();
-    }
-
-    // ── Game over screen ─────────────────────────────────────────────────────
-    static void showGameOver(int best, int failed) {
-        javax.swing.JOptionPane.showMessageDialog(null,
-            "<html><body style='width:380px;background:#0D0D0D;color:#FFF;font-family:Arial;text-align:center;'>" +
-            "<div style='background:#5A1515;padding:14px;border:2px solid #FF6B6B;border-radius:4px;margin-bottom:12px;'>" +
-            "<h2 style='color:#FFF;margin:4px;'>\u274c GAME OVER</h2>" +
-            "<p style='color:#FF6B6B;margin:4px;'>Missed all 3 tries at " + failed + " yards.</p></div>" +
-            "<p style='color:#FFF;font-size:14px;'>Best kick: <b style='color:#FFD700;'>" +
-            (best == 0 ? "None" : best + " yards") + "</b></p>" +
-            "<p style='color:#A5ACAF;font-size:12px;margin-top:6px;'>Try again from the main menu!</p>" +
-            "<div style='background:#A71930;padding:8px;margin-top:10px;'><b style='color:#FFF;'>RISE UP! \U0001f985</b></div>" +
+        JOptionPane.showMessageDialog(null,
+            "<html><body style='width:360px;background:#000;color:#fff;text-align:center;font-family:Arial,sans-serif;'>" +
+            "<div style='background:#A71930;padding:14px;margin-bottom:12px;'>" +
+            "<h2 style='color:#fff;margin:4px;'>🏃 RB JUKE RUN — RESULTS</h2>" +
+            "<p style='color:#fff;font-size:12px;margin:4px;'>" + chosenName + "</p></div>" +
+            "<p style='font-size:30px;font-weight:bold;color:#fff;margin:12px;'>" +
+            td + " TD" + (td != 1 ? "s" : "") + " — " + totalScore[0] + " pts</p>" +
+            "<p style='font-size:14px;color:" + rColor + ";font-weight:bold;margin:10px;'>" + rating + "</p>" +
+            "<div style='background:#A71930;padding:8px;margin-top:10px;'><b style='color:#fff;'>RISE UP! 🦅</b></div>" +
             "</body></html>",
-            "Game Over", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            "RB Juke Run — Results", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    // ── Champion screen ───────────────────────────────────────────────────────
-    static void showChampion() {
-        javax.swing.JOptionPane.showMessageDialog(null,
-            "<html><body style='width:400px;background:#0D0D0D;color:#FFF;font-family:Arial;text-align:center;'>" +
-            "<div style='background:#155A15;padding:16px;border:2px solid #FFD700;border-radius:4px;margin-bottom:12px;'>" +
-            "<h1 style='color:#FFD700;margin:4px;'>\U0001f3c6 CHAMPION! \U0001f3c6</h1>" +
-            "<p style='color:#FFF;font-size:14px;margin:4px;'>You kicked a field goal from ALL distances!</p>" +
-            "<p style='color:#FFD700;font-size:13px;margin:4px;'>10 yards all the way to 80 yards!</p></div>" +
-            "<p style='color:#FFF;font-size:15px;'><b>Zane Gonzalez would be proud! \U0001f985</b></p>" +
-            "<div style='background:#A71930;padding:8px;margin-top:10px;'><b style='color:#FFF;'>RISE UP! \U0001f985</b></div>" +
+    // Draw a player sprite (circle with label)
+    private static void drawRBPlayer(java.awt.Graphics2D g, int cx, int cy,
+                                     java.awt.Color jersey, java.awt.Color txt,
+                                     String label, boolean hasBall) {
+        final int R = 14;
+        g.setColor(new java.awt.Color(0, 0, 0, 55));
+        g.fillOval(cx - R + 2, cy - R + 5, R * 2, R * 2);
+        g.setColor(jersey);
+        g.fillOval(cx - R, cy - R, R * 2, R * 2);
+        g.setColor(new java.awt.Color(255, 255, 255, 55));
+        g.fillOval(cx - R + 3, cy - R + 2, R - 2, R - 4);
+        g.setColor(new java.awt.Color(255, 255, 255, 110));
+        g.setStroke(new java.awt.BasicStroke(1.5f));
+        g.drawOval(cx - R, cy - R, R * 2, R * 2);
+        g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 8));
+        g.setColor(txt);
+        java.awt.FontMetrics fm = g.getFontMetrics();
+        g.drawString(label, cx - fm.stringWidth(label) / 2, cy + 3);
+        if (hasBall) {
+            g.setColor(new java.awt.Color(0xC4, 0x7C, 0x25));
+            g.fillOval(cx + R - 4, cy - R - 2, 10, 7);
+            g.setColor(java.awt.Color.WHITE);
+            g.setStroke(new java.awt.BasicStroke(0.8f));
+            g.drawLine(cx + R - 1, cy - R + 1, cx + R + 5, cy - R + 5);
+        }
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    //  FALCONS OFFENSE GAME
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    // ── Player data record ──────────────────────────────────────────────────
+    static class FalconsPlayer {
+        String name, pos, number, desc;
+        // Attributes 1-10
+        int speed, acceleration, strength, agility, catching, awareness;
+        java.awt.Color jerseyColor;
+
+        FalconsPlayer(String name, String pos, String number, String desc,
+                      int speed, int accel, int strength, int agility, int catching, int awareness,
+                      java.awt.Color jersey) {
+            this.name = name; this.pos = pos; this.number = number; this.desc = desc;
+            this.speed = speed; this.acceleration = accel; this.strength = strength;
+            this.agility = agility; this.catching = catching; this.awareness = awareness;
+            this.jerseyColor = jersey;
+        }
+        double moveSpeed()   { return 2.8 + speed * 0.22 + acceleration * 0.08; }
+        double jukeStrength(){ return agility * 0.18 + awareness * 0.05; }
+        double breakTackle() { return strength * 0.12 + agility * 0.06; }
+    }
+
+    private static void playFalconsOffense() {
+        java.awt.Color falconsRed  = new java.awt.Color(0xA7, 0x19, 0x30);
+        java.awt.Color falconsBlk  = new java.awt.Color(0x10, 0x10, 0x10);
+        java.awt.Color receiverBlue= new java.awt.Color(0x0D, 0x47, 0xA1);
+        java.awt.Color teGreen     = new java.awt.Color(0x1B, 0x5E, 0x20);
+        java.awt.Color qbGold      = new java.awt.Color(0xF5, 0x7F, 0x17);
+
+        // ── Roster by position ────────────────────────────────────────────────
+        FalconsPlayer[] qbs = {
+            new FalconsPlayer("Kirk Cousins","QB","#18",
+                "14-yr veteran. Smart, accurate pocket passer. Elite awareness & touch.",
+                6,5,5,6,7,10, qbGold),
+            new FalconsPlayer("Easton Stick","QB","#12",
+                "Mobile backup QB. Faster legs, reads defense well under pressure.",
+                7,7,5,7,6,7, qbGold)
+        };
+        FalconsPlayer[] rbs = {
+            new FalconsPlayer("Bijan Robinson","RB","#7",
+                "Top-10 RB in NFL. Explosive burst, elite vision, great hands.",
+                9,9,7,9,8,8, falconsRed),
+            new FalconsPlayer("Tyler Allgeier","RB","#25",
+                "Powerful downhill runner. Hard to bring down, physical style.",
+                7,7,9,7,6,6, falconsRed),
+            new FalconsPlayer("Nate Carter","RB","#38",
+                "Rookie speedster. Fastest RB on roster, still developing awareness.",
+                10,8,5,7,5,5, falconsRed)
+        };
+        FalconsPlayer[] wrs = {
+            new FalconsPlayer("Drake London","WR","#5",
+                "6'4\" physical receiver. Dominant 50-50 balls, strong after catch.",
+                7,7,8,7,9,7, receiverBlue),
+            new FalconsPlayer("Darnell Mooney","WR","#1",
+                "Speedy slot threat. Routes are crisp, separates quickly.",
+                9,9,5,8,8,7, receiverBlue),
+            new FalconsPlayer("Malik Heath","WR","#18",
+                "Big-bodied WR2. Contested catch specialist, red zone weapon.",
+                6,6,7,6,8,6, receiverBlue)
+        };
+        FalconsPlayer[] tes = {
+            new FalconsPlayer("Kyle Pitts","TE","#8",
+                "Generational talent. Freakish athleticism for a TE, matchup nightmare.",
+                8,8,7,8,10,7, teGreen),
+            new FalconsPlayer("Charlie Woerner","TE","#89",
+                "Veteran blocking TE. Physical run blocker, reliable short-route target.",
+                6,5,8,5,7,7, teGreen),
+            new FalconsPlayer("Feleipe Franks","TE","#84",
+                "Former QB turned TE. Athletic, good hands, solid all-around.",
+                7,6,7,7,8,6, teGreen)
+        };
+
+        // ── Position select screen ─────────────────────────────────────────────
+        String[] posOpts = {
+            "🏈 Quarterback (QB) — Scramble & pass",
+            "🏃 Running Back (RB) — Run & juke",
+            "📡 Wide Receiver (WR) — Run routes & catch",
+            "💪 Tight End (TE) — Blocking & receiving"
+        };
+        int posChoice = JOptionPane.showOptionDialog(null,
+            "<html><body style='width:460px;background:#000;color:#fff;text-align:center;font-family:Arial,sans-serif;'>" +
+            "<div style='background:#A71930;padding:14px;margin-bottom:12px;'>" +
+            "<h2 style='color:#fff;margin:4px;'>🏟️ FALCONS OFFENSE 🏟️</h2>" +
+            "<p style='color:#fff;margin:4px;font-size:12px;'>2026 Atlanta Falcons — Score the Touchdown!</p></div>" +
+            "<p style='color:#fff;font-size:13px;margin:10px 0;'>Choose a <b style='color:#FFD700;'>position</b> to play — each has unique gameplay:</p>" +
+            "<div style='background:#1a1a1a;padding:10px;border:2px solid #A71930;margin:8px 0;text-align:left;font-size:12px;'>" +
+            "<p style='color:#A5ACAF;margin:4px;'>🏈 <b>QB</b> — Scramble to avoid the pass rush. Press SPACE to throw downfield!<br>" +
+            "🏃 <b>RB</b> — Take the handoff and juke through defenders<br>" +
+            "📡 <b>WR</b> — Run your route, find the gap, make the catch!<br>" +
+            "💪 <b>TE</b> — Use your size to bully through defenders</p></div>" +
+            "<p style='color:#FFD700;font-size:11px;margin:8px;'>Arrow Keys = Move &nbsp;|&nbsp; SPACE = Special Action &nbsp;|&nbsp; 3 Downs to score TDs!</p>" +
             "</body></html>",
-            "CHAMPION!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            "Falcons Offense — Choose Position",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+            null, posOpts, posOpts[0]);
+        if (posChoice < 0) return;
+
+        // ── Player select for that position ───────────────────────────────────
+        FalconsPlayer[] roster = posChoice == 0 ? qbs : posChoice == 1 ? rbs : posChoice == 2 ? wrs : tes;
+
+        // Build display strings with stat bars
+        String[] playerDisplays = new String[roster.length];
+        for (int i = 0; i < roster.length; i++) {
+            FalconsPlayer p = roster[i];
+            playerDisplays[i] = p.name + " " + p.number +
+                " | SPD:" + p.speed + " AGI:" + p.agility +
+                " STR:" + p.strength + " CAT:" + p.catching + " AWR:" + p.awareness;
+        }
+
+        // Build rich HTML for the player select dialog
+        StringBuilder pHtml = new StringBuilder(
+            "<html><body style='width:500px;background:#000;color:#fff;font-family:Arial,sans-serif;'>" +
+            "<div style='background:#A71930;padding:10px;margin-bottom:10px;text-align:center;'>" +
+            "<h3 style='color:#fff;margin:4px;'>Choose Your " + posOpts[posChoice].substring(3) + "</h3></div>");
+        for (FalconsPlayer p : roster) {
+            pHtml.append("<div style='background:#1a1a1a;margin:6px;padding:8px;border-left:4px solid #A71930;'>");
+            pHtml.append("<b style='color:#FFD700;font-size:13px;'>").append(p.name).append(" ").append(p.number).append("</b>");
+            pHtml.append("<span style='color:#A5ACAF;font-size:11px;'> — ").append(p.desc).append("</span><br>");
+            pHtml.append("<span style='color:#fff;font-size:11px;'>SPD:").append(statBar(p.speed));
+            pHtml.append(" AGI:").append(statBar(p.agility));
+            pHtml.append(" STR:").append(statBar(p.strength));
+            pHtml.append(" CAT:").append(statBar(p.catching));
+            pHtml.append(" AWR:").append(statBar(p.awareness)).append("</span></div>");
+        }
+        pHtml.append("</body></html>");
+
+        int playerPick = JOptionPane.showOptionDialog(null, pHtml.toString(),
+            "Pick Your Player",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+            null, playerDisplays, playerDisplays[0]);
+        if (playerPick < 0) return;
+
+        FalconsPlayer chosen = roster[playerPick];
+
+        // ── Show player card + controls ────────────────────────────────────────
+        String specialAction = posChoice == 0 ? "SPACE = Throw (pass rush burst!)"
+                             : posChoice == 1 ? "SPACE = Juke move!"
+                             : posChoice == 2 ? "SPACE = Speed burst (route break)"
+                             :                  "SPACE = Power drive (break tackle)";
+
+        JOptionPane.showMessageDialog(null,
+            "<html><body style='width:420px;background:#000;color:#fff;text-align:center;font-family:Arial,sans-serif;'>" +
+            "<div style='background:#A71930;padding:12px;margin-bottom:10px;'>" +
+            "<h3 style='color:#fff;margin:4px;'>" + chosen.name + " " + chosen.number + "</h3>" +
+            "<p style='color:#A5ACAF;margin:4px;font-size:12px;'>" + chosen.pos + " — " + chosen.desc + "</p></div>" +
+            "<table style='width:100%;color:#fff;font-size:12px;margin:8px 0;'>" +
+            "<tr><td style='padding:3px;'><b style='color:#FFD700;'>Speed:</b></td><td>" + statBar(chosen.speed) + " (" + chosen.speed + "/10)</td>" +
+            "<td style='padding:3px;'><b style='color:#FFD700;'>Agility:</b></td><td>" + statBar(chosen.agility) + " (" + chosen.agility + "/10)</td></tr>" +
+            "<tr><td style='padding:3px;'><b style='color:#FFD700;'>Strength:</b></td><td>" + statBar(chosen.strength) + " (" + chosen.strength + "/10)</td>" +
+            "<td style='padding:3px;'><b style='color:#FFD700;'>Catching:</b></td><td>" + statBar(chosen.catching) + " (" + chosen.catching + "/10)</td></tr>" +
+            "<tr><td style='padding:3px;' colspan='2'><b style='color:#FFD700;'>Awareness:</b> " + statBar(chosen.awareness) + " (" + chosen.awareness + "/10)</td></tr>" +
+            "</table>" +
+            "<div style='background:#1a1a1a;padding:10px;border:2px solid #A71930;margin:8px 0;text-align:left;'>" +
+            "<p style='color:#FFD700;font-weight:bold;margin:4px;'>CONTROLS:</p>" +
+            "<p style='color:#A5ACAF;font-size:12px;margin:4px;'>⬆️⬇️⬅️➡️ Arrow Keys — Move<br>" + specialAction + "</p></div>" +
+            "<div style='background:#A71930;padding:8px;margin-top:8px;'><b style='color:#fff;'>RISE UP! 🦅</b></div>" +
+            "</body></html>",
+            "Player Card", JOptionPane.INFORMATION_MESSAGE);
+
+        // ── Launch animated game ───────────────────────────────────────────────
+        runOffenseGame(chosen, posChoice);
     }
 
-    // ── String helpers ────────────────────────────────────────────────────────
-    static String spaces(int n) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) sb.append(' ');
+    private static String statBar(int val) {
+        // Returns a text mini-bar e.g. "████░░" for val out of 10
+        StringBuilder sb = new StringBuilder("<span style='color:#A71930;'>");
+        for (int i = 0; i < 10; i++) {
+            if (i < val) sb.append("█");
+            else sb.append("<span style='color:#333;'>░</span>");
+        }
+        sb.append("</span>");
         return sb.toString();
     }
-    static String dashes(int n) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) sb.append('-');
-        return sb.toString();
+
+    private static void runOffenseGame(FalconsPlayer player, int posMode) {
+        // posMode: 0=QB, 1=RB, 2=WR, 3=TE
+
+        final int W = 760, H = 580;
+        final int FIELD_TOP    = 70;
+        final int FIELD_BOTTOM = H - 50;
+        final int EZ_HEIGHT    = 70;
+
+        final java.awt.Color RED    = new java.awt.Color(0xA7, 0x19, 0x30);
+        final java.awt.Color GOLD   = new java.awt.Color(0xFF, 0xD7, 0x00);
+        final java.awt.Color GRASS1 = new java.awt.Color(0x2E, 0x7D, 0x32);
+        final java.awt.Color GRASS2 = new java.awt.Color(0x38, 0x8E, 0x3C);
+        final java.awt.Color BLACK  = new java.awt.Color(0x10, 0x10, 0x10);
+        final java.awt.Color SILVER = new java.awt.Color(0xA5, 0xAC, 0xAF);
+        final java.awt.Color NAVY   = new java.awt.Color(0x1A, 0x37, 0x7C);
+
+        final int MAX_DOWNS = 4;
+        final int[] downs      = {0};
+        final int[] touchdowns = {0};
+        final int[] totalScore = {0};
+        final int[] yards      = {0};   // yards gained this run
+        final int[] firstDownY = {FIELD_BOTTOM - 160}; // first down marker y
+
+        // Player
+        final double[] px = {W / 2.0};
+        final double[] py = {FIELD_BOTTOM - 40.0};
+        final double[] pvx = {0}, pvy = {0}; // velocity for smooth movement
+
+        // Special action state
+        final boolean[] special    = {false};
+        final int[]     specTimer  = {0};
+        final int       SPEC_DUR   = 35;
+        // QB: pass arc state
+        final boolean[] ballInAir  = {false};
+        final double[]  ballX      = {0}, ballY = {0};
+        final double[]  ballVx     = {0}, ballVy = {0};
+        final int[]     ballTimer  = {0};
+
+        // Defenders — number depends on position
+        final int NUM_DEF = posMode == 0 ? 3 : posMode == 3 ? 4 : 4;
+        final double[] dx = new double[NUM_DEF];
+        final double[] dy = new double[NUM_DEF];
+        // Defender types: 0=DE/blitzer, 1=LB/pursuit, 2=CB/cover, 3=S/deep
+        final int[]    dtype = new int[NUM_DEF];
+        // Whether a defender is blocked (TE power-drive stun)
+        final boolean[]  stunned  = new boolean[NUM_DEF];
+        final int[]      stunTimer= new int[NUM_DEF];
+
+        java.util.Random rng = new java.util.Random();
+
+        Runnable resetDown = () -> {
+            px[0] = W / 2.0 + (rng.nextDouble() - 0.5) * 60;
+            py[0] = FIELD_BOTTOM - 40.0;
+            pvx[0] = 0; pvy[0] = 0;
+            special[0] = false; specTimer[0] = 0;
+            ballInAir[0] = false;
+
+            double diffMult = 1.0 + downs[0] * 0.15;
+            // Spread defenders by type
+            int[] defTypes = posMode == 0 ? new int[]{0,0,1}
+                           : posMode == 1 ? new int[]{0,1,1,2}
+                           : posMode == 2 ? new int[]{0,1,2,3}
+                           :                new int[]{0,0,1,1};
+            for (int i = 0; i < NUM_DEF; i++) {
+                dtype[i] = i < defTypes.length ? defTypes[i] : 1;
+                stunned[i] = false; stunTimer[i] = 0;
+                switch (dtype[i]) {
+                    case 0: // DE — line near scrimmage
+                        dx[i] = 120 + i * 220 + rng.nextInt(60);
+                        dy[i] = FIELD_TOP + EZ_HEIGHT + 60 + rng.nextInt(50);
+                        break;
+                    case 1: // LB — mid-field
+                        dx[i] = 100 + i * 200 + rng.nextInt(80);
+                        dy[i] = FIELD_TOP + EZ_HEIGHT + 130 + rng.nextInt(60);
+                        break;
+                    case 2: // CB — spread wide, deep
+                        dx[i] = (i % 2 == 0) ? 60 + rng.nextInt(80) : W - 140 + rng.nextInt(80);
+                        dy[i] = FIELD_TOP + EZ_HEIGHT + 80 + rng.nextInt(80);
+                        break;
+                    case 3: // S — deep center
+                        dx[i] = W/2.0 + (rng.nextDouble() - 0.5) * 160;
+                        dy[i] = FIELD_TOP + EZ_HEIGHT + 30 + rng.nextInt(50);
+                        break;
+                }
+            }
+
+            firstDownY[0] = (int)(FIELD_BOTTOM - 160 - downs[0] * 30);
+            yards[0] = 0;
+        };
+        resetDown.run();
+
+        // Keys
+        final boolean[] kL={false},kR={false},kU={false},kD={false},kSp={false};
+        final boolean[] spWas={false};
+        final int[]     gState    = {0};  // 0=play,1=td,2=tackle/fail,3=gameover,4=firstdown
+        final int[]     pauseTimer= {0};
+        final String[]  pauseMsg  = {""};
+        final boolean[] pauseGood = {false};
+        final int[]     frameCount= {0};
+
+        javax.swing.JFrame gf = new javax.swing.JFrame(
+            "🏟️ Falcons Offense — " + player.name + " " + player.number);
+        gf.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+        gf.setResizable(false);
+
+        // ── Yard labels along field ────────────────────────────────────────────
+        int fieldH = FIELD_BOTTOM - FIELD_TOP - EZ_HEIGHT;
+        int[] yardLineY = new int[6];
+        String[] yardLabels = {"10","20","30","40","50","40"};
+        for (int i = 0; i < 6; i++)
+            yardLineY[i] = FIELD_TOP + EZ_HEIGHT + (int)((i+1) * fieldH / 7.0);
+
+        // Special action label per position
+        String specLabel = posMode == 0 ? "THROW" : posMode == 1 ? "JUKE" : posMode == 2 ? "BURST" : "DRIVE";
+
+        javax.swing.JPanel canvas = new javax.swing.JPanel() {
+            @Override
+            protected void paintComponent(java.awt.Graphics g0) {
+                super.paintComponent(g0);
+                java.awt.Graphics2D g = (java.awt.Graphics2D) g0;
+                g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,
+                                   java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+                g.setRenderingHint(java.awt.RenderingHints.KEY_TEXT_ANTIALIASING,
+                                   java.awt.RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+
+                // ── Grass ─────────────────────────────────────────────────
+                for (int sy = FIELD_TOP + EZ_HEIGHT; sy < FIELD_BOTTOM; sy += 55) {
+                    int row = (sy - FIELD_TOP - EZ_HEIGHT) / 55;
+                    g.setColor(row % 2 == 0 ? GRASS1 : GRASS2);
+                    g.fillRect(0, sy, W, Math.min(55, FIELD_BOTTOM - sy));
+                }
+
+                // ── End zone ──────────────────────────────────────────────
+                g.setColor(RED);
+                g.fillRect(0, FIELD_TOP, W, EZ_HEIGHT);
+                // EZ diagonal lines
+                g.setColor(new java.awt.Color(255,255,255,20));
+                for (int lx = -EZ_HEIGHT; lx < W; lx += 30)
+                    g.drawLine(lx, FIELD_TOP, lx + EZ_HEIGHT, FIELD_TOP + EZ_HEIGHT);
+                g.setColor(java.awt.Color.WHITE);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 24));
+                java.awt.FontMetrics fm2 = g.getFontMetrics();
+                String ezTxt = "FALCONS END ZONE 🦅";
+                g.drawString(ezTxt, (W - fm2.stringWidth(ezTxt))/2, FIELD_TOP + 44);
+
+                // ── Crowd ─────────────────────────────────────────────────
+                g.setColor(BLACK);
+                g.fillRect(0, 0, W, FIELD_TOP);
+                java.util.Random dr = new java.util.Random(99);
+                for (int d = 0; d < 160; d++) {
+                    int crowd = dr.nextInt(4);
+                    g.setColor(crowd == 0 ? new java.awt.Color(0xA7,0x19,0x30,180)
+                             : crowd == 1 ? new java.awt.Color(0x22,0x22,0x22,180)
+                             : new java.awt.Color(0xFF,0xFF,0xFF,80));
+                    g.fillOval(dr.nextInt(W), dr.nextInt(FIELD_TOP-2)+1, 5, 5);
+                }
+
+                // ── Yard lines ────────────────────────────────────────────
+                g.setStroke(new java.awt.BasicStroke(1.5f));
+                g.setColor(new java.awt.Color(255,255,255,100));
+                for (int yly : yardLineY) g.drawLine(0, yly, W, yly);
+                // Yard numbers
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 11));
+                g.setColor(new java.awt.Color(255,255,255,130));
+                for (int i = 0; i < yardLineY.length; i++) {
+                    g.drawString(yardLabels[i], 8, yardLineY[i] - 3);
+                    g.drawString(yardLabels[i], W - 26, yardLineY[i] - 3);
+                }
+
+                // ── Hash marks ────────────────────────────────────────────
+                g.setColor(new java.awt.Color(255,255,255,60));
+                g.setStroke(new java.awt.BasicStroke(1f));
+                int hcx = W/2;
+                for (int sy = FIELD_TOP + EZ_HEIGHT + 15; sy < FIELD_BOTTOM; sy += 25) {
+                    g.drawLine(hcx-20, sy, hcx-6, sy);
+                    g.drawLine(hcx+6, sy, hcx+20, sy);
+                }
+
+                // ── First down marker ─────────────────────────────────────
+                g.setColor(new java.awt.Color(0xFF, 0xC1, 0x07, 200));
+                g.setStroke(new java.awt.BasicStroke(3f));
+                g.drawLine(0, firstDownY[0], W, firstDownY[0]);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 10));
+                g.setColor(new java.awt.Color(0xFF, 0xC1, 0x07));
+                g.drawString("1ST DOWN", W - 72, firstDownY[0] - 3);
+
+                // ── Bottom area / HUD ──────────────────────────────────────
+                g.setColor(BLACK);
+                g.fillRect(0, FIELD_BOTTOM, W, H - FIELD_BOTTOM);
+                g.setColor(RED);
+                g.fillRect(0, FIELD_BOTTOM, W, 3);
+
+                // Down indicator dots
+                for (int d = 0; d < MAX_DOWNS; d++) {
+                    g.setColor(d < downs[0] ? new java.awt.Color(0x55,0x55,0x55)
+                             : d == downs[0] ? RED : new java.awt.Color(0x33,0x33,0x33));
+                    g.fillOval(12 + d * 18, FIELD_BOTTOM + 8, 12, 12);
+                    if (d == downs[0]) {
+                        g.setColor(GOLD);
+                        g.setStroke(new java.awt.BasicStroke(1.5f));
+                        g.drawOval(12 + d * 18, FIELD_BOTTOM + 8, 12, 12);
+                    }
+                }
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 11));
+                g.setColor(java.awt.Color.WHITE);
+                g.drawString("Down " + (downs[0]+1) + "/" + MAX_DOWNS, 90, FIELD_BOTTOM + 20);
+
+                // Player name & score
+                g.setColor(SILVER);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 11));
+                g.drawString(player.name + " " + player.number, 200, FIELD_BOTTOM + 12);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 13));
+                g.setColor(GOLD);
+                g.drawString("TDs: " + touchdowns[0] + "  (" + totalScore[0] + " pts)", 200, FIELD_BOTTOM + 27);
+
+                // Controls hint
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 10));
+                g.setColor(SILVER);
+                g.drawString("⬆⬇⬅➡ Move   |   SPACE = " + specLabel, 430, FIELD_BOTTOM + 18);
+
+                // Stat mini-bar
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 9));
+                g.setColor(new java.awt.Color(0xA5,0xAC,0xAF,160));
+                g.drawString("SPD:" + player.speed + " AGI:" + player.agility +
+                             " STR:" + player.strength + " CAT:" + player.catching +
+                             " AWR:" + player.awareness, 430, FIELD_BOTTOM + 32);
+
+                // ── Special action bar (top right) ─────────────────────────
+                int sBarX = W - 115, sBarY = FIELD_TOP + 8;
+                g.setColor(new java.awt.Color(0,0,0,170));
+                g.fillRoundRect(sBarX - 4, sBarY - 14, 120, 30, 6, 6);
+                g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 9));
+                g.setColor(special[0] ? GOLD : new java.awt.Color(0x00,0xCC,0x44));
+                g.drawString("SPACE: " + specLabel, sBarX, sBarY);
+                int sbW = 108, sbH = 8;
+                g.setColor(new java.awt.Color(0x33,0x33,0x33));
+                g.fillRoundRect(sBarX, sBarY + 3, sbW, sbH, 4, 4);
+                double specCool = special[0] ? 1.0 - ((double)specTimer[0] / SPEC_DUR) : 1.0;
+                g.setColor(special[0] ? GOLD : new java.awt.Color(0x00,0xCC,0x44));
+                g.fillRoundRect(sBarX, sBarY + 3, (int)(sbW * specCool), sbH, 4, 4);
+
+                // ── Defenders ─────────────────────────────────────────────
+                String[] defLabels = {"DE","LB","CB","S","DT"};
+                java.awt.Color[] defColors = {
+                    new java.awt.Color(0x1A,0x37,0x7C),
+                    new java.awt.Color(0x0D,0x2D,0x6B),
+                    new java.awt.Color(0x26,0x3D,0x8F),
+                    new java.awt.Color(0x1E,0x3A,0x8A)
+                };
+                for (int i = 0; i < NUM_DEF; i++) {
+                    java.awt.Color dc = stunned[i]
+                        ? new java.awt.Color(0x55,0x55,0x55)
+                        : defColors[dtype[i] % defColors.length];
+                    drawOffensePlayer(g, (int)dx[i], (int)dy[i], dc,
+                        java.awt.Color.WHITE, defLabels[dtype[i] % defLabels.length], false, false);
+                    // stun stars
+                    if (stunned[i]) {
+                        g.setColor(GOLD);
+                        g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 10));
+                        g.drawString("★★", (int)dx[i]-8, (int)dy[i]-18);
+                    }
+                }
+
+                // ── Flying ball (QB throw) ─────────────────────────────────
+                if (ballInAir[0]) {
+                    double bSize = 10 - ballTimer[0] * 0.05;
+                    bSize = Math.max(4, bSize);
+                    g.setColor(new java.awt.Color(0xC4,0x7C,0x25));
+                    g.fillOval((int)ballX[0] - (int)(bSize/2), (int)ballY[0] - (int)(bSize/2),
+                               (int)bSize, (int)bSize);
+                    // trail
+                    g.setColor(new java.awt.Color(0xFF,0xFF,0xFF,60));
+                    g.fillOval((int)(ballX[0]-ballVx[0]*2) - 3, (int)(ballY[0]-ballVy[0]*2) - 3, 6, 6);
+                }
+
+                // ── Player ────────────────────────────────────────────────
+                drawOffensePlayer(g, (int)px[0], (int)py[0], player.jerseyColor,
+                    java.awt.Color.WHITE, player.pos, true, special[0]);
+
+                // Speed trail for special moves
+                if (special[0]) {
+                    float alpha = 0.4f - specTimer[0] * 0.012f;
+                    if (alpha > 0) {
+                        g.setColor(new java.awt.Color(
+                            player.jerseyColor.getRed()/255f,
+                            player.jerseyColor.getGreen()/255f,
+                            player.jerseyColor.getBlue()/255f, Math.max(0,alpha)));
+                        g.fillOval((int)(px[0]-pvx[0]*3)-10, (int)(py[0]-pvy[0]*3)-10, 20, 20);
+                    }
+                }
+
+                // ── Pause overlay ─────────────────────────────────────────
+                if (gState[0] >= 1) {
+                    g.setColor(new java.awt.Color(0,0,0,175));
+                    g.fillRect(0, H/2-65, W, 130);
+                    g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 28));
+                    g.setColor(pauseGood[0] ? new java.awt.Color(0x00,0xCC,0x44) : new java.awt.Color(0xFF,0x33,0x33));
+                    java.awt.FontMetrics pfm = g.getFontMetrics();
+                    g.drawString(pauseMsg[0], (W-pfm.stringWidth(pauseMsg[0]))/2, H/2-18);
+                    g.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 14));
+                    g.setColor(java.awt.Color.WHITE);
+                    String sub = gState[0] == 3 ? "Press SPACE to see final results"
+                               : gState[0] == 4 ? "First down! Press SPACE for next play"
+                               : "Press SPACE to run next down...";
+                    pfm = g.getFontMetrics();
+                    g.drawString(sub, (W-pfm.stringWidth(sub))/2, H/2+18);
+                }
+            }
+        };
+        canvas.setPreferredSize(new java.awt.Dimension(W, H));
+        canvas.setBackground(GRASS1);
+        canvas.setFocusable(true);
+
+        canvas.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override public void keyPressed(java.awt.event.KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case java.awt.event.KeyEvent.VK_LEFT:  kL[0]=true; break;
+                    case java.awt.event.KeyEvent.VK_RIGHT: kR[0]=true; break;
+                    case java.awt.event.KeyEvent.VK_UP:    kU[0]=true; break;
+                    case java.awt.event.KeyEvent.VK_DOWN:  kD[0]=true; break;
+                    case java.awt.event.KeyEvent.VK_SPACE: kSp[0]=true; break;
+                }
+            }
+            @Override public void keyReleased(java.awt.event.KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case java.awt.event.KeyEvent.VK_LEFT:  kL[0]=false; break;
+                    case java.awt.event.KeyEvent.VK_RIGHT: kR[0]=false; break;
+                    case java.awt.event.KeyEvent.VK_UP:    kU[0]=false; break;
+                    case java.awt.event.KeyEvent.VK_DOWN:  kD[0]=false; break;
+                    case java.awt.event.KeyEvent.VK_SPACE: kSp[0]=false; break;
+                }
+            }
+        });
+
+        gf.setContentPane(canvas);
+        gf.pack();
+        gf.setLocationRelativeTo(null);
+        gf.setVisible(true);
+        canvas.requestFocusInWindow();
+
+        final int PR = 14, DR = 14;
+        final long FRAME_MS = 1000 / 60;
+
+        // ── Game loop ──────────────────────────────────────────────────────────
+        while (gf.isVisible()) {
+            long t0 = System.currentTimeMillis();
+            frameCount[0]++;
+
+            boolean spEdge = kSp[0] && !spWas[0];
+            spWas[0] = kSp[0];
+
+            // ── Pause handling ─────────────────────────────────────────────
+            if (gState[0] >= 1) {
+                pauseTimer[0]++;
+                if (spEdge || pauseTimer[0] > 200) {
+                    if (gState[0] == 3) break;
+                    downs[0]++;
+                    if (downs[0] >= MAX_DOWNS) {
+                        gState[0] = 3;
+                        boolean won = touchdowns[0] > 0;
+                        pauseMsg[0]  = won ? "FINAL: " + touchdowns[0] + " TDs — " + totalScore[0] + " pts! RISE UP! 🦅"
+                                           : "FINAL: No TDs. Work on those routes!";
+                        pauseGood[0] = won;
+                    } else {
+                        resetDown.run();
+                        gState[0] = 0;
+                    }
+                }
+                canvas.repaint();
+                long el = System.currentTimeMillis()-t0;
+                if (FRAME_MS-el>0) try{Thread.sleep(FRAME_MS-el);}catch(InterruptedException e){}
+                continue;
+            }
+
+            // ── Special action trigger ─────────────────────────────────────
+            if (spEdge && !special[0]) {
+                special[0]    = true;
+                specTimer[0]  = 0;
+                if (posMode == 0 && !ballInAir[0]) {
+                    // QB throw — launch ball forward
+                    ballInAir[0] = true;
+                    ballX[0]     = px[0]; ballY[0] = py[0];
+                    double throwDir = kL[0] ? -0.4 : kR[0] ? 0.4 : 0.0;
+                    ballVx[0]    = throwDir * 6 + (rng.nextDouble()-0.5)*1.5;
+                    ballVy[0]    = -9.5 - player.awareness * 0.15;
+                    ballTimer[0] = 0;
+                }
+            }
+            if (special[0]) {
+                specTimer[0]++;
+                if (specTimer[0] > SPEC_DUR) { special[0] = false; }
+            }
+
+            // ── Update flying ball (QB) ────────────────────────────────────
+            if (ballInAir[0]) {
+                ballX[0] += ballVx[0]; ballY[0] += ballVy[0];
+                ballVy[0] += 0.28; // gravity
+                ballTimer[0]++;
+                // Ball lands
+                if (ballY[0] > FIELD_BOTTOM || ballTimer[0] > 90) {
+                    ballInAir[0] = false;
+                }
+                // Ball reaches end zone → instant TD (simulated completion)
+                if (ballY[0] < FIELD_TOP + EZ_HEIGHT && ballX[0] > 40 && ballX[0] < W-40) {
+                    ballInAir[0] = false;
+                    touchdowns[0]++;
+                    totalScore[0] += 6;
+                    gState[0]    = downs[0]+1 >= MAX_DOWNS ? 3 : 1;
+                    pauseMsg[0]  = "TOUCHDOWN PASS! +6 🏈🎉";
+                    pauseGood[0] = true;
+                    pauseTimer[0]= 0;
+                    if (gState[0]==3) { pauseMsg[0]="GAME OVER — "+touchdowns[0]+" TDs! RISE UP! 🦅"; pauseGood[0]=true; }
+                    canvas.repaint();
+                    long el=System.currentTimeMillis()-t0;
+                    if(FRAME_MS-el>0)try{Thread.sleep(FRAME_MS-el);}catch(InterruptedException e){}
+                    continue;
+                }
+            }
+
+            // ── Player movement ────────────────────────────────────────────
+            double baseSpd = player.moveSpeed() * (special[0] ? 1.45 : 1.0);
+            // WR burst (acceleration bonus)
+            if (posMode == 2 && special[0]) baseSpd += player.acceleration * 0.1;
+
+            double targetVx = 0, targetVy = 0;
+            if (kL[0]) targetVx = -baseSpd;
+            if (kR[0]) targetVx =  baseSpd;
+            if (kU[0]) targetVy = -baseSpd;
+            if (kD[0]) targetVy =  baseSpd;
+
+            // Smooth acceleration using awareness stat
+            double accelFactor = 0.25 + player.awareness * 0.025;
+            pvx[0] += (targetVx - pvx[0]) * accelFactor;
+            pvy[0] += (targetVy - pvy[0]) * accelFactor;
+
+            // TE power drive — lateral juke bonus
+            if (posMode == 3 && special[0]) {
+                pvx[0] *= 1.3; pvy[0] *= 1.3;
+            }
+
+            double npx = Math.max(PR, Math.min(W-PR, px[0]+pvx[0]));
+            double npy = Math.max(FIELD_TOP+EZ_HEIGHT+PR, Math.min(FIELD_BOTTOM-PR, py[0]+pvy[0]));
+
+            // ── Defender stun timer ────────────────────────────────────────
+            for (int i = 0; i < NUM_DEF; i++) {
+                if (stunned[i]) {
+                    stunTimer[i]++;
+                    if (stunTimer[i] > 90) { stunned[i] = false; }
+                }
+            }
+
+            // ── Collision detection ────────────────────────────────────────
+            boolean tackled = false;
+            for (int i = 0; i < NUM_DEF; i++) {
+                if (stunned[i]) continue;
+                double cdx2 = npx - dx[i], cdy2 = npy - dy[i];
+                double dist = Math.sqrt(cdx2*cdx2 + cdy2*cdy2);
+                if (dist < PR + DR - 2) {
+                    // Special: RB juke (agility check) or TE power drive (strength)
+                    boolean escaped = false;
+                    if (special[0]) {
+                        double escapeChance = (posMode==1) ? player.agility * 0.09
+                                           : (posMode==3) ? player.strength * 0.11
+                                           :                0.3;
+                        if (rng.nextDouble() < escapeChance) {
+                            escaped = true;
+                            // TE stuns defender on power drive
+                            if (posMode == 3) {
+                                stunned[i] = true; stunTimer[i] = 0;
+                            }
+                        }
+                    }
+                    if (!escaped) {
+                        tackled = true;
+                    }
+                    break;
+                }
+            }
+
+            if (!tackled) { px[0]=npx; py[0]=npy; }
+
+            // ── TD check ──────────────────────────────────────────────────
+            if (!tackled && py[0] <= FIELD_TOP + EZ_HEIGHT + PR) {
+                touchdowns[0]++;
+                totalScore[0] += 6;
+                gState[0] = downs[0]+1 >= MAX_DOWNS ? 3 : 1;
+                String tdMsg = posMode==0 ? "QB SCRAMBLE TD! +6 🏈" :
+                               posMode==1 ? "RUSHING TOUCHDOWN! +6 🏈🎉" :
+                               posMode==2 ? "TOUCHDOWN CATCH! +6 🏈💫" :
+                                            "POWER TD! +6 💪🏈";
+                pauseMsg[0] = tdMsg; pauseGood[0]=true; pauseTimer[0]=0;
+                if (gState[0]==3) { pauseMsg[0]="GAME OVER — "+touchdowns[0]+" TDs! "+totalScore[0]+" pts! 🦅"; pauseGood[0]=true; }
+                canvas.repaint();
+                long el=System.currentTimeMillis()-t0;
+                if(FRAME_MS-el>0)try{Thread.sleep(FRAME_MS-el);}catch(InterruptedException e){}
+                continue;
+            }
+
+            // ── First down check ──────────────────────────────────────────
+            if (!tackled && py[0] < firstDownY[0]) {
+                // Passed the first down marker — celebrate briefly then continue
+                firstDownY[0] = (int)(py[0] - 120);
+                yards[0] += 10;
+            }
+
+            // ── Tackle result ─────────────────────────────────────────────
+            if (tackled) {
+                gState[0] = downs[0]+1 >= MAX_DOWNS ? 3 : 2;
+                pauseMsg[0]  = "TACKLED! 💥 End of Down " + (downs[0]+1);
+                pauseGood[0] = false; pauseTimer[0] = 0;
+                if (gState[0]==3) {
+                    boolean won = touchdowns[0]>0;
+                    pauseMsg[0] = won ? "GAME OVER — "+touchdowns[0]+" TDs scored!" : "GAME OVER — Held scoreless!";
+                    pauseGood[0] = won;
+                }
+                canvas.repaint();
+                long el=System.currentTimeMillis()-t0;
+                if(FRAME_MS-el>0)try{Thread.sleep(FRAME_MS-el);}catch(InterruptedException e){}
+                continue;
+            }
+
+            // ── Defender AI ───────────────────────────────────────────────
+            double diffMult = 1.0 + downs[0] * 0.18;
+            for (int i = 0; i < NUM_DEF; i++) {
+                if (stunned[i]) continue;
+
+                // Target: toward player (with type-specific behavior)
+                double tdx2 = px[0] - dx[i], tdy2 = py[0] - dy[i];
+                double dist2 = Math.sqrt(tdx2*tdx2 + tdy2*tdy2);
+                if (dist2 < 1) continue;
+
+                double aiSpd;
+                double moveX, moveY;
+                switch (dtype[i]) {
+                    case 0: // DE — fast rush straight at player
+                        aiSpd  = (2.8 + player.speed * 0.05) * diffMult;
+                        moveX  = tdx2/dist2 * aiSpd + Math.sin(frameCount[0]*0.09+i)*0.2;
+                        moveY  = tdy2/dist2 * aiSpd;
+                        break;
+                    case 1: // LB — pursuit, leads slightly
+                        aiSpd  = (2.2 + player.awareness*0.04) * diffMult;
+                        moveX  = (tdx2/dist2 + pvx[0]*0.15) * aiSpd;
+                        moveY  = (tdy2/dist2 + pvy[0]*0.10) * aiSpd;
+                        break;
+                    case 2: // CB — tries to cut off angle
+                        aiSpd  = (2.5 + player.speed*0.04) * diffMult;
+                        double interceptX = px[0] + pvx[0]*8;
+                        double icdx = interceptX - dx[i];
+                        double iclen= Math.sqrt(icdx*icdx + tdy2*tdy2);
+                        moveX  = (iclen>1 ? icdx/iclen : tdx2/dist2) * aiSpd;
+                        moveY  = tdy2/dist2 * aiSpd;
+                        break;
+                    case 3: // S — deep zone, only closes in when player gets close
+                    default:
+                        aiSpd  = dist2 < 200 ? (2.6*diffMult) : (1.2*diffMult);
+                        moveX  = tdx2/dist2 * aiSpd + Math.cos(frameCount[0]*0.06+i)*0.3;
+                        moveY  = tdy2/dist2 * aiSpd;
+                        break;
+                }
+                dx[i] = Math.max(DR, Math.min(W-DR, dx[i]+moveX));
+                dy[i] = Math.max(FIELD_TOP+EZ_HEIGHT+DR, Math.min(FIELD_BOTTOM-DR, dy[i]+moveY));
+            }
+
+            canvas.repaint();
+            long elapsed = System.currentTimeMillis()-t0;
+            if (FRAME_MS-elapsed>0) try{Thread.sleep(FRAME_MS-elapsed);}catch(InterruptedException e){}
+        }
+
+        gf.dispose();
+
+        // ── Final results dialog ───────────────────────────────────────────────
+        int td = touchdowns[0];
+        String rating, rColor;
+        if      (td >= MAX_DOWNS) { rating="🏆 PERFECT GAME! TD every single down!"; rColor="#FFD700"; }
+        else if (td == 3)         { rating="🔥 INCREDIBLE! 3 touchdowns!";            rColor="#FFD700"; }
+        else if (td == 2)         { rating="⭐ Outstanding — 2 touchdowns!";           rColor="#A71930"; }
+        else if (td == 1)         { rating="👍 Solid — 1 TD scored!";                 rColor="#A71930"; }
+        else                      { rating="😤 Held scoreless. Study the playbook!";  rColor="#A5ACAF"; }
+
+        JOptionPane.showMessageDialog(null,
+            "<html><body style='width:400px;background:#000;color:#fff;text-align:center;font-family:Arial,sans-serif;'>" +
+            "<div style='background:#A71930;padding:14px;margin-bottom:12px;'>" +
+            "<h2 style='color:#fff;margin:4px;'>🏟️ FALCONS OFFENSE — RESULTS</h2>" +
+            "<p style='color:#A5ACAF;margin:4px;font-size:12px;'>" + player.name + " " + player.number + " | " + player.pos + "</p></div>" +
+            "<div style='background:#1a1a1a;padding:12px;margin:8px 0;'>" +
+            "<table style='width:100%;color:#fff;font-size:13px;'>" +
+            "<tr><td style='text-align:center;padding:8px;'>" +
+            "<b style='color:#A71930;font-size:12px;'>TOUCHDOWNS</b><br>" +
+            "<span style='font-size:40px;font-weight:bold;'>" + td + "</span></td>" +
+            "<td style='text-align:center;padding:8px;'>" +
+            "<b style='color:#A71930;font-size:12px;'>TOTAL POINTS</b><br>" +
+            "<span style='font-size:40px;font-weight:bold;'>" + totalScore[0] + "</span></td></tr>" +
+            "</table></div>" +
+            "<p style='font-size:14px;color:" + rColor + ";font-weight:bold;margin:10px;'>" + rating + "</p>" +
+            "<div style='background:#1a1a1a;padding:8px;margin:8px 0;text-align:left;font-size:11px;'>" +
+            "<b style='color:#FFD700;'>Your Player Stats:</b><br>" +
+            "<span style='color:#A5ACAF;'>" +
+            "Speed: " + player.speed + "/10 &nbsp;|&nbsp; Agility: " + player.agility + "/10 &nbsp;|&nbsp; " +
+            "Strength: " + player.strength + "/10<br>" +
+            "Catching: " + player.catching + "/10 &nbsp;|&nbsp; Awareness: " + player.awareness + "/10</span></div>" +
+            "<div style='background:#A71930;padding:8px;margin-top:10px;'><b style='color:#fff;'>RISE UP! 🦅</b></div>" +
+            "</body></html>",
+            "Falcons Offense — Results", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    private static void drawOffensePlayer(java.awt.Graphics2D g, int cx, int cy,
+                                          java.awt.Color jersey, java.awt.Color txt,
+                                          String label, boolean hasBall, boolean active) {
+        final int R = 15;
+        // Shadow
+        g.setColor(new java.awt.Color(0,0,0,60));
+        g.fillOval(cx-R+2, cy-R+5, R*2, R*2);
+        // Body
+        g.setColor(jersey);
+        g.fillOval(cx-R, cy-R, R*2, R*2);
+        // Active glow ring
+        if (active) {
+            g.setColor(new java.awt.Color(0xFF,0xD7,0x00,160));
+            g.setStroke(new java.awt.BasicStroke(2.5f));
+            g.drawOval(cx-R-2, cy-R-2, R*2+4, R*2+4);
+        }
+        // Helmet shine
+        g.setColor(new java.awt.Color(255,255,255,65));
+        g.fillOval(cx-R+3, cy-R+2, R-2, R-4);
+        // Outline
+        g.setColor(new java.awt.Color(255,255,255,120));
+        g.setStroke(new java.awt.BasicStroke(1.5f));
+        g.drawOval(cx-R, cy-R, R*2, R*2);
+        // Jersey number / label
+        g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 8));
+        g.setColor(txt);
+        java.awt.FontMetrics fm2 = g.getFontMetrics();
+        g.drawString(label, cx - fm2.stringWidth(label)/2, cy+3);
+        // Ball
+        if (hasBall) {
+            g.setColor(new java.awt.Color(0xC4,0x7C,0x25));
+            g.fillOval(cx+R-3, cy-R-3, 11, 8);
+            g.setColor(java.awt.Color.WHITE);
+            g.setStroke(new java.awt.BasicStroke(0.8f));
+            g.drawLine(cx+R, cy-R, cx+R+6, cy-R+4);
+        }
+    }
+
 }
