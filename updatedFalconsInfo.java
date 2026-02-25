@@ -1,7 +1,7 @@
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-public class Atlantafalconsinfo {
+public class updatedAtlantafalconsinfo {
     public static void main(String[] args) {
         // Welcome message
         JOptionPane.showMessageDialog(null, 
